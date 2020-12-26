@@ -11,6 +11,7 @@ title: Dinh Duy Kha                          # the main title
 
 tagline: Test test test test.  # it will display as the sub-title
 
+repository: kha-dinh/kha-dinh.github.io
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
   bootstrap Jekyll theme with responsive web design

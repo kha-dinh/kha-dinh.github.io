@@ -253,7 +253,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  github-pages (~> 227)
+  github-pages
   jekyll-feed (~> 0.6)
   kramdown-parser-gfm
   minima (~> 2.0)

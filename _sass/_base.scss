@@ -839,6 +839,9 @@ html.transition *:after {
   transition-delay: 0 !important;
 }
 
+.subtitle {
+  color: var(--global-distill-app-color);
+}
 // Extra Markdown style (post Customization)
 .post {
   .post-meta {

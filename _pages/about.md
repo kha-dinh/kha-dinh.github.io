@@ -3,17 +3,11 @@ layout: about
 title: about
 permalink: /
 <!-- subtitle: <a href='#'>Sungkyunkwan University</a>. Suwon, South Korea. -->
-subtitle: (Đinh Duy Kha)
-
+subtitle: Ph.D. Student, System Security Lab, Sungkyunkwan University, Suwon, South Korea
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Ph.D. Student</p>
-    <p>Dept. of Computer Science and Engineering</p>
-    <p>Sungkyunkwan University</p>
-    <p>Suwon, South Korea</p>
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts

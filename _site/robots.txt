@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://kha-dinh.github.io/sitemap.xml

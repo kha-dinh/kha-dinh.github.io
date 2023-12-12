@@ -3,7 +3,9 @@ layout: about
 title: about
 permalink: /
 <!-- subtitle: <a href='#'>Sungkyunkwan University</a>. Suwon, South Korea. -->
-subtitle: Ph.D. Student, System Security Lab, Sungkyunkwan University, Suwon, South Korea
+subtitle: >
+  <font size="-1"><tt>khadinh (at) skku (dot) edu</tt></font><br>
+  Ph.D. Student, System Security Lab, Sungkyunkwan University, Suwon, South Korea
 profile:
   align: right
   image: prof_pic.jpg

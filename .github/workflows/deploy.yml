@@ -46,6 +46,8 @@ jobs:
       with:
         working_directory: _data
         root_file: cv.tex
+        pre_compile:
+          "cp -f ../_bibliography/papers.bib ./papers.bib"
         post_compile:
           "cp -f cv.pdf ../_site/assets/pdf/cv.pdf"
     - name: Deploy 🚀

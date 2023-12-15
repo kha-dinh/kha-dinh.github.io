@@ -58,17 +58,38 @@
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
 %for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+\usepackage[style=ieee,sorting=ynt,maxbibnames=5]{biblatex}
 
 %Setup hyperref package, and colours for links
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{../_bibliography/papers.bib}
+\addbibresource{papers.bib}
 \setlength\bibitemsep{1em}
 
 %for social icons
 \usepackage{fontawesome5}
+
+\usepackage{xstring}
+\usepackage{etoolbox}
+\newboolean{bold}
+\newcommand{\makeauthorsbold}[1]{%
+  \DeclareNameFormat{author}{%
+  \setboolean{bold}{false}%
+    \renewcommand{\do}[1]{\expandafter\ifstrequal\expandafter{\namepartfamily}{####1}{\setboolean{bold}{true}}{}}%
+    \docsvlist{#1}%
+    \ifthenelse{\value{listcount}=1}
+    {%
+      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\namepartfamily\addcomma\addspace \namepartgiveni}}{\namepartfamily\addcomma\addspace \namepartgiveni}}%
+    }{\ifnumless{\value{listcount}}{\value{liststop}}
+      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}%
+      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}%
+      }
+    \ifthenelse{\value{listcount}<\value{liststop}}
+    {\addcomma\space}{}
+  }
+}
+\makeauthorsbold{Duy, Kha Dinh}
 
 %debug page outer frames
 %\usepackage{showframe}
@@ -79,7 +100,7 @@
 \begin{document}
 
 % non-numbered pages
-\pagestyle{empty}
+\pagestyle{empty} 
 
 %----------------------------------------------------------------------------------------
 %	TITLE
@@ -92,13 +113,13 @@
 % \end{tabularx}
 
 \begin{tabularx}{\linewidth}{@{} C @{}}
-	\Huge{Dinh Duy Kha}                                \\[7.5pt]
-	PhD Student @ Sungkyunkwan University, South Korea \\
-	\href{https://github.com/kha-dinh}{\raisebox{-0.05\height}\faGithub\ kha-dinh} \ $|$ \
-	% \href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-	% \href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-	\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ khadinh@skku.edu}
-	% \href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{Dinh Duy Kha} \\[7.5pt]
+PhD Student @ Sungkyunkwan University, South Korea\\
+\href{https://github.com/kha-dinh}{\raisebox{-0.05\height}\faGithub\ kha-dinh} \ $|$ \ 
+% \href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
+% \href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
+\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ khadinh@skku.edu} 
+% \href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
 \end{tabularx}
 
 
@@ -110,24 +131,24 @@ I am a third-year Ph.D. student advised by Prof. Hojoon Lee at System Security L
 
 %Experience
 \section{Experiences}
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-	\textsc{System Security Lab, Sungkyunkwan University (SKKU)} & \hfill Suwon, South Korea        \\
-	\emph{Graduate Student Researcher}                           & \hfill  2019 - Present           \\
-	\multicolumn{2}{@{}X@{}}{
-	\begin{minipage}[t]{\columnwidth}
-		\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-			\item Design security mechanisms that utilize modern hardware features.
-			\item Design system-level mitigations against side-channels.
-		\end{itemize}
-	\end{minipage} }                                                                \\
-	\textsc{VNG Corporation}                                     & \hfill Ho Chi Minh City, Vietnam \\
-	\emph{Software Engineering Intern}                           & \hfill  Jun 2018 - Jun 2019      \\
-	\multicolumn{2}{@{}X@{}}{
-	\begin{minipage}[t]{\columnwidth}
-		\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-			\item Develop and maintain backend APIs for the TalkTV streaming platform written in C (now discontinued).
-		\end{itemize}
-	\end{minipage} }
+\begin{tabularx}{\linewidth}{@{}lX@{}}	
+\textsc{System Security Lab, Sungkyunkwan University (SKKU)}& \hfill Suwon, South Korea\\
+\emph{Graduate Student Researcher} & \hfill  2019 - Present   \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\columnwidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+        \item Design security mechanisms that utilize modern hardware features.
+        \item Design system-level mitigations against side-channels.
+    \end{itemize}
+    \end{minipage} }\\
+\textsc{VNG Corporation}& \hfill Ho Chi Minh City, Vietnam \\
+\emph{Software Engineering Intern} & \hfill  Jun 2018 - Jun 2019   \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\columnwidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+        \item Develop and maintain backend APIs for the TalkTV streaming platform written in C (now discontinued).
+    \end{itemize}
+    \end{minipage} }
 \end{tabularx}
 
 %Projects
@@ -135,31 +156,31 @@ I am a third-year Ph.D. student advised by Prof. Hojoon Lee at System Security L
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-	\textsc{Sungyunkwan University}                    & \hfill Suwon, South Korea        \\
-	\emph{PhD in System Security}                      & \hfill  2019 - present           \\
-	\textsc{Ho Chi Minh City University of Technology} & \hfill Ho Chi Minh City, Vietnam \\
-	\emph{B.S. in Computer Science}                    & \hfill  2014 - 2019              \\
+\begin{tabularx}{\linewidth}{@{}lX@{}}	
+\textsc{Sungyunkwan University} & \hfill Suwon, South Korea\\
+\emph{PhD in System Security} & \hfill  2019 - present   \\
+\textsc{Ho Chi Minh City University of Technology} & \hfill Ho Chi Minh City, Vietnam\\
+\emph{B.S. in Computer Science} & \hfill  2014 - 2019   \\
 \end{tabularx}
 
 \section{Projects}
 
 \textsc{Similation framework for PIM-based confidential computing}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item Use gem5 to perform a full-system simulation of the emerging PIM hardware.
-	\item Implemented security features to allow PIM to be used as an accelerator for confidential computing.
+    \item Use gem5 to perform a full-system simulation of the emerging PIM hardware.
+    \item Implemented security features to allow PIM to be used as an accelerator for confidential computing.
 \end{itemize}
 
 \textsc{Cryptographic capabilities for program compartmentalization}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item Designed an in-process capability-based compartmentalization framework that uses new ARM hardware features and evaluated its security.
-	\item Developed LLVM compiler instrumentation passes to enforce its security policies on memory accesses.
-	\item Developed a kernel module to support the isolation of file-related objects.
+    \item Designed an in-process capability-based compartmentalization framework that uses new ARM hardware features and evaluated its security.
+    \item Developed LLVM compiler instrumentation passes to enforce its security policies on memory accesses.
+    \item Developed a kernel module to support the isolation of file-related objects.
 \end{itemize}
 
 \textsc{Accelerating AddressSantizers in Rust}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item Designed and formalized the cross-IR compiler analyses that help classify safe, unsafe, and potentially unsafe memory accesses.
+    \item Designed and formalized the cross-IR compiler analyses that help classify safe, unsafe, and potentially unsafe memory accesses. 
 \end{itemize}
 
 
@@ -179,11 +200,12 @@ I am a third-year Ph.D. student advised by Prof. Hojoon Lee at System Security L
 % \textbf{Kernel Programming} &  \normalsize{}\\
 % \textbf{Program Analysis} &  \normalsize{}\\
 % \end{tabularx}
+% \printbibliography
 \newpage
-\section{Publications}
-\begin{refsection}[../_bibliography/papers.bib]
-	\nocite{*}
-	\printbibliography[heading=none]
+\section{Publication}
+\begin{refsection}
+\nocite{*}
+\printbibliography[heading=none]
 \end{refsection}
 \vfill
 \center{\footnotesize Last updated: \today}

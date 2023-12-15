@@ -1,4 +1,5 @@
-FROM ubuntu:latest
+# FROM ubuntu:latest
+FROM ruby:3.0.0
 ENV DEBIAN_FRONTEND noninteractive
 
 Label MAINTAINER Amir Pourmand
@@ -9,6 +10,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     ruby-full \
     build-essential \
     zlib1g-dev \
+    jupyter-notebook \
     jupyter-nbconvert \
     inotify-tools procps && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*

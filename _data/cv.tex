@@ -1,0 +1,191 @@
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% \usepackage[utf8]{vietnam}
+% \usepackage[utf8]{vietnam}
+% \usepackage[utf8]{inputenc}
+% \usepackage[vietnam]{babel}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+	\Huge{Dinh Duy Kha}                                \\[7.5pt]
+	PhD Student @ Sungkyunkwan University, South Korea \\
+	\href{https://github.com/kha-dinh}{\raisebox{-0.05\height}\faGithub\ kha-dinh} \ $|$ \
+	% \href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
+	% \href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
+	\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ khadinh@skku.edu}
+	% \href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\end{tabularx}
+
+
+% \section{Research Interest}
+% My research interest include operating system security, software compartmentalization, compiler-assisted techniques for security, and Rust programming language.
+
+\section{Introduction}
+I am a third-year Ph.D. student advised by Prof. Hojoon Lee at System Security Lab, Sungkyunkwan University. I do research in Systems Security. My research interests include software security, operating systems security, trusted execution environments, and virtualization.
+
+%Experience
+\section{Experiences}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+	\textsc{System Security Lab, Sungkyunkwan University (SKKU)} & \hfill Suwon, South Korea        \\
+	\emph{Graduate Student Researcher}                           & \hfill  2019 - Present           \\
+	\multicolumn{2}{@{}X@{}}{
+	\begin{minipage}[t]{\columnwidth}
+		\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+			\item Design security mechanisms that utilize modern hardware features.
+			\item Design system-level mitigations against side-channels.
+		\end{itemize}
+	\end{minipage} }                                                                \\
+	\textsc{VNG Corporation}                                     & \hfill Ho Chi Minh City, Vietnam \\
+	\emph{Software Engineering Intern}                           & \hfill  Jun 2018 - Jun 2019      \\
+	\multicolumn{2}{@{}X@{}}{
+	\begin{minipage}[t]{\columnwidth}
+		\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+			\item Develop and maintain backend APIs for the TalkTV streaming platform written in C (now discontinued).
+		\end{itemize}
+	\end{minipage} }
+\end{tabularx}
+
+%Projects
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+	\textsc{Sungyunkwan University}                    & \hfill Suwon, South Korea        \\
+	\emph{PhD in System Security}                      & \hfill  2019 - present           \\
+	\textsc{Ho Chi Minh City University of Technology} & \hfill Ho Chi Minh City, Vietnam \\
+	\emph{B.S. in Computer Science}                    & \hfill  2014 - 2019              \\
+\end{tabularx}
+
+\section{Projects}
+
+\textsc{Similation framework for PIM-based confidential computing}
+\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+	\item Use gem5 to perform a full-system simulation of the emerging PIM hardware.
+	\item Implemented security features to allow PIM to be used as an accelerator for confidential computing.
+\end{itemize}
+
+\textsc{Cryptographic capabilities for program compartmentalization}
+\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+	\item Designed an in-process capability-based compartmentalization framework that uses new ARM hardware features and evaluated its security.
+	\item Developed LLVM compiler instrumentation passes to enforce its security policies on memory accesses.
+	\item Developed a kernel module to support the isolation of file-related objects.
+\end{itemize}
+
+\textsc{Accelerating AddressSantizers in Rust}
+\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+	\item Designed and formalized the cross-IR compiler analyses that help classify safe, unsafe, and potentially unsafe memory accesses.
+\end{itemize}
+
+
+
+%----------------------------------------------------------------------------------------
+
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+% \section{Skills}
+% \begin{tabularx}{\linewidth}{@{}l X@{}}
+% \textbf{Programming} &  \normalsize{\textbf{C/C++}, \textbf{Rust} \textbf{Python}. \textbf{Bash}.  \textbf{Latex}.  }\\
+
+% \textbf{Kernel Programming} &  \normalsize{}\\
+% \textbf{Program Analysis} &  \normalsize{}\\
+% \end{tabularx}
+\newpage
+\section{Publications}
+\begin{refsection}[citations.bib]
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{refsection}
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}

@@ -9,3 +9,14 @@ _site
 Gemfile.lock
 vendor
 
+_data/cv.aux
+_data/cv.bbl
+_data/cv.bcf
+_data/cv.blg
+_data/cv.fdb_latexmk
+_data/cv.fls
+_data/cv.log
+_data/cv.out
+_data/cv.pdf
+_data/cv.run.xml
+_data/cv.synctex.gz

@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My paper Capacity got the Distinguished Paper Award at ACM CCS 2023!
+My paper, [Capacity](https://dl.acm.org/doi/10.1145/3576915.3623079), got the Distinguished Paper Award at ACM CCS 2023!

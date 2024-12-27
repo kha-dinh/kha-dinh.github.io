@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper RustSan is accepted for publication at Usenix Security 2024!
+[RustSan](https://www.usenix.org/conference/usenixsecurity24/presentation/cho-kyuwon) got accepted for publication at Usenix Security 2024!

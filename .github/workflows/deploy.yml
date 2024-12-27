@@ -41,13 +41,14 @@ jobs:
           export JEKYLL_ENV=production
           bundle exec jekyll build --lsi
           purgecss -c purgecss.config.js
-      # - name: Compile CV
-      #   uses: xu-cheng/latex-action@v3
-      #   with:
-      #     working_directory: _data
-      #     root_file: cv.tex
-      #     pre_compile: "cp -f ../_bibliography/papers.bib ./papers.bib"
-      #     post_compile: "cp -f cv.pdf ../_site/assets/pdf/cv.pdf"
+      - name: Compile CV
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: _data
+          root_file: cv.tex
+          pre_compile: "cp -f ../_bibliography/papers.bib ./papers.bib"
+          post_compile: "cp -f cv.pdf ../_site/assets/pdf/cv.pdf"
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4

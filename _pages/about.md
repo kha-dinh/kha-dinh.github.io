@@ -19,4 +19,4 @@ social: true # includes social icons at the bottom of the page
 ---
 
 I am Kha Dinh (_Đinh Duy Kha_), a fifth-year Ph.D. student advised by Prof. [Hojoon Lee](https://hojoon-lee.github.io) at [System Security Lab](https://sslab.skku.edu), [Sungkyunkwan University](https://www.skku.edu).
-My research focuses on the intersection of systems design and security, with specific interests in memory safety, program compartmentalization, operating systems design, trusted execution environments, and side-channel mitigations.
+My research focuses on the intersection of systems design and security, with specific interests in memory safety, program compartmentalization, operating systems design, trusted execution environments, and side-channel mitigation techniques. I am the recipient of the [ACM CCS Distinguished Paper Award](https://www.sigsac.org/ccs/CCS_awards/ccs-bestpaper.html) in 2023.

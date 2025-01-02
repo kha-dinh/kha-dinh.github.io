@@ -17,16 +17,16 @@ layout: default
 
   <article>
     {% if page.profile -%}
-    <div
-      class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}"
-    >
-      {%- if page.profile.image %} {%- assign profile_image_path =
-      page.profile.image | prepend: 'assets/img/' -%} {% if
-      page.profile.image_circular %} {%- assign profile_image_class = "img-fluid
-      z-depth-1 rounded-circle" -%} {% else %} {%- assign profile_image_class =
-      "img-fluid z-depth-1 rounded" -%} {% endif %} {% include figure.html
-      path=profile_image_path class=profile_image_class alt=page.profile.image
-      cache_bust=true -%} {% endif -%} {%- if page.profile.more_info %}
+    <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}" >
+      {%- if page.profile.image %}
+      {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+      {% if page.profile.image_circular %}
+      {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+      {% else %} {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
+      {% endif %}
+      {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image cache_bust=true -%}
+      {% endif -%}
+      {%- if page.profile.more_info %}
       <div class="more-info">{{ page.profile.more_info }}</div>
       {%- endif %}
     </div>
@@ -83,8 +83,8 @@ layout: default
       <li>
         <div class="row">
           <div class="col-sm-3">
-            <h4 class="text-center">The last cat</h4>
             <a href="https://cafemanhzu.itch.io/the-last-cat">
+            <h4 class="text-center">The last cat</h4>
               <img
                 src="https://img.itch.zone/aW1nLzE1NTkxOTMzLnBuZw==/315x250%23c/6%2BNiZ3.png"
                 class="img-fluid z-depth-1 rounded"

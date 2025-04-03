@@ -86,6 +86,9 @@ table {
       margin-bottom: 0;
     }
   }
+  // td {
+  //   background-color: var(--global-code-bg-color);
+  // }
 
   // th {
   //   font-weight: bold;
@@ -484,6 +487,14 @@ blockquote {
   }
 }
 
+a.btn {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  background-color: var(--global-code-bg-color);
+}
 // Footer
 footer.fixed-bottom {
   background-color: var(--global-footer-bg-color);

@@ -1,9 +1,46 @@
 /*******************************************************************************
  * Styles for the base elements of the theme.
  ******************************************************************************/
-@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
 
 // Typography
+
+span.small-caps {
+  font-variant-caps: petite-caps;
+}
+.newsreader-280 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 280;
+  font-style: normal;
+}
+
+.ibm-plex-sans-200 {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.audiowide-regular {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
 
 p,
 h1,
@@ -20,6 +57,7 @@ strong {
   color: var(--global-text-color);
 }
 
+th,
 p,
 .news-title,
 div.title,
@@ -28,7 +66,7 @@ div.periodical,
 li {
   font-family: "Newsreader", serif;
   font-optical-sizing: auto;
-  font-weight: 280;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -49,9 +87,9 @@ table {
     }
   }
 
-  th {
-    font-weight: bold;
-  }
+  // th {
+  //   font-weight: bold;
+  // }
 }
 
 a,
@@ -205,8 +243,9 @@ blockquote {
     text-align: center;
     font-family: "Audiowide", sans-serif;
     font-weight: 400;
-    font-size: 60%;
-    background-color: white;
+    font-size: 15px;
+    background-color: var(--global-code-bg-color);
+
     border-radius: 3px;
     box-shadow:
       0 2px 5px 0 rgba(0, 0, 0, 0.16),
@@ -708,14 +747,16 @@ footer.sticky-bottom {
       .abbr {
         height: 2rem;
         margin-bottom: 0.5rem;
-
         abbr {
+          width: 100%;
           display: inline-block;
           background-color: var(--global-theme-color);
           padding-left: 1rem;
           padding-right: 1rem;
 
           a {
+            font-family: "Audiowide", sans-serif !important;
+            font-size: 15px;
             color: white;
 
             &:hover {
@@ -762,7 +803,7 @@ footer.sticky-bottom {
       }
 
       .award {
-        color: $pink-color;
+        color: var(--global-theme-color);
       }
 
       .links {

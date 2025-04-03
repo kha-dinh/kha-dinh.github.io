@@ -20,3 +20,7 @@ _data/cv.out
 _data/cv.pdf
 _data/cv.run.xml
 _data/cv.synctex.gz
+_bibliography/papers.aux
+_bibliography/papers.fdb_latexmk
+_bibliography/papers.fls
+_bibliography/papers.log

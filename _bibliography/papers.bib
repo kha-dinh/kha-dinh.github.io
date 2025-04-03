@@ -1,3 +1,62 @@
+@inproceedings{incognitos,
+  abbr = {SP 25},
+  author = {Dinh Duy, Kha and Kim, Jaeyoon and Lim, Hajeong and Lee, Hojoon},
+  title = {IncognitOS: A Practical Unikernel Design for Full-System Obfuscation
+           in Confidential Virtual Machines (to appear)},
+  year = {2025},
+  booktitle = {46th IEEE Symposium on Security and Privacy},
+  series = {SP '25},
+  selected = {true},
+}
+
+@inproceedings{rustsan,
+  author = {Kyuwon Cho and Jongyoon Kim and Kha Dinh Duy and Hajeong Lim and
+            Hojoon Lee},
+  abbr = {SEC 24},
+  title = {{RustSan}: Retrofitting {AddressSanitizer} for Efficient Sanitization
+           of Rust},
+  booktitle = {33rd USENIX Security Symposium (USENIX Security 24)},
+  year = {2024},
+  isbn = {978-1-939133-44-1},
+  address = {Philadelphia, PA},
+  pages = {3729--3746},
+  url = {
+         https://www.usenix.org/conference/usenixsecurity24/presentation/cho-kyuwon
+         },
+  abstract = {Rust is gaining traction as a safe systems programming language
+              with its strong type and memory safety guarantees. However, Rust's
+              guarantees are not infallible. The use of unsafe Rust, a subvariant
+              of Rust, allows the programmer to temporarily escape the strict
+              Rust language semantics to trade security for flexibility. Memory
+              errors within unsafe blocks in Rust have far-reaching ramifications
+              for the program's safety. As a result, the conventional dynamic
+              memory error detection (e.g., fuzzing) has been adapted as a common
+              practice for Rust and proved its effectiveness through a trophy
+              case of discovered CVEs. <br>RUSTSAN is a retrofitted design of
+              AddressSanitizer (ASan) for efficient dynamic memory error
+              detection of Rust programs. Our observation is that a significant
+              portion of instrumented memory access sites in a Rust program
+              compiled with ASan is redundant, as the Rust security guarantees
+              can still be valid at the site. RUSTSAN identifies and instruments
+              the sites that definitely or may undermine Rust security guarantees
+              while lifting instrumentation on safe sites. To this end, RUSTSAN
+              employs a cross-IR program analysis for accurate tracking of unsafe
+              sites and also extends ASan's shadow memory scheme for checking
+              non-uniform memory access validation necessary for Rust. We conduct
+              a comprehensive evaluation of RUSTSAN in terms of detection
+              capability and performance using 57 Rust crates. RUSTSAN
+              successfully detected all 31 tested cases of CVE-issued memory
+              errors. Also, RUSTSAN shows an average of 62.3% performance
+              increase against ASan in general benchmarks that involved 20 Rust
+              crates. In the fuzzing experiment with 6 crates, RUSTSAN marked an
+              average of 23.52%, and up to 57.08% of performance improvement.},
+  pdf = {https://www.usenix.org/system/files/usenixsecurity24-cho-kyuwon.pdf},
+  bibtex_show = {true},
+  publisher = {USENIX Association},
+  month = aug,
+  selected = {true},
+}
+
 @inproceedings{capacity,
   abbr = {CCS 23},
   author = {Dinh Duy, Kha and Cho, Kyuwon and Noh, Taehyun and Lee, Hojoon},
@@ -54,6 +113,8 @@
   award = {Distinguished Paper Award},
 }
 
+
+
 @article{sepim,
   abbr = {TCC},
   author = {Duy, Kha Dinh and Lee, Hojoon},
@@ -81,51 +142,5 @@
   doi = {10.1109/ACCESS.2021.3136889},
 }
 
-@inproceedings{rustsan,
-  author = {Kyuwon Cho and Jongyoon Kim and Kha Dinh Duy and Hajeong Lim and
-            Hojoon Lee},
-  abbr = {SEC 24},
-  title = {{RustSan}: Retrofitting {AddressSanitizer} for Efficient Sanitization
-           of Rust},
-  booktitle = {33rd USENIX Security Symposium (USENIX Security 24)},
-  year = {2024},
-  isbn = {978-1-939133-44-1},
-  address = {Philadelphia, PA},
-  pages = {3729--3746},
-  url = {
-         https://www.usenix.org/conference/usenixsecurity24/presentation/cho-kyuwon
-         },
-  abstract = {Rust is gaining traction as a safe systems programming language
-              with its strong type and memory safety guarantees. However, Rust's
-              guarantees are not infallible. The use of unsafe Rust, a subvariant
-              of Rust, allows the programmer to temporarily escape the strict
-              Rust language semantics to trade security for flexibility. Memory
-              errors within unsafe blocks in Rust have far-reaching ramifications
-              for the program's safety. As a result, the conventional dynamic
-              memory error detection (e.g., fuzzing) has been adapted as a common
-              practice for Rust and proved its effectiveness through a trophy
-              case of discovered CVEs. <br>RUSTSAN is a retrofitted design of
-              AddressSanitizer (ASan) for efficient dynamic memory error
-              detection of Rust programs. Our observation is that a significant
-              portion of instrumented memory access sites in a Rust program
-              compiled with ASan is redundant, as the Rust security guarantees
-              can still be valid at the site. RUSTSAN identifies and instruments
-              the sites that definitely or may undermine Rust security guarantees
-              while lifting instrumentation on safe sites. To this end, RUSTSAN
-              employs a cross-IR program analysis for accurate tracking of unsafe
-              sites and also extends ASan's shadow memory scheme for checking
-              non-uniform memory access validation necessary for Rust. We conduct
-              a comprehensive evaluation of RUSTSAN in terms of detection
-              capability and performance using 57 Rust crates. RUSTSAN
-              successfully detected all 31 tested cases of CVE-issued memory
-              errors. Also, RUSTSAN shows an average of 62.3% performance
-              increase against ASan in general benchmarks that involved 20 Rust
-              crates. In the fuzzing experiment with 6 crates, RUSTSAN marked an
-              average of 23.52%, and up to 57.08% of performance improvement.},
-  pdf = {https://www.usenix.org/system/files/usenixsecurity24-cho-kyuwon.pdf},
-  bibtex_show = {true},
-  publisher = {USENIX Association},
-  month = aug,
-  selected = {true},
-}
+
 

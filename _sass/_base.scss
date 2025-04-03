@@ -1,6 +1,7 @@
 /*******************************************************************************
  * Styles for the base elements of the theme.
  ******************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
 
 // Typography
 
@@ -19,6 +20,22 @@ strong {
   color: var(--global-text-color);
 }
 
+p,
+.news-title,
+div.title,
+div.author,
+div.periodical,
+li {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 280;
+  font-style: normal;
+}
+
+strong {
+  font-weight: 500;
+}
+
 hr {
   border-top: 1px solid var(--global-divider-color);
 }
@@ -26,7 +43,10 @@ hr {
 table {
   td,
   th {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    p {
+      margin-bottom: 0;
+    }
   }
 
   th {
@@ -50,7 +70,7 @@ table.table a {
 
 .table-dark {
   background-color: transparent;
-  &.table-bordered{
+  &.table-bordered {
     border: 1px solid var(--global-divider-color) !important;
   }
 }
@@ -80,7 +100,12 @@ blockquote {
       color: var(--global-tip-block-text);
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--global-tip-block-title);
     }
   }
@@ -93,7 +118,12 @@ blockquote {
       color: var(--global-warning-block-text);
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--global-warning-block-title);
     }
   }
@@ -106,7 +136,12 @@ blockquote {
       color: var(--global-danger-block-text);
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--global-danger-block-title);
     }
   }
@@ -167,7 +202,15 @@ blockquote {
   .more-info {
     margin-bottom: 5px;
     margin-top: 5px;
-    font-family: monospace;
+    text-align: center;
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-size: 60%;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow:
+      0 2px 5px 0 rgba(0, 0, 0, 0.16),
+      0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
 
     p {
       display: inline-block;
@@ -186,7 +229,7 @@ blockquote {
 
 @media (min-width: 576px) {
   .profile {
-    width: 30%;
+    width: 31%;
 
     .address {
       p {
@@ -209,7 +252,6 @@ blockquote {
     }
   }
 }
-
 
 // Navbar customization
 
@@ -265,7 +307,7 @@ blockquote {
     }
   }
 
-  .navbar-nav .nav-item.active>.nav-link {
+  .navbar-nav .nav-item.active > .nav-link {
     background-color: inherit;
     font-weight: bolder;
     color: var(--global-theme-color);
@@ -383,8 +425,8 @@ blockquote {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .wechat-modal > img {
@@ -397,12 +439,11 @@ blockquote {
   transform: translate(-50%, -50%);
 }
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 400px) {
   .wechat-modal > img {
     width: 100%;
   }
 }
-
 
 // Footer
 footer.fixed-bottom {
@@ -566,7 +607,6 @@ footer.sticky-bottom {
   }
 }
 
-
 // Distill
 
 .distill {
@@ -575,7 +615,6 @@ footer.sticky-bottom {
     text-decoration: none;
   }
 }
-
 
 // Projects
 
@@ -621,7 +660,6 @@ footer.sticky-bottom {
     text-align: right;
   }
 }
-
 
 // Publications
 
@@ -706,12 +744,12 @@ footer.sticky-bottom {
           }
         }
 
-        >em {
+        > em {
           border-bottom: 1px solid;
           font-style: normal;
         }
 
-        >span.more-authors {
+        > span.more-authors {
           color: var(--global-text-color-light);
           border-bottom: 1px dashed var(--global-text-color-light);
           cursor: pointer;
@@ -829,7 +867,6 @@ code {
   padding: 3px 3px;
 }
 
-
 // Transitioning Themes
 html.transition,
 html.transition *,
@@ -929,14 +966,14 @@ progress::-moz-progress-bar {
   .copy {
     background: var(--global-card-bg-color);
     border-color: var(--global-bg-color);
-    border-radius: .3rem;
+    border-radius: 0.3rem;
     border-style: none;
     color: var(--global-text-color);
     font-size: medium;
     opacity: 0;
     position: absolute;
-    right: .5rem;
-    top: .5rem;
+    right: 0.5rem;
+    top: 0.5rem;
   }
 
   &:active .copy,
@@ -984,7 +1021,8 @@ progress::-moz-progress-bar {
     }
   }
 
-  .dropdown-item.active, .dropdown-item:active {
+  .dropdown-item.active,
+  .dropdown-item:active {
     background-color: var(--global-hover-color);
     color: var(--global-hover-text-color) !important;
 
@@ -998,13 +1036,13 @@ progress::-moz-progress-bar {
 nav[data-toggle="toc"] {
   top: 5rem;
 
-  .nav .nav>li>a {
-    font-size: .75rem;
+  .nav .nav > li > a {
+    font-size: 0.75rem;
   }
 
-  .nav>li>a {
+  .nav > li > a {
     color: var(--global-text-color);
-    font-size: .75rem;
+    font-size: 0.75rem;
 
     &:hover {
       color: var(--global-hover-color);
@@ -1015,7 +1053,7 @@ nav[data-toggle="toc"] {
   .nav-link.active {
     color: var(--global-theme-color);
     border-left-color: var(--global-theme-color);
-    font-size: .75rem;
+    font-size: 0.75rem;
 
     &:hover {
       color: var(--global-hover-color);

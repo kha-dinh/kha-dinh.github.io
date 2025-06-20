@@ -18,7 +18,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a fifth-year Ph.D. candidate at Sungkyunkwan University, where I work with Prof. [Hojoon Lee](https://hojoon-lee.github.io) at the [System Security Lab](https://sslab.skku.edu).
+I am a fifth-year Ph.D. candidate at Sungkyunkwan University, where I work under Prof. [Hojoon Lee](https://hojoon-lee.github.io) at the [System Security Lab](https://sslab.skku.edu).
 
 My research sits at the intersection of **(operating) system design** and **(software) security**, currently focusing on software compartmentalization, practical defenses against side-channel attacks, and automated program analysis for software security.
 I'm particularly interested in how thoughtful architectural design can make systems inherently more secure.

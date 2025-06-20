@@ -8,7 +8,7 @@ subtitle: >
   Ph.D. Student, System Security Lab, Sungkyunkwan University, Suwon, South Korea
 profile:
   align: right
-  image: pixel-profile.png
+  image: profile-crop.gif
   image_circular: true # crops the image to make it circular
   more_info: khadinh (at) skku (dot) edu
 

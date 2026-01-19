@@ -1,11 +1,12 @@
 "SEC 24":
   url: https://www.usenix.org/conference/usenixsecurity24
   color: "#8f1d05"
-
 "CCS 23":
   url: https://www.sigsac.org/ccs/CCS2023
   color: "#0389ca"
-
+"ACSAC 25":
+  url: https://www.acsac.org/2025
+  color: "#138245"
 "SP 25":
   url: https://sp2025.ieee-security.org
   color: "#363104"

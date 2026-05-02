@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdflatex -interaction=nonstopmode cv.tex)",
+      "Bash(biber cv:*)"
+    ]
+  }
+}

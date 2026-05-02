@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,11pt]{article}
 
 %----------------------------------------------------------------------------------------
 %	FONT
@@ -60,12 +60,12 @@
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
 %for publications
-\usepackage[style=ieee,sorting=ynt,maxbibnames=5]{biblatex}
+\usepackage[backend=biber,style=ieee,sorting=ddnt,maxbibnames=5]{biblatex}
 
 %Setup hyperref package, and colours for links
 \usepackage[unicode, draft=false]{hyperref}
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\definecolor{linkcolour}{RGB}{5, 98, 254}
+\hypersetup{colorlinks,breaklinks,citecolor=linkcolour,urlcolor=linkcolour,linkcolor=linkcolour}
 \addbibresource{papers.bib}
 \setlength\bibitemsep{1em}
 
@@ -118,7 +118,7 @@
 	\Huge{Dinh Duy Kha}                                              \\[7.5pt]
 	Postdoctoral Researcher @ University of British Columbia, Canada \\
 	\href{https://github.com/kha-dinh}{\raisebox{-0.05\height}\faGithub\ kha-dinh} \ $|$ \
-	% \href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
+	\href{https://linkedin.com/in/dinh-duy-kha-474b0912a/}{\raisebox{-0.05\height}\faLinkedin\ Dinh Duy Kha} \ $|$ \
 	% \href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
 	\href{mailto:duykha.dinh@ubc.ca}{\raisebox{-0.05\height}\faEnvelope \ duykha.dinh@ubc.ca}
 	% \href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
@@ -129,41 +129,17 @@
 % My research interest include operating system security, software compartmentalization, compiler-assisted techniques for security, and Rust programming language.
 
 \section{Introduction}
-I am a Postdoctoral Researcher at Systopia Lab, University of British Columbia, supervised by Professor Aastha Mehta.
-I received my Ph.D. at Sungkyunkwan University, South Korea.
-My research focuses on the intersection of systems design and security, with specific interests in program compartmentalization, trusted execution environments, side-channel mitigations and data privacy.
+I am a postdoctoral researcher at the University of British Columbia with a Ph.D. from Sungkyunkwan University.
+I build practical and principled defenses at the intersection of operating systems and security: memory isolation, side-channel mitigations, confidential computing, policy compliance and agentic execution.
+My work has been recognized with the ACM CCS Distinguished Paper Award (2023) and published at top security venues including IEEE S\&P and USENIX Security.
 
-%Experience
-\section{Working Experiences}
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-	\textsc{Systopia Lab, University of British Columbia} & \hfill Vancouver, British Columbia, Canada \\
-	\emph{Postdoctoral Researcher}                        & \hfill  2026 - present                     \\[6pt]
-	\textsc{System Security Lab, Sungkyunkwan University} & \hfill Suwon, South Korea                  \\
-	\emph{Graduate Student Researcher}                    & \hfill  2019 - 2026                        \\[6pt]
-	\textsc{VNG Corporation}                              & \hfill Ho Chi Minh City, Vietnam           \\
-	\emph{Software Engineering Intern -- TalkTV Backend}  & \hfill  Jun 2018 - Jun 2019                \\
-\end{tabularx}
-
-% \section{Open-source Experience}
-% \begin{tabularx}{\linewidth}{@{}lX@{}}	
-% \textsc{Unikraft}& \hfill Suwon, South Korea\\
-% \emph{Graduate Student Researcher} & \\
-% \multicolumn{2}{@{}X@{}}{
-% \begin{minipage}[t]{\columnwidth}
-%     \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-%         \item 
-%     \end{itemize}
-%     \end{minipage} }
-% \end{tabularx}
-
-%Projects
 %----------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}lX@{}}
 	\textsc{Sungkyunkwan University}                   & \hfill Suwon, South Korea        \\
-	\emph{Ph.D. in System Security}                    & \hfill  2019 - 2026              \\
+	\emph{Ph.D. in Computer Science}                   & \hfill  2019 - 2026              \\
 	\multicolumn{2}{@{}X@{}}{
 	\begin{minipage}[t]{\columnwidth}
 		\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
@@ -171,79 +147,98 @@ My research focuses on the intersection of systems design and security, with spe
 			\item Synopsis: Argues that protection established by hardware and OS security must be coherent to close protection gaps exploited by modern attackers.
 			      Presents two hardware-OS coherent designs: \textsc{Capacity}~\cite{capacity}, which enforces capability-based intra-process memory isolation via ARM Pointer Authentication and Memory Tagging, and IncognitOS~\cite{incognitos}, which redesigns OS scheduling and memory management to suppress side-channel leakage in confidential VMs.
 		\end{itemize}
-	\end{minipage} }                                                      \vspace{6pt}    \\
+	\end{minipage} } \vspace{6pt}                                                      \\
 
 	\textsc{Ho Chi Minh City University of Technology} & \hfill Ho Chi Minh City, Vietnam \\
 	\emph{B.S. in Computer Science}                    & \hfill  2014 - 2019              \\
 \end{tabularx}
 
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Work Experience}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+	\textsc{Systopia Lab, University of British Columbia} & \hfill Vancouver, BC, Canada     \\
+	\emph{Postdoctoral Researcher}                        & \hfill  2026 - present           \\[6pt]
+	\textsc{System Security Lab, Sungkyunkwan University} & \hfill Suwon, South Korea        \\
+	\emph{Graduate Student Researcher}                    & \hfill  2019 - 2026              \\[6pt]
+	\textsc{VNG Corporation}                              & \hfill Ho Chi Minh City, Vietnam \\
+	\emph{Software Engineering Intern -- TalkTV Backend}  & \hfill  Jun 2018 - Jun 2019      \\
+\end{tabularx}
+
+\section{Awards}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+	\textsc{Noteworthy Reviewer Recognition, USENIX Security Artifact Evaluation} & \hfill 2025 \\[4pt]
+	\textsc{Korean Government BK21 Research Scholarship}                          & \hfill 2024 \\[4pt]
+	\textsc{Distinguished Paper Award, ACM CCS}                                   & \hfill 2023 \\
+\end{tabularx}
+
 \section{Projects}
 
-\textsc{Cryptographic capabilities for program compartmentalization}
+\textsc{Cryptographic capabilities for program compartmentalization}~\cite{capacity}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item Designed an in-process capability-based compartmentalization framework that leverages new ARM hardware features and evaluated its security.
-	\item Developed LLVM compiler instrumentation passes to enforce its security policies on memory accesses.
-	\item Developed a kernel module to support the isolation of file-related objects using the proposed capability-based framework.
-\end{itemize}
+	\item Designed an in-process capability-based compartmentalization framework leveraging ARM Pointer Authentication and Memory Tagging; evaluated its security properties.
+	\item Developed LLVM compiler instrumentation passes to enforce memory access security policies.
+	\item Developed a kernel module to support isolation of file-related objects using the capability-based framework.
+\end{itemize}\vspace{6pt}
 
-\textsc{Full-system obfuscation for confidential virtual machines}
+\textsc{Full-system memory obfuscation for confidential virtual machines}~\cite{incognitos}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
 	\item Designed a unikernel-based execution environment providing full-system side-channel obfuscation for confidential VMs (CVMs).
-	      % \item Retrofitted OS scheduler to be self-sovereign from untrusted hypervisor timer interrupts via synchronous tick delivery, enabling reliable VMExit frequency monitoring.
 	\item Implemented adaptive memory rerandomization in the paging subsystem via direct MMU access, adjusting rerandomization frequency based on observed VMExit rates.
-	\item Evaluated resilience against CVM-targeted side-channel attacks and demonstrated practical performance overhead for real-world workloads.
-\end{itemize}
+	\item Evaluated resilience against CVM-targeted side-channel attacks and demonstrated practical performance for real-world workloads.
+\end{itemize}\vspace{6pt}
 
-\textsc{Simulation framework for PIM-based confidential computing}
+\textsc{LLM-assisted C to Rust translation}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item Used gem5 to develop a full-system simulation of the emerging PIM hardware.
-	\item Implemented and evaluated security features to allow PIM to be used as an accelerator for confidential computing.
-\end{itemize}
+	\item Investigated real-world practice of developers for translating C into Rust from real-world repositories
+	\item Constructed LLM-assisted C-to-Rust translation pipeline based on C2Rust.
+\end{itemize}\vspace{6pt}
 
-\textsc{Optimizing AddressSanitizers for Rust}
+\textsc{Simulation framework for PIM-based confidential computing}~\cite{pimoram}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item Participated in designing and formalizing the cross-IR compiler analyses that help classify safe, unsafe, and potentially unsafe memory accesses.
-\end{itemize}
+	\item Used gem5 to develop a full-system simulation of emerging PIM hardware.
+	\item Implemented and evaluated security features to enable PIM as an accelerator for confidential computing.
+\end{itemize}\vspace{6pt}
 
-
-
+% \textsc{Optimizing AddressSanitizers foartifactr Rust}~\cite{rustsan}
+% \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+% 	\item Participated in designing and formalizing cross-IR compiler analyses to classify safe, unsafe, and potentially unsafe memory accesses.
+% \end{itemize}
 
 \section{Teaching}
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-	\textsc{Graduate Teaching Assistant} \\
-\end{tabularx}
+
+\emph{Graduate Teaching Assistant}, Sungkyunkwan University
 \begin{itemize}
 	\item ESW4010: Special Topics on System Security (Fall 2021, Spring 2022, Fall 2022)
 	      \begin{itemize}
 		      \item Developed an automated framework to deploy CTF challenges to docker containers.
 		      \item Adapted the CTFd framework to make it more suitable for the classroom environment.
-		      \item The framework is currently used to teach subsequence courses at \url{https://ctf.skku.edu/}.
+		      \item The framework used to teach subsequent courses at \url{https://ctf.skku.edu/}.
 	      \end{itemize}
 	\item SWE2001: System Programming (Fall 2021)
+\end{itemize}
+
+\section{Academic Service}
+\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+	\item \textbf{Artifact Evaluation Committee:} \href{https://secartifacts.github.io/usenixsec2025/organizers}{USENIX Security '25}, ACM CCS '25
+	\item \textbf{Poster Program Committee:} \href{https://www.sigsac.org/ccs/CCS2025/call-for-posters-and-demos/}{ACM CCS '25}
 \end{itemize}
 
 \section{Open Source Contributions}
 
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item \href{https://github.com/unikraft/unikraft/commits/staging/?author=kha-dinh}{\textsc{Unikraft}}
+	\item \href{https://github.com/unikraft/unikraft/commits/staging/?author=kha-dinh}{\textsc{Unikraft}} -- implemented AMD SEV (Secure Encrypted Virtualization) support and submitted various bug fixes to the core kernel
 \end{itemize}
-
-
-%----------------------------------------------------------------------------------------
-
-%	PUBLICATIONS
-%----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
-% \section{Skills}
-% \begin{tabularx}{\linewidth}{@{}l X@{}}
-% \textbf{Programming} &  \normalsize{\textbf{C/C++}, \textbf{Rust} \textbf{Python}. \textbf{Bash}.  \textbf{Latex}.  }\\
-
-% \textbf{Kernel Programming} &  \normalsize{}\\
-% \textbf{Program Analysis} &  \normalsize{}\\
-% \end{tabularx}
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+	\textbf{Languages} & Assembly, C, C++, Rust, Python, Bash                                          \\[6pt]
+	\textbf{Systems}   & KVM, QEMU, Linux kernel, device drivers, LLVM/Clang, gem5, Intel SGX, AMD SEV \\
+\end{tabularx}
 % \printbibliography
 % \newpage
 \section{Publication}

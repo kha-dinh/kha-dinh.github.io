@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-03T00:00:00Z",
+  "title": "Design System: Kha Dinh — Academic Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "reference-blue": {
+        "role": "primary",
+        "displayName": "Reference Blue",
+        "canonical": "oklch(46% 0.27 264)",
+        "tonalRamp": [
+          "oklch(15% 0.18 264)",
+          "oklch(23% 0.22 264)",
+          "oklch(31% 0.25 264)",
+          "oklch(38% 0.27 264)",
+          "oklch(46% 0.27 264)",
+          "oklch(60% 0.22 264)",
+          "oklch(75% 0.14 264)",
+          "oklch(90% 0.06 264)"
+        ]
+      },
+      "page-white": {
+        "role": "neutral",
+        "displayName": "Page White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.003 264)",
+          "oklch(28% 0.003 264)",
+          "oklch(42% 0.003 264)",
+          "oklch(55% 0.003 264)",
+          "oklch(68% 0.003 264)",
+          "oklch(78% 0.003 264)",
+          "oklch(89% 0.003 264)",
+          "oklch(100% 0 0)"
+        ]
+      },
+      "ink-black": {
+        "role": "neutral",
+        "displayName": "Ink Black",
+        "canonical": "oklch(0% 0 0)"
+      },
+      "void-dark": {
+        "role": "neutral",
+        "displayName": "Void Dark",
+        "canonical": "oklch(13% 0.003 264)"
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark Surface",
+        "canonical": "oklch(17% 0.004 264)"
+      },
+      "mid-grey": {
+        "role": "neutral",
+        "displayName": "Mid Grey",
+        "canonical": "oklch(57% 0 0)"
+      },
+      "light-grey": {
+        "role": "neutral",
+        "displayName": "Light Grey",
+        "canonical": "oklch(90% 0 0)"
+      },
+      "divider-dark": {
+        "role": "neutral",
+        "displayName": "Divider Dark",
+        "canonical": "oklch(31% 0.003 264)"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page-level name and major section openers at lightest weight." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles: Publications, About, Projects." },
+      "title": { "displayName": "Title", "purpose": "Publication titles, project names — the workhorse heading level." },
+      "body": { "displayName": "Body", "purpose": "All prose: bio, abstract excerpts, post content. Max 70ch." },
+      "label": { "displayName": "Label (Audiowide)", "purpose": "Profile email detail only. One instance per page — a signature, not a system." }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-state",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for interactive state changes (link hover, nav active). 150ms duration."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "576px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "992px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Publication Entry",
+      "kind": "card",
+      "refersTo": "publication-entry",
+      "description": "Primary content unit. Structured text, not a card. Title + authors + venue in a column.",
+      "html": "<div class=\"ds-pub-entry\"><div class=\"ds-pub-title\">Hardware-Assisted Compartmentalization Models</div><div class=\"ds-pub-authors\">Kha Dinh Duy, Hojoon Lee</div><div class=\"ds-pub-venue\">ACM CCS 2023 &mdash; Distinguished Paper Award</div></div>",
+      "css": ".ds-pub-entry { padding: 12px 0; border-top: 1px solid rgba(0,0,0,0.1); font-family: 'Newsreader', Georgia, serif; } .ds-pub-entry:hover { background: transparent; } .ds-pub-title { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; font-size: 1.125rem; line-height: 1.4; color: #000000; margin-bottom: 4px; } .ds-pub-title a { color: #0f62fe; text-decoration: none; } .ds-pub-title a:hover { text-decoration: underline; } .ds-pub-authors { font-weight: 300; font-size: 0.9rem; line-height: 1.5; color: #000000; margin-bottom: 2px; } .ds-pub-venue { font-weight: 300; font-size: 0.875rem; color: #828282; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Top nav item. IBM Plex Sans weight 300. Color shift on active/hover, no background fill.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">about</a><a class=\"ds-nav-link ds-nav-active\" href=\"#\">publications</a><a class=\"ds-nav-link\" href=\"#\">cv</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 24px; align-items: center; } .ds-nav-link { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; font-size: 1rem; color: #000000; text-decoration: none; transition: color 150ms cubic-bezier(0.4,0,0.2,1); } .ds-nav-link:hover { color: #0f62fe; text-decoration: none; } .ds-nav-active { color: #0f62fe; } .ds-nav-link:focus-visible { outline: 2px solid #0f62fe; outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Inline Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Body text link in Newsreader. Reference Blue, underline on hover only.",
+      "html": "<p class=\"ds-body\">Research on <a class=\"ds-link\" href=\"#\">software compartmentalization</a> in constrained environments.</p>",
+      "css": ".ds-body { font-family: 'Newsreader', Georgia, serif; font-weight: 300; font-size: 1rem; line-height: 1.7; color: #000000; } .ds-link { color: #0f62fe; text-decoration: none; transition: text-decoration 100ms; } .ds-link:hover { text-decoration: underline; } .ds-link:focus-visible { outline: 2px solid #0f62fe; outline-offset: 1px; border-radius: 2px; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "IBM Plex Sans weight 300. No color accent. Hierarchy through size only.",
+      "html": "<h2 class=\"ds-headline\">Publications</h2>",
+      "css": ".ds-headline { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; font-size: 1.5rem; line-height: 1.3; letter-spacing: -0.005em; color: #000000; margin-bottom: 16px; border: none; padding: 0; }"
+    },
+    {
+      "name": "Profile Label",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Audiowide for the profile email detail. One instance per page — signature, not system.",
+      "html": "<span class=\"ds-profile-label\">duykha.dinh (at) ubc (dot) ca</span>",
+      "css": ".ds-profile-label { font-family: 'Audiowide', monospace; font-weight: 400; font-size: 0.75rem; letter-spacing: 0.04em; color: #828282; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Systems Paper",
+    "overview": "This system is built like a well-authored academic paper: the typography does the heavy lifting, the structure is immediately legible, and nothing on the page competes with the argument. IBM Plex Sans carries the headings with sparse, technical authority — weight 200-300, optical-size kerning, no decorative flourish. Newsreader handles the body: an optical-size serif that reads like printed editorial at every size.\n\nColor is disciplined to a single accent: Reference Blue (#0f62fe). It appears on links, citations, and interactive states, never as decoration. Its rarity is the point.\n\nThe system explicitly rejects: generic al-folio defaults, flashy portfolio theatrics, and the corporate/LinkedIn register. The goal is a site that feels built by the person who designed the compartmentalization model, not by someone who downloaded a theme.",
+    "keyCharacteristics": [
+      "Typography-led: IBM Plex Sans / Newsreader pairing is the signature, not an accent color",
+      "Flat surfaces: no shadow vocabulary, no depth theater",
+      "Accent restraint: Reference Blue at ≤10% surface coverage",
+      "800px max-width: column width chosen for reading, not filling a screen",
+      "Dual-theme first: both light and dark modes designed intentionally"
+    ],
+    "rules": [
+      {
+        "name": "The Reference Rule",
+        "body": "Reference Blue appears on interactive elements only. No colored section headings, no accent borders, no decorative usage. When the eye lands on blue, it means 'this is a link or citation.' Diluting this signal anywhere dilutes it everywhere.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight Floor Rule",
+        "body": "IBM Plex Sans appears at weight 200 or 300 only. Weight 400+ collapses the contrast between headings and body text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Optical Size Rule",
+        "body": "Newsreader is an optical-size font. Always load with font-optical-sizing: auto. Without this, body text looks slightly too heavy and captions look wrong.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. No hover shadows, no float effects. If an element needs to signal interactivity, use color or underline, not elevation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Anti-Card Rule",
+        "body": "Publication lists, project lists, and news items are not cards. They are structured text. No border-radius + box-shadow + background-color on list entries.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do use IBM Plex Sans at weight 200-300 for headings only.",
+      "Do limit Reference Blue (#0f62fe) to interactive states: links, citations, nav active, focus rings.",
+      "Do use thin 1px dividers to separate list entries — structure through line, not card borders.",
+      "Do set font-optical-sizing: auto on Newsreader at every size.",
+      "Do keep max-width at 800px for 65-75ch body line length.",
+      "Do treat Audiowide as a signature detail: one instance per page (profile email).",
+      "Do support dark mode as a first-class design variant."
+    ],
+    "donts": [
+      "Don't use border-left greater than 1px as a colored accent stripe on any element.",
+      "Don't use gradient text (background-clip: text with a gradient).",
+      "Don't use Reference Blue as a section heading color, background fill, or decorative element.",
+      "Don't use cards for publication lists, project lists, or news items.",
+      "Don't add scroll-driven animations, hero entrance effects, or floating UI elements.",
+      "Don't use generic al-folio defaults without intentional override.",
+      "Don't use Audiowide for anything other than the profile email detail.",
+      "Don't use IBM Plex Sans at weight 400 or above in headings.",
+      "Don't design for the LinkedIn register: no achievement-bullet formatting, no impact-metrics typography."
+    ]
+  }
+}

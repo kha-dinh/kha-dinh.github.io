@@ -80,7 +80,7 @@
         {% if page.toc -%}
         <d-contents>
           <nav class="l-text figcaption">
-          <h3>Contents</h3>
+          <h2>Contents</h2>
             {% for section in page.toc -%}
             <div><a href="#{{ section.name | slugify }}">{{ section.name }}</a></div>
             {% if section.subsections -%}

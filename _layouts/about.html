@@ -4,64 +4,65 @@ layout: default
 
 <!-- about.html -->
 <div class="post">
-  <header class="post-header">
-    <h1 class="post-title ibm-plex-sans-200">
-      {% if site.title == "blank" -%}<span class="font-weight-bold"
-        >{{ site.first_name }}</span
-      >
-      {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%-
-      endif %}
-    </h1>
-    <p class="subtitle">{{ page.subtitle }}</p>
-  </header>
-
   <article>
-    {% if page.profile -%}
-    <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}" >
-      {%- if page.profile.image %}
-      {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
-      {% if page.profile.image_circular %}
-      {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-      {% else %} {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-      {% endif %}
-      {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image cache_bust=true -%}
-      {% endif -%}
-      {%- if page.profile.more_info %}
-      <div class="more-info">{{ page.profile.more_info }}</div>
-      {%- endif %}
-    </div>
-    {%- endif %}
 
-    <div class="clearfix">{{ content }}</div>
+    <!-- About header: name + bio / profile sidebar -->
+    <div class="about-header">
+      <div class="about-header-text">
+        <h1 class="about-name recursive-300">
+          {% if site.title == "blank" -%}
+          <span >{{ site.first_name }}</span>
+          {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%-
+          endif %}
+        </h1>
+        {%- if page.subtitle %}
+        <p class="subtitle">{{ page.subtitle }}</p>
+        {%- endif %}
+        <div class="about-bio">{{ content }}</div>
+      </div>
 
-    <hr\>
-    <!-- News -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8">
-          {% if page.news and site.announcements.enabled -%}
-          <h2>
-            <a href="{{ '/news/' | relative_url }}" style="color: inherit"
-              >news</a
-            >
-          </h2>
-          {%- include news.html limit=true %} {%- endif %}
+      {% if page.profile -%}
+      <div class="about-sidebar">
+        {%- if page.profile.image %}
+        {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+        {%- assign profile_alt = site.first_name | append: " " | append: site.last_name | append: " profile photo" -%}
+        <div class="about-photo">
+          {% include figure.html path=profile_image_path class="img-fluid rounded-circle" alt=profile_alt cache_bust=true -%}
         </div>
-
-        <!-- Latest posts -->
-        <div class="col-sm">
-          {% if page.latest_posts -%}
-          <h2>
-            <a href="{{ '/blog/' | relative_url }}" style="color: inherit"
-              >latest posts</a
-            >
-          </h2>
-          {%- include latest_posts.html %} {%- endif %}
+        {% endif -%}
+        {%- if page.profile.more_info %}
+        <div class="more-info">{{ page.profile.more_info }}</div>
+        {%- endif %}
+        <div class="about-social-links">
+          <a href="{{ '/assets/pdf/CV_Kha_Dinh.pdf' | relative_url }}">CV</a>
+          {%- if site.scholar_userid %}
+          <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener">Scholar</a>
+          {%- endif %}
+          {%- if site.github_username %}
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+          {%- endif %}
+          {%- if site.linkedin_username %}
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a>
+          {%- endif %}
         </div>
       </div>
+      {%- endif %}
     </div>
 
-    <hr\>
+    <!-- News -->
+    {% if page.news and site.announcements.enabled -%}
+    <h2>
+      <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+    </h2>
+    {%- include news.html limit=true %} {%- endif %}
+
+    <!-- Latest posts -->
+    {% if page.latest_posts -%}
+    <h2>
+      <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+    </h2>
+    {%- include latest_posts.html %} {%- endif %}
+
     <!-- Selected papers -->
     {% if page.selected_papers -%}
     <h2>
@@ -71,49 +72,53 @@ layout: default
     </h2>
     {%- include selected_papers.html %} {%- endif %}
 
-    <hr\>
+    <h2>awards</h2>
+    <ul class="flat-list">
+      <li class="flat-item">
+        <span class="flat-year">2025</span>
+        <span class="flat-text">Noteworthy Reviewer Recognition, <a href="https://secartifacts.github.io/usenixsec2025/awards#-noteworthy-reviewer-recognition">Usenix Security 2025 Artifact Evaluation</a></span>
+      </li>
+      <li class="flat-item">
+        <span class="flat-year">2024</span>
+        <span class="flat-text">Korean Government BK21 Research Scholarship</span>
+      </li>
+      <li class="flat-item">
+        <span class="flat-year">2023</span>
+        <span class="flat-text">Distinguished Paper Award, <a href="https://www.sigsac.org/ccs/CCS_awards/ccs-bestpaper.html">ACM CCS</a></span>
+      </li>
+    </ul>
+    <h2>community service</h2>
+    <ul class="flat-list">
+      <li class="flat-item">
+        <span class="flat-year">2025</span>
+        <span class="flat-text">Artifact Evaluation Committee: <a href="https://secartifacts.github.io/usenixsec2025/organizers">Usenix Security '25</a>, ACM CCS '25</span>
+      </li>
+      <li class="flat-item">
+        <span class="flat-year">2025</span>
+        <span class="flat-text">Poster Program Committee: <a href="https://www.sigsac.org/ccs/CCS2025/call-for-posters-and-demos/">ACM CCS '25</a></span>
+      </li>
+    </ul>
 
-    <h2>
-      <span style="color: inherit" >awards</span>
-    </h2>
+    <!-- <h2>other</h2> -->
+    <!-- <p>Outside of research, I dabble in video game development, develop CLI and web -->
+    <!-- tools, make pixel arts and contribute to open-source software. Check out my -->
+    <!-- other projects: </p> -->
 
-    <li>Noteworthy Reviewer Recognition, <a href="https://secartifacts.github.io/usenixsec2025/awards#-noteworthy-reviewer-recognition">Usenix Security 2025 Artifact Evaluation</a>
-      <li>Korean Government BK21 Research Scholarship 2024
-    <li>Distinguished Paper Award, <a href="https://www.sigsac.org/ccs/CCS_awards/ccs-bestpaper.html">CCS 2023</a>
-</a>
-    <hr\>
-
-    <h2>
-      <span style="color: inherit" >community service</span>
-    </h2>
-    <li>Artifact Evaluation Committee: <a href="https://secartifacts.github.io/usenixsec2025/organizers">Usenix Security '25</a>, ACM CCS '25</li>
-    <li>Poster Program Committee: <a href="https://www.sigsac.org/ccs/CCS2025/call-for-posters-and-demos/">ACM CCS '25</a></li>
-
-    <!-- Other -->
-
-    <hr\>
-    <h2>other</h2>
-    <p>Outside of research, I dabble in video game development, develop CLI and web
-    tools, make pixel arts and contribute to open-source software. Check out my
-    other projects: </p>
-
+    <!--
     <ul class="post-list">
       <li>
-        <div class="row">
-          <div class="col-sm-3">
-            <a href="https://cafemanhzu.itch.io/the-last-cat">
-            <h4 class="text-center">The last cat</h4>
-              <img
-                src="https://img.itch.zone/aW1nLzE1NTkxOTMzLnBuZw==/315x250%23c/6%2BNiZ3.png"
-                class="img-fluid z-depth-1 rounded"
-                width="auto"
-                height="auto"
-                alt="1726659232142.jpg"
-                onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-              />
-            </a>
-          </div>
-          <div class="col-sm-9">
+        <div class="other-project">
+          <a href="https://cafemanhzu.itch.io/the-last-cat">
+            <img
+              src="https://img.itch.zone/aW1nLzE1NTkxOTMzLnBuZw==/315x250%23c/6%2BNiZ3.png"
+              class="img-fluid"
+              loading="lazy"
+              alt="Screenshot of The Last Cat game"
+              onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
+            />
+          </a>
+          <div>
+            <h3><a href="https://cafemanhzu.itch.io/the-last-cat">The Last Cat</a></h3>
             <p>A <a href="https://en.wikipedia.org/wiki/Suika_Game">suika</a> clone made with
             <a
               href="https://github.com/bevyengine/bevy"
@@ -121,14 +126,13 @@ layout: default
               target="_blank"
               >Bevy</a
             >
-            with cats in place of fruits 😺.
-          </p>
+            with cats in place of fruits.</p>
           </div>
         </div>
       </li>
 
       <li>
-        <h4>Github repositories</h4>
+        <h3>Github repositories</h3>
         <div
           class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center"
         >
@@ -137,21 +141,7 @@ layout: default
         </div>
       </li>
     </ul>
-    <!-- <div class="profile float-left"> -->
-    <!--   <div class="clearfix"> -->
-    <!--     <p>testtesttest</p> -->
-    <!--   </div> -->
-    <!--   <a href=""> -->
-    <!--     <img -->
-    <!--       src="https://img.itch.zone/aW1nLzE1NTkxOTMzLnBuZw==/315x250%23c/6%2BNiZ3.png" -->
-    <!--       class="img-fluid z-depth-1 rounded" -->
-    <!--       width="200px" -->
-    <!--       height="auto" -->
-    <!--       alt="1726659232142.jpg" -->
-    <!--       onerror="this.onerror=null; $('.responsive-img-srcset').remove();" -->
-    <!--     /> -->
-    <!--   </a> -->
-    <!-- </div> -->
+    -->
 
     <!-- Social -->
     {%- if page.social %}

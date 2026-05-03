@@ -1,12 +1,14 @@
 $(document).ready(function() {
   // add toggle functionality to abstract and bibtex buttons
   $('a.abstract').click(function() {
-    $(this).parent().parent().find(".abstract.hidden").toggleClass('open');
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass('open');
+    var $entry = $(this).closest('.col-sm-10, .col-sm-9');
+    $entry.find(".abstract.hidden").toggleClass('open');
+    $entry.find(".bibtex.hidden.open").toggleClass('open');
   });
   $('a.bibtex').click(function() {
-    $(this).parent().parent().find(".bibtex.hidden").toggleClass('open');
-    $(this).parent().parent().find(".abstract.hidden.open").toggleClass('open');
+    var $entry = $(this).closest('.col-sm-10, .col-sm-9');
+    $entry.find(".bibtex.hidden").toggleClass('open');
+    $entry.find(".abstract.hidden.open").toggleClass('open');
   });
   $('a').removeClass('waves-effect waves-light');
 

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Preview — Kha Dinh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Recursive:wght@300..800&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Tokens ──────────────────────────────────────────────────────────── */
+    :root {
+      --bg:             oklch(100% 0.003 264);
+      --bg-surface:     oklch(98%  0.003 264);
+      --text:           oklch(5%   0.004 264);
+      --text-secondary: oklch(48%  0.002 264);
+      --accent:         oklch(46%  0.27  264);   /* Reference Blue */
+      --divider:        oklch(91%  0.003 264);
+      --nav-shadow:     0 1px 0 oklch(91% 0.003 264);
+    }
+    [data-theme="dark"] {
+      --bg:             oklch(13%  0.003 264);   /* Void Dark */
+      --bg-surface:     oklch(21%  0.004 264);   /* Dark Surface — wider delta for perceptibility */
+      --text:           oklch(90%  0.002 264);
+      --text-secondary: oklch(62%  0.002 264);
+      --accent:         oklch(61%  0.22  264);   /* Reference Blue brighter on dark */
+      --divider:        oklch(28%  0.003 264);
+      --nav-shadow:     0 1px 0 oklch(22% 0.003 264);
+    }
+
+    /* ─── Recursive axis defaults (silently ignored by Newsreader/Audiowide) ─ */
+    * { font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0; }
+
+    /* ─── Reset ───────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 300;
+      font-optical-sizing: auto;
+      line-height: 1.7;
+      transition: background 200ms, color 200ms;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: text-decoration 80ms;
+    }
+    a:hover { text-decoration: underline; }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* ─── Nav ─────────────────────────────────────────────────────────────── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      box-shadow: var(--nav-shadow);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      transition: background 200ms;
+    }
+    .nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 200;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-name:hover { text-decoration: none; color: var(--text); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.875rem;
+      color: var(--text);
+      letter-spacing: 0.005em;
+      transition: color 120ms;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ─── Page layout ─────────────────────────────────────────────────────── */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 72px 24px 80px;
+    }
+
+    /* ─── About section ───────────────────────────────────────────────────── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 48px;
+      margin-bottom: 96px;
+      align-items: start;
+    }
+    .about-text {}
+    .about-name {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 200;
+      font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .about-role {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .about-bio {
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      max-width: 60ch;
+    }
+    .about-bio p + p { margin-top: 12px; }
+    .about-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding-top: 8px;
+    }
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .profile-img-fallback {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 2.5rem;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .profile-email {
+      font-family: "Audiowide", monospace;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-align: center;
+      overflow-wrap: break-word;
+      line-height: 1.6;
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 14px;
+      margin-top: 8px;
+    }
+    .social-links a {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      transition: color 120ms;
+    }
+    .social-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ─── Section headings ────────────────────────────────────────────────── */
+    .section-heading {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      line-height: 1.3;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    /* ─── News ────────────────────────────────────────────────────────────── */
+    .news-section { margin-bottom: 80px; }
+    .news-list { list-style: none; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 20px;
+      padding: 12px 0;
+      border-top: 1px solid var(--divider);
+      font-size: 0.9375rem;
+    }
+    .news-item:last-child { border-bottom: 1px solid var(--divider); }
+    .news-date {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      padding-top: 3px;
+      white-space: nowrap;
+    }
+    .news-text { line-height: 1.6; }
+
+    /* ─── Publications ────────────────────────────────────────────────────── */
+    .pub-section { margin-bottom: 80px; }
+    .pub-list { list-style: none; }
+    .pub-entry {
+      padding: 18px 0;
+      border-top: 1px solid var(--divider);
+    }
+    .pub-entry:last-child { border-bottom: 1px solid var(--divider); }
+    .pub-title {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .pub-title a {
+      color: var(--text);
+      transition: color 120ms;
+    }
+    .pub-title a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .pub-authors {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 300;
+      font-optical-sizing: auto;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin-bottom: 3px;
+    }
+    .pub-authors strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+    .pub-venue {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pub-venue-name {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+    }
+    .pub-award {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 2px 8px;
+      border-radius: 0;
+      text-transform: uppercase;
+    }
+    .pub-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 5px;
+    }
+    .pub-link {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+      transition: color 120ms;
+    }
+    .pub-link:hover { color: var(--accent); text-decoration: none; }
+
+    /* ─── Awards / Service ────────────────────────────────────────────────── */
+    .list-section { margin-bottom: 80px; }
+    .flat-list { list-style: none; }
+    .flat-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 20px;
+      padding: 12px 0;
+      border-top: 1px solid var(--divider);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    .flat-item:last-child { border-bottom: 1px solid var(--divider); }
+    .flat-year {
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      padding-top: 3px;
+    }
+    .flat-text { color: var(--text); }
+
+    /* ─── Theme toggle ────────────────────────────────────────────────────── */
+    .theme-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      font-family: "Recursive", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      border: 1px solid var(--divider);
+      padding: 6px 14px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color 120ms, border-color 120ms;
+      user-select: none;
+    }
+    .theme-toggle:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* ─── Preview label ───────────────────────────────────────────────────── */
+    .preview-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      z-index: 101;
+    }
+
+    /* ─── Responsive ──────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .about {
+        grid-template-columns: 1fr;
+        margin-bottom: 64px;
+      }
+      .about-profile {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        padding-top: 0;
+      }
+      .profile-img { width: 80px; height: 80px; }
+      .profile-img-fallback { font-size: 1.25rem; }
+      .about-name { font-size: clamp(2rem, 8vw, 2.5rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preview indicator: 2px accent line at top -->
+  <div class="preview-banner" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Kha Dinh Duy</a>
+      <ul class="nav-links">
+        <li><a href="#" class="active">about</a></li>
+        <li><a href="#">publications</a></li>
+        <li><a href="#">cv</a></li>
+        <li><a href="#">projects</a></li>
+        <li><a href="#">blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+
+    <!-- About -->
+    <section class="about">
+      <div class="about-text">
+        <h1 class="about-name">Kha Dinh Duy</h1>
+        <p class="about-role">Postdoctoral Researcher, Systopia Lab, University of British Columbia</p>
+        <div class="about-bio">
+          <p>
+            I am a Postdoctoral Researcher at <a href="#">Systopia Lab</a>, University of British Columbia,
+            supervised by Professor <a href="#">Aastha Mehta</a>.
+            I received my Ph.D. at Sungkyunkwan University, South Korea, advised by Prof. <a href="#">Hojoon Lee</a>
+            at the <a href="#">System Security Lab</a>.
+          </p>
+          <p>
+            My research sits at the intersection of <em>operating system design</em> and
+            <em>software security</em>, focusing on software compartmentalization,
+            practical defenses against side-channel attacks, and automated program analysis.
+          </p>
+          <p>
+            I am particularly interested in principled yet practical approaches for secure system design:
+            compartmentalization that works at the hardware boundary, obfuscation that holds under
+            real-world side-channel models, and analysis techniques that scale to systems software.
+          </p>
+        </div>
+      </div>
+      <div class="about-profile">
+        <div class="profile-img">
+          <img src="assets/img/profile-crop.gif" alt="Kha Dinh Duy"
+               onerror="this.parentElement.innerHTML='<span class=\'profile-img-fallback\'>KD</span>'">
+        </div>
+        <p class="profile-email">duykha.dinh (at) ubc (dot) ca</p>
+        <div class="social-links">
+          <a href="#">CV</a>
+          <a href="#">Scholar</a>
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section class="news-section">
+      <h2 class="section-heading">News</h2>
+      <ul class="news-list">
+        <li class="news-item">
+          <span class="news-date">Dec 2025</span>
+          <span class="news-text">
+            PIM-ORAM accepted for publication at
+            <a href="#">ACSAC 2025</a>.
+          </span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Apr 2025</span>
+          <span class="news-text">
+            IncognitOS accepted to <a href="#">IEEE S&amp;P 2025</a>.
+          </span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Dec 2024</span>
+          <span class="news-text">
+            <a href="#">RustSan</a> accepted for publication at USENIX Security 2024.
+          </span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Nov 2023</span>
+          <span class="news-text">
+            <a href="#">Capacity</a> received the Distinguished Paper Award at ACM CCS 2023.
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Selected Publications -->
+    <section class="pub-section">
+      <h2 class="section-heading">Selected Publications</h2>
+      <ul class="pub-list">
+
+        <li class="pub-entry">
+          <p class="pub-title">
+            <a href="#">PIM-ORAM: Practical ORAM with Processing-in-Memory</a>
+          </p>
+          <p class="pub-authors">
+            <strong>Kha Dinh Duy</strong> et al.
+          </p>
+          <div class="pub-venue">
+            <span class="pub-venue-name">ACSAC 2025</span>
+          </div>
+          <div class="pub-links">
+            <a class="pub-link" href="#">pdf</a>
+          </div>
+        </li>
+
+        <li class="pub-entry">
+          <p class="pub-title">
+            <a href="#">IncognitOS: A Practical Unikernel Design for Full-System Obfuscation in Confidential Virtual Machines</a>
+          </p>
+          <p class="pub-authors">
+            <strong>Kha Dinh Duy</strong>, Jaeyoon Kim, Hajeong Lim, Hojoon Lee
+          </p>
+          <div class="pub-venue">
+            <span class="pub-venue-name">IEEE S&amp;P 2025</span>
+          </div>
+          <div class="pub-links">
+            <a class="pub-link" href="#">pdf</a>
+            <a class="pub-link" href="#">abstract</a>
+          </div>
+        </li>
+
+        <li class="pub-entry">
+          <p class="pub-title">
+            <a href="#">RustSan: Retrofitting AddressSanitizer for Efficient Sanitization of Rust</a>
+          </p>
+          <p class="pub-authors">
+            Kyuwon Cho, Jongyoon Kim, <strong>Kha Dinh Duy</strong>, Hajeong Lim, Hojoon Lee
+          </p>
+          <div class="pub-venue">
+            <span class="pub-venue-name">USENIX Security 2024</span>
+          </div>
+          <div class="pub-links">
+            <a class="pub-link" href="#">pdf</a>
+          </div>
+        </li>
+
+        <li class="pub-entry">
+          <p class="pub-title">
+            <a href="#">Capacity: Cryptographically-Enforced In-Process Capabilities for Modern ARM Architectures</a>
+          </p>
+          <p class="pub-authors">
+            <strong>Kha Dinh Duy</strong>, Kyuwon Cho, Taehyun Noh, Hojoon Lee
+          </p>
+          <div class="pub-venue">
+            <span class="pub-venue-name">ACM CCS 2023</span>
+            <span class="pub-award">Distinguished Paper</span>
+          </div>
+          <div class="pub-links">
+            <a class="pub-link" href="#">pdf</a>
+            <a class="pub-link" href="#">slides</a>
+            <a class="pub-link" href="#">bibtex</a>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- Awards -->
+    <section class="list-section">
+      <h2 class="section-heading">awards</h2>
+      <ul class="flat-list">
+        <li class="flat-item">
+          <span class="flat-year">2025</span>
+          <span class="flat-text">Noteworthy Reviewer Recognition, <a href="#">USENIX Security Artifact Evaluation</a></span>
+        </li>
+        <li class="flat-item">
+          <span class="flat-year">2024</span>
+          <span class="flat-text">Korean Government BK21 Research Scholarship</span>
+        </li>
+        <li class="flat-item">
+          <span class="flat-year">2023</span>
+          <span class="flat-text">Distinguished Paper Award, <a href="#">ACM CCS</a></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Community Service -->
+    <section class="list-section">
+      <h2 class="section-heading">community service</h2>
+      <ul class="flat-list">
+        <li class="flat-item">
+          <span class="flat-year">2025</span>
+          <span class="flat-text">Artifact Evaluation Committee: <a href="#">USENIX Security '25</a>, ACM CCS '25</span>
+        </li>
+        <li class="flat-item">
+          <span class="flat-year">2025</span>
+          <span class="flat-text">Poster Program Committee: <a href="#">ACM CCS '25</a></span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Theme toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span id="theme-label">dark mode</span>
+  </button>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.dataset.theme === 'dark';
+      html.dataset.theme = isDark ? 'light' : 'dark';
+      document.getElementById('theme-label').textContent = isDark ? 'dark mode' : 'light mode';
+    }
+  </script>
+
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js"></script>
+<!-- impeccable-live-end -->
+</body>
+</html>

@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "Bash(pdflatex -interaction=nonstopmode cv.tex)",
-      "Bash(biber cv:*)"
+      "Bash(biber cv:*)",
+      "Bash(node:*)",
+      "Bash(npx impeccable:*)",
+      "Bash(bundle exec:*)",
+      "Bash(~/.rbenv/shims/bundle exec:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker-compose ps:*)",
+      "Bash(curl -s http://localhost:8080/assets/css/main.css)",
+      "Bash(tr ';' '\\\\n')",
+      "Bash(wc:*)",
+      "Bash(grep -r \"al-folio\\\\|glossary\" /Users/khadd/Projects/kha-dinh.github.io --include=*.html --include=*.md --include=*.yml)"
     ]
   }
 }

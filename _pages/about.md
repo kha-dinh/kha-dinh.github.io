@@ -11,7 +11,8 @@ profile:
   align: right
   image: profile-crop.gif
   image_circular: true # crops the image to make it circular
-  more_info: <a href="mailto:duykha.dinh@ubc.ca">duykha.dinh@ubc.ca</a>
+  more_info: <a href="mailto:duykha.dinh@ubc.ca">duykha (dot) dinh (at) ubc.ca</a>
+  location: "Department of Computer Science, UBC\nOffice X469 (4th Floor), 2366 Main Mall\nVancouver, BC Canada V6T 1Z4"
 
 news: true # includes a list of news items
 latest_posts: false # includes a list of the newest posts
@@ -19,7 +20,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 ---
 
-I am a Postdoctoral Researcher at [Systopia Lab](https://systopia.cs.ubc.ca/), University of British Columbia, supervised by Professor [Aastha Mehta](https://aasthakm.github.io/). I received my Ph.D. at Sungkyunkwan University, South Korea, where I was advised by Prof. [Hojoon Lee](https://hojoon-lee.github.io) at the [System Security Lab](https://sslab.skku.edu).
+I am a Postdoctoral Researcher at [Systopia Lab](https://systopia.cs.ubc.ca/), University of British Columbia, working with [Aastha Mehta](https://aasthakm.github.io/). I received my Ph.D. at Sungkyunkwan University, South Korea, where I worked with [Hojoon Lee](https://hojoon-lee.github.io) at the [System Security Lab](https://sslab.skku.edu).
 
 My research focuses on _principled yet practical approaches to systems security_. This entails designing systems that provide formal security properties, while providing practical methods for developers to integrate these guarantees into real-world applications. My current research vision is driven by three main pillars:
 

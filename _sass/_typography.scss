@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Typography
  ******************************************************************************/
-@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Recursive:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Recursive:wght@300..800&display=swap");
 
-// Lock Recursive variable axes globally (silently ignored by Newsreader/Audiowide)
+// Lock Recursive variable axes globally (silently ignored by Newsreader)
 * {
   font-variation-settings:
     "MONO" 0.5,
@@ -33,11 +33,6 @@ span.small-caps {
     "slnt" 0;
 }
 
-.audiowide-regular {
-  font-family: "Audiowide", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
 h1,
 h2,

@@ -20,16 +20,19 @@ layout: default
         {%- if page.profile.more_info %}
         <div class="more-info">{{ page.profile.more_info }}</div>
         {%- endif %}
+        {%- if page.profile.location %}
+        <div class="about-location">{{ page.profile.location }}</div>
+        {%- endif %}
         <div class="about-social-links">
-          <a href="{{ '/assets/pdf/CV_Kha_Dinh.pdf' | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>CV</a>
+          <a href="{{ '/assets/pdf/CV_Kha_Dinh.pdf' | relative_url }}" title="Download CV (PDF)"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>CV</a>
           {%- if site.scholar_userid %}
-          <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar" aria-hidden="true"></i>Scholar</a>
+          <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener noreferrer" title="Google Scholar profile"><i class="ai ai-google-scholar" aria-hidden="true"></i>Scholar</a>
           {%- endif %}
           {%- if site.github_username %}
-          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" title="GitHub profile"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
           {%- endif %}
           {%- if site.linkedin_username %}
-          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a>
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer" title="LinkedIn profile"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a>
           {%- endif %}
         </div>
       </div>
@@ -47,6 +50,9 @@ layout: default
         {%- endif %}
         {%- if page.subtitle %}
         <p class="subtitle">{{ page.subtitle }}</p>
+        {%- endif %}
+        {%- if page.research_focus %}
+        <p class="research-focus">{{ page.research_focus }}</p>
         {%- endif %}
         <div class="about-bio">{{ content }}</div>
       </div>
@@ -68,7 +74,7 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers -%}
-    <h2>
+    <h2 class="section-primary">
       <a href="{{ '/publications/' | relative_url }}">selected publications</a>
     </h2>
     {%- include selected_papers.html %} {%- endif %}

@@ -207,7 +207,7 @@
 
 .about-sidebar {
   float: right;
-  width: 200px;
+  width: 240px;
   margin-left: 54px;
   display: flex;
   flex-direction: column;
@@ -216,19 +216,38 @@
   padding-top: 8px;
 
   .more-info {
-    font-family: "Audiowide", sans-serif;
-    font-weight: 400;
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
+    font-family: "Recursive", monospace;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
+    font-weight: 300;
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
     line-height: 1.5;
     white-space: nowrap;
+  }
+
+  .about-location {
+    font-family: "Recursive", monospace;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
+    font-weight: 300;
+    font-size: 0.6875rem;
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+    color: var(--global-text-color-light);
+    white-space: pre-line;
+    text-align: center;
   }
 }
 
 .about-social-links {
   display: flex;
   justify-content: center;
-  gap: 0px 12px;
+  gap: 0 12px;
 
   a {
     display: inline-flex;
@@ -238,7 +257,7 @@
     min-height: 44px;
     font-family: "Recursive", system-ui, sans-serif;
     font-weight: 300;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--global-text-color-light);
     letter-spacing: 0.02em;
     transition: color 120ms;
@@ -268,13 +287,28 @@
   }
 }
 
+// Research focus tagline
+.research-focus {
+  font-family: "Recursive", system-ui, sans-serif;
+  font-variation-settings:
+    "MONO" 0.5,
+    "CASL" 0,
+    "slnt" 0;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--global-text-color-light);
+  margin-top: 0.375rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
 // Section stamp headings (about page sections)
 .post article > h2,
 .post article > .container > .row h2 {
-  font-family: "Recursive", sans-serif;
-  font-size: 0.75rem;
+  font-family: "Recursive", system-ui, sans-serif;
+  font-size: 0.875rem;
   font-weight: 300;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--global-text-color-light);
   border-bottom: 1px solid var(--global-divider-color);
@@ -293,4 +327,9 @@
   span {
     color: inherit;
   }
+}
+
+// Primary section heading — more breathing room
+.post article > h2.section-primary {
+  margin-top: 2rem;
 }

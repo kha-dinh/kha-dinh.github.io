@@ -1,3 +1,10 @@
+// No side channels here.
+console.log(
+  '%ckha-dinh.github.io%c\nCuriosity noted. duykha.dinh@ubc.ca',
+  'color: oklch(46% 0.27 264); font-family: monospace; font-weight: bold;',
+  'color: inherit; font-family: monospace;'
+);
+
 $(document).ready(function() {
   // add toggle functionality to abstract and bibtex buttons
   $('a.abstract').click(function() {

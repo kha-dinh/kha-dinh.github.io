@@ -1,0 +1,306 @@
+/*******************************************************************************
+ * About page
+ ******************************************************************************/
+
+// Profile
+
+.profile {
+  width: 100%;
+
+  .more-info {
+    padding-top: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    font-family: "Recursive", monospace;
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: 0.5em;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+}
+
+.profile.float-right {
+  margin-left: 1rem;
+}
+
+.profile.float-left {
+  margin-right: 1rem;
+}
+
+@media (min-width: 576px) {
+  .profile {
+    width: 31%;
+
+    .address {
+      p {
+        display: block;
+      }
+    }
+  }
+}
+
+// About page: flat grid list (awards, service)
+.flat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 48px;
+
+  .flat-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 20px;
+    padding: 12px 0;
+    border-top: 1px solid var(--global-divider-color);
+    font-size: 1rem;
+    line-height: 1.6;
+
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      border-bottom: 1px solid var(--global-divider-color);
+    }
+  }
+
+  .flat-year {
+    font-family: "Recursive", sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--global-text-color-light);
+    padding-top: 3px;
+  }
+
+  .flat-text {
+    color: var(--global-text-color);
+  }
+}
+
+// News grid list
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 64px;
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 20px;
+    padding: 12px 0;
+    border-top: 1px solid var(--global-divider-color);
+    font-size: 0.875rem;
+
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      border-bottom: 1px solid var(--global-divider-color);
+    }
+  }
+
+  .news-date {
+    font-family: "Recursive", sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--global-text-color-light);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+
+  .news-text,
+  .news-title {
+    font-family: "Newsreader", serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
+  }
+
+  .news-title {
+    color: var(--global-text-color);
+    &:hover {
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+// Other projects section (about page)
+.other-project {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  align-items: start;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h3 {
+    font-family: "Recursive", system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subtitle {
+  font-family: "Recursive", system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+  margin-bottom: 24px;
+}
+
+// About page header layout
+.about-header {
+  margin-bottom: 96px;
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media (max-width: 576px) {
+    margin-bottom: 64px;
+
+    .about-sidebar {
+      float: none;
+      width: auto;
+      margin: 0 0 24px 0;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .about-photo {
+      flex-shrink: 0;
+      width: 80px;
+
+      img {
+        width: 80px !important;
+        height: 80px !important;
+      }
+    }
+  }
+}
+
+.about-header-text {
+  text-align: justify;
+  .about-name {
+    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 10px;
+  }
+
+  .about-bio {
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 100%;
+
+    p + p {
+      margin-top: 1em;
+    }
+  }
+}
+
+.about-sidebar {
+  float: right;
+  width: 200px;
+  margin-left: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 8px;
+
+  .more-info {
+    font-family: "Recursive", monospace;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+}
+
+.about-social-links {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 8px 14px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 4px;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--global-text-color-light);
+    letter-spacing: 0.02em;
+    transition: color 120ms;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+}
+
+.about-photo {
+  width: 200px !important;
+  height: 200px !important;
+
+  img {
+    object-fit: cover;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+  }
+}
+
+// Section stamp headings (about page sections)
+.post article > h2,
+.post article > .container > .row h2 {
+  font-family: "Recursive", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-divider-color);
+  border-top: none;
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 16px;
+
+  a {
+    color: inherit;
+    &:hover {
+      color: var(--global-text-color-light);
+      text-decoration: none;
+    }
+  }
+  span {
+    color: inherit;
+  }
+}

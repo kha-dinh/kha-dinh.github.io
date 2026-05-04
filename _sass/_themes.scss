@@ -18,18 +18,18 @@
   --global-divider-color:       oklch(91%  0.003 264);
   --global-card-bg-color:       oklch(98%  0.003 264);
 
-  --global-tip-block:           #42b983;
-  --global-tip-block-bg:        #e2f5ec;
-  --global-tip-block-text:      #215d42;
-  --global-tip-block-title:     #359469;
-  --global-warning-block:       #e7c000;
-  --global-warning-block-bg:    #fff8d8;
-  --global-warning-block-text:  #6b5900;
-  --global-warning-block-title: #b29400;
-  --global-danger-block:        #c00;
-  --global-danger-block-bg:     #ffe0e0;
-  --global-danger-block-text:   #600;
-  --global-danger-block-title:  #c00;
+  --global-tip-block:           oklch(56% 0.12 155);
+  --global-tip-block-bg:        oklch(96% 0.04 155);
+  --global-tip-block-text:      oklch(37% 0.09 157);
+  --global-tip-block-title:     oklch(56% 0.12 155);
+  --global-warning-block:       oklch(65% 0.15 87);
+  --global-warning-block-bg:    oklch(98% 0.05 91);
+  --global-warning-block-text:  oklch(42% 0.11 86);
+  --global-warning-block-title: oklch(65% 0.15 87);
+  --global-danger-block:        oklch(48% 0.22 27);
+  --global-danger-block-bg:     oklch(93% 0.04 22);
+  --global-danger-block-text:   oklch(28% 0.14 27);
+  --global-danger-block-title:  oklch(48% 0.22 27);
 
   .fa-sun  { display: none; }
   .fa-moon { padding-left: 10px; padding-top: 12px; display: block; }

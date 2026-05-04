@@ -1,0 +1,313 @@
+/*******************************************************************************
+ * Publications
+ ******************************************************************************/
+
+.publications {
+  margin-top: 0;
+  margin-bottom: 96px;
+
+  h1 {
+    color: var(--global-text-color);
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+  h2.bibliography {
+    color: var(--global-text-color-light);
+    border-top: 1px solid var(--global-divider-color);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: -2rem;
+    text-align: right;
+  }
+
+  ol.bibliography {
+    list-style: none;
+    line-height: 1.4rem;
+    padding: 0;
+    margin-top: 0;
+
+    li {
+      padding: 14px 0;
+      margin-bottom: 0;
+      border-top: 1px solid var(--global-divider-color);
+
+      &:first-child {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: 1px solid var(--global-divider-color);
+      }
+
+      // Collapse Bootstrap 2-col row to single column
+      .row {
+        flex-direction: column;
+        gap: 0;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .col.abbr {
+        display: none;
+      }
+
+      .col.preview {
+        width: auto;
+        max-width: 100%;
+        flex: none;
+        padding: 0 0 6px 0;
+        height: auto;
+      }
+
+      .col-sm-9,
+      .col-sm-10 {
+        max-width: 100%;
+        flex: 0 0 100%;
+        padding: 0;
+      }
+
+      .preview {
+        width: 100%;
+        min-width: 80px;
+        max-width: 200px;
+      }
+
+      .abbr {
+        height: auto;
+        margin-bottom: 0;
+        abbr {
+          display: inline-flex;
+          align-items: center;
+          background-color: var(--global-theme-color);
+          padding: 2px 10px;
+          border-radius: 0;
+
+          a {
+            font-family: "Audiowide", sans-serif !important;
+            font-size: 0.7rem;
+            color: oklch(100% 0.003 264);
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .award {
+          color: var(--global-theme-color) !important;
+          border: 1px solid var(--global-theme-color);
+          border-radius: 0;
+          font-size: 0.65rem;
+          letter-spacing: 0.08em;
+        }
+      }
+
+      .title {
+        text-align: justify;
+        font-family: "Recursive", system-ui, sans-serif;
+        font-weight: 300;
+        font-size: 1rem;
+        line-height: 1.4;
+        letter-spacing: -0.005em;
+        color: var(--global-text-color);
+
+        a {
+          position: relative;
+          color: var(--global-text-color);
+          transition: color 120ms;
+          text-decoration: none;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--global-theme-color);
+            transition: width 280ms cubic-bezier(0.16, 1, 0.3, 1);
+          }
+
+          &:hover {
+            color: var(--global-theme-color);
+            text-decoration: none;
+
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .author {
+        font-size: 0.875rem;
+        padding-top: 0.5rem;
+        color: var(--global-text-color-light);
+        a {
+          border-bottom: 1px solid
+            color-mix(in oklch, var(--global-theme-color) 35%, transparent);
+          transition: border-color 180ms;
+
+          &:hover {
+            border-bottom-color: var(--global-theme-color);
+            text-decoration: none;
+          }
+        }
+
+        > em {
+          border-bottom: 1px solid;
+          font-style: normal;
+        }
+
+        > span.more-authors {
+          color: var(--global-text-color-light);
+          border-bottom: 1px dashed var(--global-text-color-light);
+          cursor: pointer;
+
+          &:hover {
+            color: var(--global-text-color);
+            border-bottom: 1px dashed var(--global-text-color);
+          }
+        }
+      }
+
+      .venue-links-row {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 3px;
+        justify-content: space-between;
+      }
+
+      .pub-venue-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      // Venue + year line
+      .periodical {
+        font-family: "Recursive", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        color: var(--global-text-color-light);
+        letter-spacing: 0.01em;
+        em {
+          font-style: normal;
+        }
+      }
+
+      .award {
+        display: inline-flex;
+        align-items: center;
+        font-family: "Recursive", sans-serif;
+        font-weight: 300;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--global-theme-color);
+        border: 1px solid var(--global-theme-color);
+        padding: 2px 8px;
+        border-radius: 0;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+
+      .pub-link {
+        font-family: "Recursive", system-ui, sans-serif;
+        font-weight: 300;
+        font-size: 0.8125rem;
+        color: var(--global-text-color);
+        letter-spacing: 0.01em;
+        transition: color 120ms;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+
+        a.btn {
+          font-family: "Recursive", system-ui, sans-serif;
+          font-variation-settings:
+            "MONO" 0.5,
+            "CASL" 0;
+          font-weight: 300;
+          font-size: 0.8125rem;
+          color: var(--global-text-color);
+          letter-spacing: 0.01em;
+          transition: color 120ms;
+          background: none;
+          border: none;
+          padding: 0 !important;
+          margin: 0;
+          border-radius: 0;
+          box-shadow: none;
+          text-transform: none;
+          line-height: inherit;
+
+          &:hover {
+            color: var(--global-theme-color);
+            text-decoration: none;
+            border: none;
+            background: none;
+            box-shadow: none;
+          }
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+
+      .badges {
+        padding-bottom: 0.5rem;
+        span {
+          display: inline-block;
+          color: var(--global-text-color);
+          height: 100%;
+          padding-right: 0.5rem;
+          vertical-align: middle;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .hidden {
+        font-size: 1rem;
+        max-height: 0px;
+        overflow: hidden;
+        text-align: justify;
+        transition: max-height 300ms cubic-bezier(0.16, 1, 0.3, 1);
+
+        p {
+          line-height: 1.4em;
+          margin: 10px;
+        }
+
+        pre {
+          font-size: 1em;
+          line-height: 1.4em;
+          padding: 10px;
+        }
+      }
+
+      .hidden.open {
+        max-height: 100em;
+        transition: max-height 500ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+    }
+  }
+}

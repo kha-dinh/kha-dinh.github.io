@@ -2,6 +2,45 @@
  * Publications
  ******************************************************************************/
 
+.pub-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2rem;
+
+  .filter-btn {
+    appearance: none;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color-light);
+    background: none;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0;
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: color 120ms, border-color 180ms;
+
+    &:hover {
+      color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+    }
+
+    &.active {
+      color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--global-theme-color);
+      outline-offset: 2px;
+      color: var(--global-theme-color);
+    }
+  }
+}
+
 .publications {
   margin-top: 0;
   margin-bottom: 96px;
@@ -308,6 +347,39 @@
           &:hover {
             text-decoration: underline;
           }
+        }
+      }
+
+      .pub-topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .pub-topic-tag {
+        font-family: "Recursive", system-ui, sans-serif;
+        font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+        font-weight: 300;
+        font-size: 0.7rem;
+        letter-spacing: 0.02em;
+        color: var(--global-text-color-light);
+        border: 1px solid var(--global-divider-color);
+        padding: 1px 7px;
+        border-radius: 0;
+        cursor: pointer;
+        transition: color 120ms, border-color 180ms;
+
+        &:hover,
+        &.active {
+          color: var(--global-theme-color);
+          border-color: var(--global-theme-color);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--global-theme-color);
+          outline-offset: 2px;
+          color: var(--global-theme-color);
         }
       }
 

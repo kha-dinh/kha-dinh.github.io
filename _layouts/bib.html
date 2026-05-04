@@ -229,6 +229,15 @@
           {%- endif %}
           {%- endif %}
 
+          {%- if entry.topics -%}
+          <div class="pub-topics">
+            {%- assign topic_list = entry.topics | split: "," -%}
+            {%- for topic in topic_list -%}
+              <span class="pub-topic-tag" data-topic="{{ topic | strip }}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">{{ topic | strip }}</span>
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+
           {% if entry.abstract -%}
           <!-- Hidden abstract block -->
           <div class="abstract hidden">

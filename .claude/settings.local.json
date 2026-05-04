@@ -12,7 +12,9 @@
       "Bash(curl -s http://localhost:8080/assets/css/main.css)",
       "Bash(tr ';' '\\\\n')",
       "Bash(wc:*)",
-      "Bash(grep -r \"al-folio\\\\|glossary\" /Users/khadd/Projects/kha-dinh.github.io --include=*.html --include=*.md --include=*.yml)"
+      "Bash(grep -r \"al-folio\\\\|glossary\" /Users/khadd/Projects/kha-dinh.github.io --include=*.html --include=*.md --include=*.yml)",
+      "Bash(find /Users/khadd/Projects/kha-dinh.github.io -type f -name *.bib -o -name *publication* -o -name *bib.html)",
+      "Bash(git commit:*)"
     ]
   }
 }

@@ -84,7 +84,7 @@
     a {
       i::before {
         color: var(--global-text-color);
-        transition-property: all 0.2s ease-in-out;
+        transition: color 200ms ease-out;
       }
 
       &:hover {
@@ -104,7 +104,7 @@
     background-color: var(--global-text-color);
     border-radius: 1px;
     margin-bottom: 4px;
-    transition: all 0.2s;
+    transition: transform 200ms ease-out, opacity 200ms ease-out;
   }
 
   .top-bar {

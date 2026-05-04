@@ -91,9 +91,12 @@
           border-radius: 0;
 
           a {
-            font-family: "Audiowide", sans-serif !important;
+            font-family: "Recursive", monospace;
+            font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+            font-weight: 300;
             font-size: 0.7rem;
-            color: oklch(100% 0.003 264);
+            letter-spacing: 0.04em;
+            color: var(--global-hover-text-color);
 
             &:hover {
               text-decoration: none;
@@ -111,7 +114,6 @@
       }
 
       .title {
-        text-align: justify;
         font-family: "Recursive", system-ui, sans-serif;
         font-weight: 300;
         font-size: 1rem;
@@ -241,7 +243,8 @@
           font-family: "Recursive", system-ui, sans-serif;
           font-variation-settings:
             "MONO" 0.5,
-            "CASL" 0;
+            "CASL" 0,
+            "slnt" 0;
           font-weight: 300;
           font-size: 0.8125rem;
           color: var(--global-text-color);
@@ -264,8 +267,10 @@
             box-shadow: none;
           }
 
-          &:focus {
-            box-shadow: none;
+          &:focus-visible {
+            outline: 2px solid var(--global-theme-color);
+            outline-offset: 2px;
+            color: var(--global-theme-color);
           }
         }
       }
@@ -289,7 +294,6 @@
         font-size: 1rem;
         max-height: 0px;
         overflow: hidden;
-        text-align: justify;
         transition: max-height 300ms cubic-bezier(0.16, 1, 0.3, 1);
 
         p {

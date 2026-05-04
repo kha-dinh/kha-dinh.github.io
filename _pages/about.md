@@ -6,6 +6,7 @@ permalink: /
 subtitle: >
   <!-- <font size="-1"><tt>duykha.dinh (at) ubc (dot) ca</tt></font><br> -->
   Postdoctoral Researcher, Systopia Lab, University of British Columbia, Vancouver, Canada
+name_native: Đinh Duy Kha
 profile:
   align: right
   image: profile-crop.gif

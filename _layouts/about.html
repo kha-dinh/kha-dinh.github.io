@@ -21,15 +21,15 @@ layout: default
         <div class="more-info">{{ page.profile.more_info }}</div>
         {%- endif %}
         <div class="about-social-links">
-          <a href="{{ '/assets/pdf/CV_Kha_Dinh.pdf' | relative_url }}">CV</a>
+          <a href="{{ '/assets/pdf/CV_Kha_Dinh.pdf' | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>CV</a>
           {%- if site.scholar_userid %}
-          <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener">Scholar</a>
+          <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar" aria-hidden="true"></i>Scholar</a>
           {%- endif %}
           {%- if site.github_username %}
-          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
           {%- endif %}
           {%- if site.linkedin_username %}
-          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a>
           {%- endif %}
         </div>
       </div>
@@ -38,10 +38,13 @@ layout: default
       <div class="about-header-text">
         <h1 class="about-name recursive-300">
           {% if site.title == "blank" -%}
-          <span >{{ site.first_name }}</span>
+          <span>{{ site.first_name }}</span>
           {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%-
           endif %}
         </h1>
+        {%- if page.name_native %}
+        <p class="name-native">{{ page.name_native }}</p>
+        {%- endif %}
         {%- if page.subtitle %}
         <p class="subtitle">{{ page.subtitle }}</p>
         {%- endif %}
@@ -52,23 +55,21 @@ layout: default
     <!-- News -->
     {% if page.news and site.announcements.enabled -%}
     <h2>
-      <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+      <a href="{{ '/news/' | relative_url }}">news</a>
     </h2>
     {%- include news.html limit=true %} {%- endif %}
 
     <!-- Latest posts -->
     {% if page.latest_posts -%}
     <h2>
-      <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+      <a href="{{ '/blog/' | relative_url }}">latest posts</a>
     </h2>
     {%- include latest_posts.html %} {%- endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers -%}
     <h2>
-      <a href="{{ '/publications/' | relative_url }}" style="color: inherit"
-        >selected publications</a
-      >
+      <a href="{{ '/publications/' | relative_url }}">selected publications</a>
     </h2>
     {%- include selected_papers.html %} {%- endif %}
 

@@ -51,9 +51,10 @@ typography:
     letterSpacing: "0.02em"
     fontVariation: '"MONO" 1, "CASL" 0, "slnt" 0'
   label:
-    fontFamily: "Audiowide, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 400
+    fontFamily: "Recursive, monospace"
+    fontVariation: '"MONO" 1, "CASL" 0, "slnt" 0'
+    fontSize: "0.8125rem"
+    fontWeight: 300
     letterSpacing: "0.04em"
 rounded:
   none: "0px"
@@ -160,7 +161,7 @@ One accent, tinted neutrals, two modes. Palette minimal by design — hiring com
 **Display/Heading Font:** Recursive (with system-ui, sans-serif fallback) — variable font, MONO=0.5, CASL=0, slnt=0
 **Body Font:** Newsreader (with Georgia, serif fallback)
 **Sidebar Mono Font:** Recursive MONO=1, CASL=0 (contact info, location — full monospace register)
-**Label Font:** Audiowide (email contact only; signature element, not general-purpose)
+**Label Font:** Recursive MONO=1 (email contact only; matches sidebar metadata register)
 
 **Character:** Recursive at MONO=0.5 sits halfway between geometric sans and monospace — letterforms carry faint terminal-manual quality without being literally code. Weight 300, CASL=0 (linear, not casual): reads as precise instrument. Newsreader weight 300 reads like a well-printed journal article at every optical size. Pairing unusual: half-mono structural font framing humanist serif body. Signals author works at the interface of systems and language.
 
@@ -172,7 +173,7 @@ One accent, tinted neutrals, two modes. Palette minimal by design — hiring com
 - **Body** (Newsreader, weight 300, `1rem`, line-height 1.7, `font-optical-sizing: auto`): All prose — bio, abstract excerpts, post content. Max ~70ch line length; 800px container enforces at desktop.
 - **Sidebar Mono** (Recursive, weight 300, MONO=1, `0.8125rem`, letter-spacing 0.02em): Contact info, office location in profile sidebar. Full monospace axis for technical metadata.
 - **Venue / Meta** (Recursive, weight 300, `0.75rem`): Publication venue abbreviation, year, periodical lines, filter button labels.
-- **Label** (Audiowide, weight 400, `0.75rem`, letter-spacing 0.04em): Email in profile detail only. Technical, slightly retro-futurist quality. Signature detail — one element per page.
+- **Label** (Recursive, weight 300, MONO=1, `0.8125rem`, letter-spacing 0.02em): Email in profile detail. Full monospace register — same axis as sidebar location, consistent metadata treatment.
 
 ### Named Rules
 
@@ -255,7 +256,7 @@ Light mode: near-white `var(--global-code-bg-color)`, ink text. Dark mode: near-
 - **Do** use thin 1px dividers (`var(--global-divider-color)`) to separate list entries. Structure via spacing and line, not card borders.
 - **Do** set `font-optical-sizing: auto` on Newsreader at every size. Font designed for it.
 - **Do** keep max-width at 800px. Body line length stays 65–75ch.
-- **Do** treat Audiowide as signature detail: one instance per page (profile email). Not general label style.
+- **Do** use Recursive MONO=1 for all sidebar metadata: location, email, contact info. Consistent full-monospace register for technical metadata.
 - **Do** support dark mode as first-class design variant. Both modes use CSS custom property tokens; test both.
 - **Do** tint all neutrals toward hue 264 — even the background (`oklch(100% 0.003 264)`), even the text (`oklch(5% 0.004 264)`).
 - **Do** use `color-mix(in oklch, ...)` for tinted state backgrounds (ToC active, blockquote fill). Stays on-hue under theme switch.
@@ -268,7 +269,7 @@ Light mode: near-white `var(--global-code-bg-color)`, ink text. Dark mode: near-
 - **Don't** use cards for publication lists, project lists, news items. No `border-radius` + `box-shadow` + `background-color` on list entries. Publications are not products.
 - **Don't** add scroll-driven animations, hero entrance effects, or floating UI elements. Site loads, immediately readable — no choreography.
 - **Don't** use generic al-folio defaults without intentional override: white/teal color scheme (overridden to Reference Blue), card grid layout (overridden to structured text), uniform spacing (override with deliberate rhythm).
-- **Don't** use Audiowide for anything other than profile email detail. Expanded use collapses signature function.
+- **Don't** introduce a third typeface for decorative or "personality" purposes. Two fonts (Recursive + Newsreader) cover all roles.
 - **Don't** use Recursive without `font-variation-settings: "MONO" 0.5, "CASL" 0`. At MONO=0, indistinguishable from generic geometric sans, loses all character.
 - **Don't** use Recursive at weight 400+ in headings. Visual emphasis needed: use size scale.
 - **Don't** design for the LinkedIn register: no achievement-bullet formatting, no "impact metrics" typography (big number + small label), no corporate blue/navy palette swaps.

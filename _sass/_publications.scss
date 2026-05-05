@@ -41,6 +41,77 @@
   }
 }
 
+// Tooltip for about-page topic tags
+.tag-tooltip {
+  position: fixed;
+  z-index: 1000;
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  padding: 6px 10px;
+  font-family: "Recursive", system-ui, sans-serif;
+  font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--global-text-color);
+  opacity: 0;
+  transition: opacity 120ms;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  white-space: nowrap;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  .tag-tooltip-entry {
+    display: block;
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+
+  .tag-tooltip-venue {
+    color: var(--global-text-color-light);
+  }
+}
+
+// Reusable topic tag — used in pub entries and inline in about page
+.pub-topic-tag {
+  display: inline-block;
+  font-family: "Recursive", system-ui, sans-serif;
+  font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--global-text-color-light);
+  border: 1px solid var(--global-divider-color);
+  padding: 1px 7px;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: color 120ms, border-color 180ms;
+
+  &:hover,
+  &.active {
+    color: var(--global-theme-color);
+    border-color: var(--global-theme-color);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 2px;
+    color: var(--global-theme-color);
+  }
+}
+
 .publications {
   margin-top: 0;
   margin-bottom: 96px;

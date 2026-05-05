@@ -10,6 +10,12 @@ nav_order: 1
 
 <div class="pub-filter-bar" id="pub-filter-bar"></div>
 
-{% bibliography -f {{ site.scholar.bibliography }} %}
+<h2>conferences</h2>
+
+{% bibliography -f {{ site.scholar.bibliography }} --query @inproceedings %}
+
+<h2>journals</h2>
+
+{% bibliography -f {{ site.scholar.bibliography }} --query @article %}
 
 </div>

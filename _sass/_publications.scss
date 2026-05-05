@@ -110,6 +110,12 @@
     outline-offset: 2px;
     color: var(--global-theme-color);
   }
+
+  .tag-count {
+    font-size: 0.65em;
+    opacity: 0.6;
+    margin-left: 3px;
+  }
 }
 
 .publications {
@@ -233,7 +239,7 @@
       .title {
         font-family: "Recursive", system-ui, sans-serif;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 0.9375rem;
         line-height: 1.4;
         letter-spacing: -0.005em;
         color: var(--global-text-color);

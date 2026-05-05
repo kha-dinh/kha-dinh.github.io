@@ -153,10 +153,24 @@ $(document).ready(function() {
       return fetchPromise;
     }
 
+    function annotateTagCounts(map) {
+      $tags.each(function() {
+        var $tag = $(this);
+        var href = $tag.attr('href') || '';
+        var match = href.match(/[?&]topic=([^&]*)/);
+        if (!match) return;
+        var topic = decodeURIComponent(match[1].replace(/\+/g, ' '));
+        var count = (map && map[topic]) ? map[topic].length : 0;
+        if (count > 0 && !$tag.find('.tag-count').length) {
+          $tag.append('<span class="tag-count">' + count + '</span>');
+        }
+      });
+    }
+
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(fetchTopicMap);
+      requestIdleCallback(function() { fetchTopicMap().then(annotateTagCounts); });
     } else {
-      setTimeout(fetchTopicMap, 500);
+      setTimeout(function() { fetchTopicMap().then(annotateTagCounts); }, 500);
     }
 
     function positionTooltip($el) {

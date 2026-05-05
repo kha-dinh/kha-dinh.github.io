@@ -6,24 +6,6 @@
 
 .profile {
   width: 100%;
-
-  .more-info {
-    padding-top: 10px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    text-align: center;
-    font-family: "Recursive", monospace;
-    font-weight: 400;
-    font-size: 1.4rem;
-    letter-spacing: 0.5em;
-    line-height: 1.5;
-    overflow-wrap: break-word;
-
-    p {
-      display: inline-block;
-      margin: 0;
-    }
-  }
 }
 
 .profile.float-right {
@@ -216,14 +198,10 @@
   padding-top: 8px;
 
   .more-info {
-    font-family: "Recursive", monospace;
-    font-variation-settings:
-      "MONO" 1,
-      "CASL" 0,
-      "slnt" 0;
-    font-weight: 300;
-    font-size: 0.8125rem;
-    letter-spacing: 0.02em;
+    font-family: "Audiowide", monospace;
+    font-weight: 400;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
     line-height: 1.5;
     white-space: nowrap;
     overflow-wrap: break-word;

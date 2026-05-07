@@ -238,6 +238,7 @@
 
       .title {
         font-family: "Recursive", system-ui, sans-serif;
+        font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
         font-weight: 300;
         font-size: 0.9375rem;
         line-height: 1.4;
@@ -245,7 +246,6 @@
         color: var(--global-text-color);
 
         a {
-          position: relative;
           color: var(--global-text-color);
           text-decoration: none;
 
@@ -253,28 +253,9 @@
             transition: color 120ms;
           }
 
-          &::after {
-            content: "";
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background-color: var(--global-theme-color);
-            opacity: 0.25;
-
-            @media (prefers-reduced-motion: no-preference) {
-              transition: opacity 180ms ease-out;
-            }
-          }
-
           &:hover {
             color: var(--global-theme-color);
             text-decoration: none;
-
-            &::after {
-              opacity: 1;
-            }
           }
 
           &:focus-visible {
@@ -287,6 +268,10 @@
       }
 
       .author {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
         font-size: 0.875rem;
         padding-top: 0.5rem;
         color: var(--global-text-color-light);
@@ -320,11 +305,9 @@
 
       .venue-links-row {
         display: flex;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 14px;
+        flex-direction: column;
+        gap: 4px;
         margin-top: 3px;
-        justify-content: space-between;
       }
 
       .pub-venue-row {
@@ -332,6 +315,33 @@
         align-items: center;
         gap: 8px;
         flex-wrap: wrap;
+      }
+
+      .pub-tags-links-row {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .links {
+          margin-left: auto;
+        }
+      }
+
+      .pub-venue-tag {
+        display: inline-flex;
+        align-items: center;
+        font-family: "Recursive", sans-serif;
+        font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+        font-weight: 400;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--global-card-bg-color);
+        background-color: var(--global-text-color-light);
+        border: 1px solid var(--global-text-color-light);
+        padding: 1px 6px;
+        border-radius: 0;
       }
 
       // Venue + year line
@@ -358,8 +368,8 @@
         border: 1px solid var(--global-theme-color);
         padding: 2px 8px;
         border-radius: 0;
-        margin-left: 8px;
-        vertical-align: middle;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .pub-link {

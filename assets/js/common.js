@@ -92,7 +92,7 @@ $(document).ready(function() {
   }
 
   // Clicking inline topic tags: filter in-place on /publications/, redirect otherwise
-  $(document).on('click', '.pub-topics .pub-topic-tag', function() {
+  $(document).on('click', '.pub-topic-tag', function() {
     var topic = $(this).data('topic');
     if (!$('#pub-filter-bar').length) {
       window.location.href = '/publications/?topic=' + encodeURIComponent(topic);

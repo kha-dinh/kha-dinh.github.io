@@ -182,7 +182,7 @@
   .about-bio {
     font-size: 1rem;
     line-height: 1.75;
-    max-width: 62ch;
+    // max-width: 62ch;
 
     p + p {
       margin-top: 1em;
@@ -192,7 +192,7 @@
 
 .about-sidebar {
   float: right;
-  width: 280px;
+  width: 200px;
   margin-left: 18px;
   display: flex;
   flex-direction: column;
@@ -200,8 +200,8 @@
   gap: 10px;
   padding-top: 8px;
 
-  .more-info {
-    font-family: "Recursive", monospace;
+  .more-info { 
+    font-family: "Recursive", system-ui, monospace;
     font-variation-settings:
       "MONO" 1,
       "CASL" 0,
@@ -243,9 +243,9 @@
   a {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 10px 2px;
-    min-height: 44px;
+    gap: 9px;
+    padding: 5px 2px;
+    min-height: 20px;
     font-family: "Recursive", system-ui, sans-serif;
     font-weight: 300;
     font-size: 0.8125rem;
@@ -268,8 +268,8 @@
 }
 
 .about-photo {
-  width: 200px !important;
-  height: 200px !important;
+  width: 150px !important;
+  height: 150px !important;
 
   img {
     object-fit: cover;

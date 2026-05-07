@@ -47,6 +47,7 @@
         </div>
         <!-- Author -->
         <div class="author">
+        <span class="author-names">
         {% assign author_array_size = entry.author_array | size %}
 
         {% assign author_array_limit = author_array_size %}
@@ -115,33 +116,40 @@
               "
           >{{more_authors_hide}}</span>
         {%- endif -%}
-
+        </span>
+        {%- if entry.award %}<span class="award">{{entry.award}}</span>{%- endif %}
         </div>
 
         <!-- Journal/Book title and date -->
-        {%- if entry.abbr -%}
-        {%- capture periodical -%}{{entry.abbr}}{%- if entry.year -%}{{" "}} {{entry.year}}{%- endif -%}{%- endcapture -%}
+        {%- assign proceedings = "inproceedings,incollection" | split: ',' -%}
+        {%- assign thesis = "thesis,mastersthesis,phdthesis" | split: ',' -%}
+        {%- if entry.type == "article" -%}
+          {%- capture periodical -%}{{entry.journal}}{%- if entry.year -%}, {{entry.year}}{%- endif -%}{%- endcapture -%}
+        {%- elsif proceedings contains entry.type -%}
+          {%- capture periodical -%}{{entry.booktitle}}{%- if entry.year -%}, {{entry.year}}{%- endif -%}{%- endcapture -%}
+        {%- elsif thesis contains entry.type -%}
+          {%- capture periodical -%}{{entry.school}}{%- if entry.year -%}, {{entry.year}}{%- endif -%}{%- endcapture -%}
         {%- else -%}
-          {% assign proceedings = "inproceedings,incollection" | split: ','%}
-          {% assign thesis = "thesis,mastersthesis,phdthesis" | split: ','%}
-          {%- if entry.type == "article" -%}
-            {%- capture periodical -%}{{entry.journal}}{%- if entry.year -%}, {{entry.year}}{%- endif -%}{%- endcapture -%}
-          {%- elsif proceedings contains entry.type -%}
-            {%- capture periodical -%}{{entry.booktitle}}{%- if entry.year -%}, {{entry.year}}{%- endif -%}{%- endcapture -%}
-          {%- elsif thesis contains entry.type -%}
-            {%- capture periodical -%}{{entry.school}}{%- if entry.year -%}, {{entry.year}}{%- endif -%}{%- endcapture -%}
-          {%- else -%}
-            {%- capture periodical -%}{%- if entry.year -%}{{entry.year}}{%- endif -%}{%- endcapture -%}
-          {%- endif -%}
+          {%- capture periodical -%}{%- if entry.year -%}{{entry.year}}{%- endif -%}{%- endcapture -%}
         {%- endif -%}
         <div class="venue-links-row">
+          <!-- Abbr tag + full venue name + year -->
           <div class="pub-venue-row">
+            {%- if entry.abbr -%}
+            <span class="pub-venue-tag">{{entry.abbr}}</span>
+            {%- endif -%}
             <span class="periodical">{{ periodical | strip }}</span>
             {%- if entry.note -%}<span class="periodical"> &middot; {{ entry.note | strip }}</span>{%- endif -%}
-            {%- if entry.award %}<span class="award">{{entry.award}}</span>{%- endif %}
           </div>
 
-          <!-- Links/Buttons -->
+          <!-- Topics + Links/Buttons on same line -->
+          <div class="pub-tags-links-row">
+          {%- if entry.topics -%}
+            {%- assign topic_list = entry.topics | split: "," -%}
+            {%- for topic in topic_list -%}
+              <span class="pub-topic-tag" data-topic="{{ topic | strip }}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">{{ topic | strip }}</span>
+            {%- endfor -%}
+          {%- endif -%}
           <div class="links">
           {%- if entry.abstract %}
             <a class="abstract btn btn-sm z-depth-0" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><span>[</span>abstract<span>]</span></a>
@@ -193,6 +201,7 @@
             <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button"><span>[</span>website<span>]</span></a>
           {%- endif %}
           </div>
+          </div>
         </div>
           {% if site.enable_publication_badges %}
           {% assign entry_has_altmetric_badge = entry.altmetric or entry.doi or  entry.eprint or entry.pmid or entry.isbn %}
@@ -228,15 +237,6 @@
           </div>
           {%- endif %}
           {%- endif %}
-
-          {%- if entry.topics -%}
-          <div class="pub-topics">
-            {%- assign topic_list = entry.topics | split: "," -%}
-            {%- for topic in topic_list -%}
-              <span class="pub-topic-tag" data-topic="{{ topic | strip }}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">{{ topic | strip }}</span>
-            {%- endfor -%}
-          </div>
-          {%- endif -%}
 
           {% if entry.abstract -%}
           <!-- Hidden abstract block -->

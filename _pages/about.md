@@ -5,7 +5,7 @@ permalink: /
 <!-- subtitle: <a href='#'>Sungkyunkwan University</a>. Suwon, South Korea. -->
 subtitle: >
   <!-- <font size="-1"><tt>duykha.dinh (at) ubc (dot) ca</tt></font><br> -->
-  Postdoctoral Researcher, Systopia Lab, University of British Columbia, Vancouver, Canada
+  Postdoctoral Researcher, Systopia Lab<br>University of British Columbia, Vancouver, Canada
 name_native: Đinh Duy Kha (丁维柯)
 profile:
   align: right

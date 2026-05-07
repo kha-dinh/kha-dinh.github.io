@@ -5,12 +5,12 @@ colors:
   # Primary accent (OKLCH — project uses OKLCH doctrine; Stitch linter will warn, values are correct)
   reference-blue: "oklch(46% 0.27 264)"
   reference-blue-dark: "oklch(61% 0.22 264)"
-  # Light mode neutrals
-  page-bg: "oklch(100% 0.003 264)"
-  page-bg-surface: "oklch(98% 0.003 264)"
+  # Light mode neutrals — warm paper stock tint (hue 80), ink stays blue-cast (hue 264)
+  page-bg: "oklch(98.5% 0.006 80)"
+  page-bg-surface: "oklch(96.5% 0.007 80)"
   ink: "oklch(5% 0.004 264)"
   ink-secondary: "oklch(48% 0.002 264)"
-  divider: "oklch(91% 0.003 264)"
+  divider: "oklch(88% 0.004 264)"
   # Dark mode neutrals
   void-dark: "oklch(13% 0.003 264)"
   void-dark-surface: "oklch(21% 0.004 264)"
@@ -27,10 +27,10 @@ typography:
     fontVariation: '"MONO" 0.5, "CASL" 0, "slnt" 0'
   headline:
     fontFamily: "Recursive, system-ui, sans-serif"
-    fontSize: "0.875rem"
+    fontSize: "0.8125rem"
     fontWeight: 300
-    letterSpacing: "0.12em"
-    fontVariation: '"MONO" 0.5, "CASL" 0, "slnt" 0'
+    letterSpacing: "0.14em"
+    fontVariation: '"MONO" 0.75, "CASL" 0, "slnt" 0'
   title:
     fontFamily: "Recursive, system-ui, sans-serif"
     fontSize: "0.9375rem"
@@ -99,33 +99,39 @@ components:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
     rounded: "{rounded.none}"
-    padding: "14px 0"
+    padding: "8px 0"
   pub-entry-dark:
     backgroundColor: "transparent"
     textColor: "{colors.ink-on-dark}"
     rounded: "{rounded.none}"
-    padding: "14px 0"
+    padding: "8px 0"
 ---
 
 # Design System: Kha Dinh — Academic Portfolio
 
 ## 1. Overview
 
-**Creative North Star: "The Systems Paper"**
+**Creative North Star: "The Systems Paper — Retro-Modern"**
 
-System built like well-authored academic paper: typography does heavy lifting, structure immediately legible, nothing competes with argument. Recursive carries headings — weight 300, MONO=0.5, CASL=0, no decorative flourish. Newsreader handles body: optical-size serif reads like printed editorial at every size. Two fonts constitute the entire visual identity. Color, spacing, component shape exist only to support them.
+System built like well-authored academic paper from the 90s USENIX/SIGOPS era, rendered with modern precision. Typography does heavy lifting, structure immediately legible, nothing competes with argument. Recursive carries headings — weight 300, MONO=0.5, CASL=0, no decorative flourish. Section stamps push to MONO=0.75 for typewriter authority. Newsreader handles body: optical-size serif reads like printed editorial at every size. Two fonts constitute the entire visual identity.
+
+Light mode background is warm paper stock (`oklch(98.5% 0.006 80)`) — not blue-cast white. Feels like a printed CMU tech report, not a browser default. Ink and UI elements stay blue-cast (hue 264) for coherence with dark mode. Dark mode is the opposite: deep blue-void, monitor at night.
 
 Color disciplined to single accent: Reference Blue `oklch(46% 0.27 264)`. Appears on links, citations, interactive states — never decoration. Rarity is the point. Blue link in sea of black Newsreader text signals meaning like blue hyperlink in research PDF — precise, functional, expected.
 
-System explicitly rejects: generic al-folio defaults (white pages, teal accents, uniform card grids), flashy portfolio theatrics (gradient heroes, scroll animations, floating elements), corporate/LinkedIn register (achievement bullets, navy-and-gold safety). Also rejects over-designed academic pages where visual novelty competes with research content. Goal: site feels built by the person who designed the compartmentalization model, not someone who downloaded a theme.
+Publication link buttons render as `[pdf]`, `[slides]` — bracket notation from 90s paper conventions. About page header reads like a paper author block: name, affiliation line, provenance metadata.
+
+System explicitly rejects: generic al-folio defaults (white pages, teal accents, uniform card grids), flashy portfolio theatrics (gradient heroes, scroll animations, floating elements), corporate/LinkedIn register (achievement bullets, navy-and-gold safety). Also rejects over-designed academic pages where visual novelty competes with research content. Goal: site feels built by someone who grew up reading SOSP proceedings and now works in 2024.
 
 **Key Characteristics:**
 - Typography-led: Recursive / Newsreader pairing is the signature, not the accent color
+- Section stamps at MONO=0.75 — typewriter pull for document structure markers
+- Light mode background warm paper tint (hue 80); ink blue-cast (hue 264); dark mode blue-void
 - Flat surfaces: no shadow vocabulary, no depth theater
 - Accent restraint: Reference Blue at ≤10% surface coverage
 - 800px max-width: column width chosen for reading, not filling a screen
 - Dual-theme first: both light and dark modes designed intentionally, not toggled as afterthought
-- Axis-locked: Recursive always set with `font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0`
+- Axis-locked: Recursive always set with `font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0` (stamps: MONO=0.75)
 
 ## 2. Colors: The Reference Palette
 
@@ -137,8 +143,8 @@ One accent, tinted neutrals, two modes. Palette minimal by design — hiring com
 ### Neutral
 
 **Light mode:**
-- **Page Background** (`oklch(100% 0.003 264)`): Tinted white. Blue cast at hue 264 — not pure `#fff`.
-- **Page Surface** (`oklch(98% 0.003 264)`): Slightly darker tint for code backgrounds and surface elements.
+- **Page Background** (`oklch(98.5% 0.006 80)`): Warm paper stock tint. Hue 80 (amber-neutral) — reads like a printed tech report, not a browser default. Not pure white, not blue-cast.
+- **Page Surface** (`oklch(96.5% 0.007 80)`): Slightly darker warm tint for code backgrounds and surface elements.
 - **Ink** (`oklch(5% 0.004 264)`): Primary text. Near-black with residual blue cast. Ink.
 - **Ink Secondary** (`oklch(48% 0.002 264)`): Secondary text, captions, metadata. Author lines, venue abbreviations, dates, filter button labels, topic tag default state. Near achromatic at this lightness.
 - **Divider** (`oklch(91% 0.003 264)`): Publication list dividers, section borders, flat-list separators.
@@ -154,7 +160,7 @@ One accent, tinted neutrals, two modes. Palette minimal by design — hiring com
 
 **The Reference Rule.** Reference Blue on interactive elements only. No colored section headings, no accent borders, no decorative usage. Eye lands on blue = link or citation. Diluting this signal anywhere dilutes it everywhere.
 
-**The Tinted Neutral Rule.** No raw `oklch(0% 0 0)` or `oklch(100% 0 0)`. Every neutral is tinted toward hue 264 with chroma ≥ 0.002. The tint creates visual coherence across the palette; untinted black and white would float free.
+**The Tinted Neutral Rule.** No raw `oklch(0% 0 0)` or `oklch(100% 0 0)`. Light mode background uses warm paper tint (hue 80, chroma ≥ 0.005). All ink and UI neutrals tilt toward hue 264. The split — warm ground, cool text — mirrors printed paper under fluorescent light. Dark mode stays all-264.
 
 ## 3. Typography: Recursive + Newsreader
 
@@ -168,7 +174,7 @@ One accent, tinted neutrals, two modes. Palette minimal by design — hiring com
 ### Hierarchy
 
 - **Display** (Recursive, weight 300, MONO=0.5, `clamp(2.25rem, 5.5vw, 3.5rem)`, line-height 1.05, letter-spacing -0.025em): Page-level name only. About page `h1`. Half-mono axis creates visual spacing rhythm without starkness of full mono.
-- **Section Stamp** (Recursive, weight 300, MONO=0.5, `0.875rem`, uppercase, letter-spacing 0.12em, `ink-secondary` color): About page section labels (`selected publications`, `awards`, `community service`). Not traditional headings — metadata stamps. Small, authoritative, subordinate to content. Border-bottom 1px divider line.
+- **Section Stamp** (Recursive, weight 300, MONO=0.75, `0.8125rem`, uppercase, letter-spacing 0.14em, `ink-secondary` color): About page section labels. MONO=0.75 pushes toward typewriter register without going full monospace. Border-bottom 1px divider line.
 - **Title** (Recursive, weight 300, MONO=0.5, `0.9375rem`, line-height 1.4, letter-spacing -0.005em): Publication titles, project names. Workhorse heading level.
 - **Body** (Newsreader, weight 300, `1rem`, line-height 1.7, `font-optical-sizing: auto`): All prose — bio, abstract excerpts, post content. Max ~70ch line length; 800px container enforces at desktop.
 - **Sidebar Mono** (Recursive, weight 300, MONO=1, `0.8125rem`, letter-spacing 0.02em): Contact info, office location in profile sidebar. Full monospace axis for technical metadata.
@@ -207,7 +213,7 @@ Body text in Newsreader. Link color: Reference Blue at rest. Hover: underline ad
 
 ### Publication Entries
 
-Primary content unit. Not a card — no border, no background fill, no shadow. Structured column: title in Recursive (title scale, weight 300, letter-spacing -0.005em), authors in Newsreader weight 300, coauthor links with Reference Blue underline, venue/year in Ink Secondary (Recursive 0.75rem). Internal padding: 14px top/bottom, 0 horizontal. Separated by 1px `var(--global-divider-color)` top divider. Title link: default color matches body text, `::after` pseudo underline (Reference Blue, opacity 0.25 at rest → 1.0 on hover), full color shift on hover. All transitions guarded by `@media (prefers-reduced-motion: no-preference)`.
+Primary content unit. Not a card — no border, no background fill, no shadow. Structured column: title in Recursive (title scale, weight 300, letter-spacing -0.005em), authors in Newsreader weight 300, coauthor links with Reference Blue underline, venue/year in Ink Secondary (Recursive 0.75rem). Internal padding: 8px top/bottom, 0 horizontal. Separated by 1px `var(--global-divider-color)` top divider. Title link: default color matches body text, `::after` pseudo underline (Reference Blue, opacity 0.25 at rest → 1.0 on hover), full color shift on hover. All transitions guarded by `@media (prefers-reduced-motion: no-preference)`.
 
 **The Anti-Card Rule.** Publication lists, project lists, news items are not cards. Structured text. No border-radius, no background tint, no box-shadow on list entries. 1px top divider only. Card UI on publication entries is the most visible sign of a generic template — prohibited.
 
@@ -221,7 +227,7 @@ Inline chip used in publication entries and about page bio. `padding: 1px 7px`, 
 
 ### Publication Link Buttons
 
-`pdf`, `abstract`, `bibtex`, `slides`, etc. Zero visual weight: `padding: 0`, no border, no background. Recursive `0.8125rem` weight 300. Default: Ink color. Hover: Reference Blue. Transition `color 120ms`. Focus-visible outline.
+`[pdf]`, `[abstract]`, `[bibtex]`, `[slides]`, etc. Bracket notation — 90s paper convention. Zero visual weight: `padding: 0`, no border, no background. Recursive `0.8125rem` weight 300, MONO=1. Default: Ink Secondary. Hover: Reference Blue. Transition `color 120ms`. Focus-visible outline. Render label text with brackets in markup, not CSS content.
 
 ### Venue Abbreviation Badge
 
@@ -229,7 +235,7 @@ Conference abbreviation (e.g. `CCS`, `USENIX`). Reference Blue fill, `ink-on-dar
 
 ### Section Stamps (About Page `h2`)
 
-`.post article > h2` elements are styled as section stamps, not traditional headings: Recursive `0.875rem`, weight 300, letter-spacing `0.12em`, uppercase, `var(--global-text-color-light)` color, `border-bottom: 1px solid var(--global-divider-color)`. Labels sections without competing with content beneath. Links inside stamps inherit color — no accent on section labels.
+`.post article > h2` elements are styled as section stamps, not traditional headings: Recursive `0.8125rem`, weight 300, MONO=0.75, letter-spacing `0.14em`, uppercase, `var(--global-text-color-light)` color, `border-bottom: 1px solid var(--global-divider-color)`. Labels sections without competing with content beneath. Links inside stamps inherit color — no accent on section labels.
 
 ### Flat List Items (Awards / Community Service)
 
@@ -238,6 +244,22 @@ Conference abbreviation (e.g. `CCS`, `USENIX`). Reference Blue fill, `ink-on-dar
 ### News Items
 
 Same 2-column grid pattern as flat list. Date column is `72px`. Date in Recursive tabular numerals, Ink Secondary. News text in Newsreader with `font-optical-sizing: auto`.
+
+### About Page — Paper Header Block
+
+About page top reads like a paper author block, not a hero section. Structure (flush left, no centering):
+
+1. **Name** — Display scale (Recursive, weight 300, MONO=0.5, `clamp(2rem, 5vw, 3rem)`)
+2. **Affiliation line** — Recursive `0.875rem`, MONO=0.5, uppercase, letter-spacing 0.08em, Ink Secondary
+3. **Provenance line** — Recursive `0.75rem`, MONO=1, Ink Secondary: `Vancouver, BC · email@domain · 2024`. Full monospace register — same as sidebar metadata.
+4. **Bio** — Newsreader body, max 62ch, follows provenance with 16px gap
+5. **Contact links** — Recursive MONO=1, `0.8125rem`, Ink Secondary at rest, Reference Blue on hover
+
+Photo: present but subordinated (96px, top-right, border 1px divider). Layout: CSS grid `1fr 96px`. Photo never the focus — this is a text document.
+
+### Footer — Document Colophon
+
+Minimal footer. Border-top 1px divider. Two-column: left = `Name · Institution · Location` in Recursive MONO=1, `0.75rem`, Ink Secondary. Right = `last updated Month Year`. Same provenance line logic as header — site signs itself like a tech report.
 
 ### Blockquotes
 
@@ -258,7 +280,7 @@ Light mode: near-white `var(--global-code-bg-color)`, ink text. Dark mode: near-
 - **Do** keep max-width at 800px. Body line length stays 65–75ch.
 - **Do** use Recursive MONO=1 for all sidebar metadata: location, email, contact info. Consistent full-monospace register for technical metadata.
 - **Do** support dark mode as first-class design variant. Both modes use CSS custom property tokens; test both.
-- **Do** tint all neutrals toward hue 264 — even the background (`oklch(100% 0.003 264)`), even the text (`oklch(5% 0.004 264)`).
+- **Do** use warm paper stock tint for light mode background (`oklch(98.5% 0.006 80)`, hue 80). Ink and UI neutrals stay at hue 264. The split — warm ground, cool text — is intentional.
 - **Do** use `color-mix(in oklch, ...)` for tinted state backgrounds (ToC active, blockquote fill). Stays on-hue under theme switch.
 - **Do** guard all non-essential transitions with `@media (prefers-reduced-motion: no-preference)`.
 
@@ -274,4 +296,5 @@ Light mode: near-white `var(--global-code-bg-color)`, ink text. Dark mode: near-
 - **Don't** use Recursive at weight 400+ in headings. Visual emphasis needed: use size scale.
 - **Don't** design for the LinkedIn register: no achievement-bullet formatting, no "impact metrics" typography (big number + small label), no corporate blue/navy palette swaps.
 - **Don't** use IBM Plex Sans. Personal negative association — prohibited regardless of fit.
-- **Don't** use raw `oklch(0% 0 0)` or `oklch(100% 0 0)` for text or background. Always tint toward hue 264.
+- **Don't** use raw `oklch(0% 0 0)` or `oklch(100% 0 0)` for text or background. Light bg: tint hue 80. Ink: tint hue 264.
+- **Don't** render publication link labels as plain text. Use bracket notation: `[pdf]`, `[slides]`. Brackets in markup, not CSS content pseudo-element.

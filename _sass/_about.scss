@@ -38,9 +38,9 @@
     display: grid;
     grid-template-columns: 44px 1fr;
     gap: 20px;
-    padding: 12px 0;
+    padding: 8px 0;
     border-top: 1px solid var(--global-divider-color);
-    font-size: 1rem;
+    font-size: 0.9375rem;
     line-height: 1.6;
 
     &:first-child {
@@ -75,9 +75,9 @@
     display: grid;
     grid-template-columns: 72px 1fr;
     gap: 20px;
-    padding: 12px 0;
+    padding: 8px 0;
     border-top: 1px solid var(--global-divider-color);
-    font-size: 1rem;
+    font-size: 0.9375rem;
 
     &:first-child {
       border-top: none;
@@ -127,9 +127,12 @@
 
 .subtitle {
   font-family: "Recursive", system-ui, sans-serif;
+  font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
   font-weight: 300;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--global-text-color-light);
   margin-bottom: 24px;
 }
@@ -170,7 +173,7 @@
 
 .about-header-text {
   .about-name {
-    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1.05;
     letter-spacing: -0.025em;
     margin-bottom: 10px;
@@ -179,7 +182,7 @@
   .about-bio {
     font-size: 1rem;
     line-height: 1.75;
-    max-width: 100%;
+    max-width: 62ch;
 
     p + p {
       margin-top: 1em;
@@ -294,16 +297,17 @@
 .post article > h2,
 .post article > .container > .row h2 {
   font-family: "Recursive", system-ui, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 300;
-  letter-spacing: 0.12em;
+  font-variation-settings: "MONO" 0.75, "CASL" 0, "slnt" 0;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--global-text-color-light);
   border-bottom: 1px solid var(--global-divider-color);
   border-top: none;
-  padding-bottom: 10px;
+  padding-bottom: 6px;
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 
   a {
     color: inherit;

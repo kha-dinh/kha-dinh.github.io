@@ -152,7 +152,7 @@
     margin-top: 0;
 
     li {
-      padding: 14px 0;
+      padding: 8px 0;
       margin-bottom: 0;
       border-top: 1px solid var(--global-divider-color);
 
@@ -203,14 +203,14 @@
           display: inline-flex;
           align-items: center;
           background-color: var(--global-theme-color);
-          padding: 2px 10px;
+          padding: 1px 6px;
           border-radius: 0;
 
           a {
             font-family: "Recursive", monospace;
             font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
             font-weight: 300;
-            font-size: 0.7rem;
+            font-size: 0.6875rem;
             letter-spacing: 0.04em;
             color: var(--global-hover-text-color);
 
@@ -374,18 +374,18 @@
       .links {
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 10px;
 
         a.btn {
           font-family: "Recursive", system-ui, sans-serif;
           font-variation-settings:
-            "MONO" 0.5,
+            "MONO" 1,
             "CASL" 0,
             "slnt" 0;
           font-weight: 300;
           font-size: 0.8125rem;
-          color: var(--global-text-color);
-          letter-spacing: 0.01em;
+          color: var(--global-text-color-light);
+          letter-spacing: 0.02em;
           transition: color 120ms;
           background: none;
           border: none;

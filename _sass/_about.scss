@@ -53,15 +53,72 @@
 
   .flat-year {
     font-family: "Recursive", sans-serif;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
     color: var(--global-text-color-light);
     padding-top: 3px;
   }
 
   .flat-text {
     color: var(--global-text-color);
+  }
+}
+
+// Contact list
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 48px;
+
+  .contact-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 20px;
+    padding: 8px 0;
+    border-top: 1px solid var(--global-divider-color);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      border-bottom: 1px solid var(--global-divider-color);
+    }
+  }
+
+  .contact-key {
+    font-family: "Recursive", sans-serif;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--global-text-color-light);
+    padding-top: 3px;
+  }
+
+  .contact-val {
+    font-family: "Newsreader", serif;
+    font-optical-sizing: auto;
+    color: var(--global-text-color);
+
+    a {
+      color: var(--global-text-color);
+      text-decoration: none;
+      transition: color 120ms;
+      &:hover {
+        color: var(--global-theme-color);
+      }
+    }
   }
 }
 
@@ -89,9 +146,14 @@
 
   .news-date {
     font-family: "Recursive", sans-serif;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
     color: var(--global-text-color-light);
     padding-top: 3px;
     white-space: nowrap;
@@ -127,7 +189,10 @@
 
 .subtitle {
   font-family: "Recursive", system-ui, sans-serif;
-  font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+  font-variation-settings:
+    "MONO" 1,
+    "CASL" 0,
+    "slnt" 0;
   font-weight: 300;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -150,12 +215,15 @@
   @media (max-width: 576px) {
     margin-bottom: 64px;
 
+    .about-social-links {
+      align-items: center;
+    }
     .about-sidebar {
       float: none;
-      width: auto;
+      width: 50%;
+      justify-self: center;
       margin: 0 0 32px 0;
       flex-direction: column;
-      align-items: center;
       gap: 8px;
     }
 
@@ -193,14 +261,15 @@
 .about-sidebar {
   float: right;
   width: 200px;
-  margin-left: 18px;
+  margin-left: 32px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   padding-top: 8px;
 
-  .more-info { 
+  .more-info {
     font-family: "Recursive", system-ui, monospace;
     font-variation-settings:
       "MONO" 1,
@@ -229,22 +298,33 @@
     letter-spacing: 0.01em;
     line-height: 1.65;
     color: var(--global-text-color-light);
-    white-space: pre-line;
-    text-align: center;
+    text-align: justify;
+    text-align-last: right;
   }
 }
 
 .about-social-links {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0 6px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  width: 100%;
+
+  .social-primary-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  > a {
+    align-self: flex-end;
+  }
 
   a {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
-    padding: 5px 2px;
+    gap: 6px;
+    padding: 2px 2px;
     min-height: 20px;
     font-family: "Recursive", system-ui, sans-serif;
     font-weight: 300;
@@ -256,6 +336,24 @@
     &:hover {
       color: var(--global-theme-color);
       text-decoration: none;
+    }
+
+    &[href$=".pdf"] {
+      font-variation-settings:
+        "MONO" 1,
+        "CASL" 0,
+        "slnt" 0;
+      border: 1px solid var(--global-divider-color);
+      padding: 1px 6px;
+      color: var(--global-text-color);
+      transition:
+        color 120ms,
+        border-color 120ms;
+
+      &:hover {
+        color: var(--global-theme-color);
+        border-color: var(--global-theme-color);
+      }
     }
 
     &:focus-visible {
@@ -299,8 +397,11 @@
   font-family: "Recursive", system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
-  font-variation-settings: "MONO" 0.75, "CASL" 0, "slnt" 0;
-  letter-spacing: 0.14em;
+  font-variation-settings:
+    "MONO" 1,
+    "CASL" 0,
+    "slnt" 0;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--global-text-color-light);
   border-bottom: 1px solid var(--global-divider-color);

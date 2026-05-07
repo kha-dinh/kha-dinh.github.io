@@ -6,7 +6,6 @@
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
-  opacity: 0.95;
 }
 
 .navbar .dropdown-menu {
@@ -44,9 +43,10 @@
 
   .navbar-brand {
     font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
     font-weight: 300;
-    font-size: 1rem;
-    letter-spacing: -0.01em;
+    font-size: 0.8125rem;
+    letter-spacing: 0.01em;
     color: var(--global-text-color);
     &:hover {
       color: var(--global-text-color);
@@ -55,12 +55,14 @@
 
   .navbar-nav .nav-item .nav-link {
     font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
     font-weight: 300;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-size: 0.875rem;
-    letter-spacing: 0.005em;
-    color: var(--global-text-color);
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
+    color: var(--global-text-color-light);
 
     &:hover {
       color: var(--global-hover-color);
@@ -136,13 +138,27 @@
   }
 }
 
+.toggle-container {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
 #light-toggle {
-  padding: 0;
-  border: 0;
-  background-color: inherit;
-  color: var(--global-text-color);
+  padding: 2px 8px;
+  border: 1px solid var(--global-divider-color);
+  background: none;
+  color: var(--global-text-color-light);
+  font-family: "Recursive", monospace;
+  font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 120ms, border-color 120ms;
 
   &:hover {
-    color: var(--global-hover-color);
+    color: var(--global-theme-color);
+    border-color: var(--global-theme-color);
   }
 }

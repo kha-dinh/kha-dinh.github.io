@@ -29,15 +29,15 @@ typography:
     fontFamily: "Recursive, system-ui, sans-serif"
     fontSize: "0.8125rem"
     fontWeight: 300
-    letterSpacing: "0.14em"
-    fontVariation: '"MONO" 0.75, "CASL" 0, "slnt" 0'
+    letterSpacing: "0.20em"
+    fontVariation: '"MONO" 1, "CASL" 0, "slnt" 0'
   title:
     fontFamily: "Recursive, system-ui, sans-serif"
     fontSize: "0.9375rem"
     fontWeight: 300
     lineHeight: 1.4
-    letterSpacing: "-0.005em"
-    fontVariation: '"MONO" 0.5, "CASL" 0, "slnt" 0'
+    letterSpacing: "0.01em"
+    fontVariation: '"MONO" 1, "CASL" 0, "slnt" 0'
   body:
     fontFamily: "Newsreader, Georgia, serif"
     fontSize: "1rem"
@@ -113,7 +113,7 @@ components:
 
 **Creative North Star: "The Systems Paper — Retro-Modern"**
 
-System built like well-authored academic paper from the 90s USENIX/SIGOPS era, rendered with modern precision. Typography does heavy lifting, structure immediately legible, nothing competes with argument. Recursive carries headings — weight 300, MONO=0.5, CASL=0, no decorative flourish. Section stamps push to MONO=0.75 for typewriter authority. Newsreader handles body: optical-size serif reads like printed editorial at every size. Two fonts constitute the entire visual identity.
+System built like well-authored academic paper from the 90s USENIX/SIGOPS era, rendered with modern precision. Typography does heavy lifting, structure immediately legible, nothing competes with argument. Recursive carries headings and all structural scaffolding — weight 300, MONO=1 on structural/metadata elements (section stamps, titles, nav, filter buttons, venue lines, date columns), MONO=0.5 on display name only. Section stamps push to MONO=1, letter-spacing 0.20em for full typewriter authority. Publication titles at MONO=1, letter-spacing 0.01em. Newsreader handles body: optical-size serif reads like printed editorial at every size, justified (no hyphens) to match academic proceedings typesetting. Two fonts constitute the entire visual identity.
 
 Light mode background is warm paper stock (`oklch(98.5% 0.006 80)`) — not blue-cast white. Feels like a printed CMU tech report, not a browser default. Ink and UI elements stay blue-cast (hue 264) for coherence with dark mode. Dark mode is the opposite: deep blue-void, monitor at night.
 
@@ -125,13 +125,15 @@ System explicitly rejects: generic al-folio defaults (white pages, teal accents,
 
 **Key Characteristics:**
 - Typography-led: Recursive / Newsreader pairing is the signature, not the accent color
-- Section stamps at MONO=0.75 — typewriter pull for document structure markers
+- Structural scaffolding (stamps, titles, nav, filters, metadata) at MONO=1 — full typewriter register
+- Display name (h1) stays MONO=0.5 — contrast point against the typewritten structure
+- Body prose justified (no hyphens) — matches academic proceedings typesetting convention
 - Light mode background warm paper tint (hue 80); ink blue-cast (hue 264); dark mode blue-void
 - Flat surfaces: no shadow vocabulary, no depth theater
 - Accent restraint: Reference Blue at ≤10% surface coverage
 - 800px max-width: column width chosen for reading, not filling a screen
 - Dual-theme first: both light and dark modes designed intentionally, not toggled as afterthought
-- Axis-locked: Recursive always set with `font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0` (stamps: MONO=0.75)
+- Global lock: `font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0` on `*`; structural elements explicitly override to MONO=1
 
 ## 2. Colors: The Reference Palette
 
@@ -164,22 +166,24 @@ One accent, tinted neutrals, two modes. Palette minimal by design — hiring com
 
 ## 3. Typography: Recursive + Newsreader
 
-**Display/Heading Font:** Recursive (with system-ui, sans-serif fallback) — variable font, MONO=0.5, CASL=0, slnt=0
-**Body Font:** Newsreader (with Georgia, serif fallback)
-**Sidebar Mono Font:** Recursive MONO=1, CASL=0 (contact info, location — full monospace register)
-**Label Font:** Recursive MONO=1 (email contact only; matches sidebar metadata register)
+**Display Font:** Recursive MONO=0.5, CASL=0 — display name only (h1). Half-mono contrast point.
+**Structural/Heading Font:** Recursive MONO=1, CASL=0 — section stamps, publication titles, nav, filter buttons, metadata labels, date columns, venue lines. Full typewriter register.
+**Body Font:** Newsreader (with Georgia, serif fallback) — justified, no hyphens.
+**Sidebar Mono Font:** Recursive MONO=1, CASL=0 (contact info, location).
+**Label Font:** Recursive MONO=1 (email contact; matches sidebar metadata register).
 
-**Character:** Recursive at MONO=0.5 sits halfway between geometric sans and monospace — letterforms carry faint terminal-manual quality without being literally code. Weight 300, CASL=0 (linear, not casual): reads as precise instrument. Newsreader weight 300 reads like a well-printed journal article at every optical size. Pairing unusual: half-mono structural font framing humanist serif body. Signals author works at the interface of systems and language.
+**Character:** Recursive at MONO=1 reads as full typewriter — letterforms carry terminal-manual authority, precise and mechanical. Used on all structural scaffolding. Display name stays MONO=0.5 as the one point of contrast: slightly softer, distinguishes identity from document structure. Newsreader weight 300 reads like a well-printed journal article. Justified body without hyphens matches USENIX/SIGOPS proceedings typesetting — the deliberate gap in word spacing at short lines is a feature, not a flaw.
 
 ### Hierarchy
 
-- **Display** (Recursive, weight 300, MONO=0.5, `clamp(2.25rem, 5.5vw, 3.5rem)`, line-height 1.05, letter-spacing -0.025em): Page-level name only. About page `h1`. Half-mono axis creates visual spacing rhythm without starkness of full mono.
-- **Section Stamp** (Recursive, weight 300, MONO=0.75, `0.8125rem`, uppercase, letter-spacing 0.14em, `ink-secondary` color): About page section labels. MONO=0.75 pushes toward typewriter register without going full monospace. Border-bottom 1px divider line.
-- **Title** (Recursive, weight 300, MONO=0.5, `0.9375rem`, line-height 1.4, letter-spacing -0.005em): Publication titles, project names. Workhorse heading level.
-- **Body** (Newsreader, weight 300, `1rem`, line-height 1.7, `font-optical-sizing: auto`): All prose — bio, abstract excerpts, post content. Max ~70ch line length; 800px container enforces at desktop.
-- **Sidebar Mono** (Recursive, weight 300, MONO=1, `0.8125rem`, letter-spacing 0.02em): Contact info, office location in profile sidebar. Full monospace axis for technical metadata.
-- **Venue / Meta** (Recursive, weight 300, `0.75rem`): Publication venue abbreviation, year, periodical lines, filter button labels.
-- **Label** (Recursive, weight 300, MONO=1, `0.8125rem`, letter-spacing 0.02em): Email in profile detail. Full monospace register — same axis as sidebar location, consistent metadata treatment.
+- **Display** (Recursive, weight 300, MONO=0.5, `clamp(2.25rem, 5.5vw, 3.5rem)`, line-height 1.05, letter-spacing -0.025em): Page-level name only. About page `h1`. The one element held at MONO=0.5 — softer, contrasts against the typewritten structure surrounding it.
+- **Section Stamp** (Recursive, weight 300, MONO=1, `0.8125rem`, uppercase, letter-spacing 0.20em, `ink-secondary` color): About page section labels. Full typewriter register. Border-bottom 1px divider line.
+- **Title** (Recursive, weight 300, MONO=1, `0.9375rem`, line-height 1.4, letter-spacing 0.01em): Publication titles, project names. Typewriter register — mechanical authority on content headings.
+- **Body** (Newsreader, weight 300, `1rem`, line-height 1.7, `font-optical-sizing: auto`, `text-align: justify`): All prose — bio, abstract excerpts, post content. Justified, no hyphens. Matches academic proceedings typesetting.
+- **Sidebar Mono** (Recursive, weight 300, MONO=1, `0.8125rem`, letter-spacing 0.02em): Contact info, office location in profile sidebar.
+- **Venue / Meta** (Recursive, weight 300, MONO=1, `0.75rem`, letter-spacing 0.04em): Publication venue/year periodical lines, date columns (flat-year, news-date). Tabular numerals.
+- **Filter / Tag** (Recursive, weight 300, MONO=1, `0.75rem`, letter-spacing 0.05–0.06em): Filter bar buttons and topic tags.
+- **Label** (Recursive, weight 300, MONO=1, `0.8125rem`, letter-spacing 0.04em): `[pdf]`, `[slides]` link buttons and email contact.
 
 ### Named Rules
 
@@ -187,9 +191,11 @@ One accent, tinted neutrals, two modes. Palette minimal by design — hiring com
 
 **The Optical Size Rule.** Newsreader is an optical-size font (opsz axis 6–72). Always load with `font-optical-sizing: auto`. Without it, body text looks too heavy and captions look wrong.
 
-**The Axis Lock Rule.** Recursive must always set `font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0`. Exception: sidebar mono context uses MONO=1. At MONO=0 (browser default), Recursive is indistinguishable from generic geometric sans — loses all character.
+**The Axis Lock Rule.** Global lock on `*` sets MONO=0.5 as baseline. All structural elements (stamps, titles, nav, filters, tags, venue lines, date columns, link buttons) explicitly override to MONO=1. Display name (`h1`) is the only element intentionally left at MONO=0.5. At MONO=0 (browser default), Recursive is indistinguishable from generic geometric sans — the global lock prevents this.
 
-**The Global Lock.** `_typography.scss` sets `font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0` on `*` globally. Newsreader silently ignores unknown axes. Never remove this global rule — it prevents Recursive from reverting to MONO=0 on any unspecified element.
+**The Global Lock.** `_typography.scss` sets `font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0` on `*` globally. Newsreader silently ignores unknown axes. Never remove this global rule.
+
+**The Justification Rule.** Body prose (`p`) uses `text-align: justify` without `hyphens: auto`. Matches typesetting convention of academic proceedings (USENIX, SIGOPS). Word-spacing gaps at short lines are acceptable — do not add hyphens to suppress them.
 
 ## 4. Elevation
 
@@ -205,7 +211,7 @@ Dark mode surface layers (code blocks, footer) use tonal step — `oklch(21% 0.0
 
 ### Navigation
 
-Thin, sticky top bar. Links in Recursive weight 300 (title scale). Default: `ink` / `ink-on-dark`. Active/current: Reference Blue. Hover: Reference Blue. No background fill change on hover — color shift is the signal. Focus: `outline: 2px solid var(--global-theme-color); outline-offset: 2px`. Bootstrap 4 collapse for mobile.
+Thin, sticky top bar. Links in Recursive weight 300, MONO=0.75, letter-spacing 0.06em — partial typewriter, lighter than stamps. Brand name MONO=0.75, letter-spacing 0.02em. Default: `ink` / `ink-on-dark`. Active/current: Reference Blue. Hover: Reference Blue. No background fill change on hover — color shift is the signal. Focus: `outline: 2px solid var(--global-theme-color); outline-offset: 2px`. Bootstrap 4 collapse for mobile.
 
 ### Links
 
@@ -213,7 +219,7 @@ Body text in Newsreader. Link color: Reference Blue at rest. Hover: underline ad
 
 ### Publication Entries
 
-Primary content unit. Not a card — no border, no background fill, no shadow. Structured column: title in Recursive (title scale, weight 300, letter-spacing -0.005em), authors in Newsreader weight 300, coauthor links with Reference Blue underline, venue/year in Ink Secondary (Recursive 0.75rem). Internal padding: 8px top/bottom, 0 horizontal. Separated by 1px `var(--global-divider-color)` top divider. Title link: default color matches body text, `::after` pseudo underline (Reference Blue, opacity 0.25 at rest → 1.0 on hover), full color shift on hover. All transitions guarded by `@media (prefers-reduced-motion: no-preference)`.
+Primary content unit. Not a card — no border, no background fill, no shadow. Structured column: title in Recursive (title scale, weight 300, MONO=1, letter-spacing 0.01em), authors in Newsreader weight 300, coauthor links with Reference Blue underline, venue/year in Ink Secondary (Recursive MONO=1, 0.75rem, letter-spacing 0.04em). Internal padding: 8px top/bottom, 0 horizontal. Separated by 1px `var(--global-divider-color)` top divider. Title link: default color matches body text, `::after` pseudo underline (Reference Blue, opacity 0.25 at rest → 1.0 on hover), full color shift on hover. All transitions guarded by `@media (prefers-reduced-motion: no-preference)`.
 
 **The Anti-Card Rule.** Publication lists, project lists, news items are not cards. Structured text. No border-radius, no background tint, no box-shadow on list entries. 1px top divider only. Card UI on publication entries is the most visible sign of a generic template — prohibited.
 

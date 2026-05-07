@@ -91,11 +91,11 @@
               {% endfor -%}
               {%- if site.enable_darkmode %}
 
-              <!-- Toogle theme mode -->
+              <!-- Toggle theme mode -->
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme" aria-label="Toggle color theme">
-                  <i class="fa-solid fa-moon"></i>
-                  <i class="fa-solid fa-sun"></i>
+                  <span class="toggle-dark-label">[ dark ]</span>
+                  <span class="toggle-light-label">[ light ]</span>
                 </button>
               </li>
               {%- endif %}

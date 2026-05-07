@@ -31,8 +31,8 @@
   --global-danger-block-text:   oklch(28% 0.14 27);
   --global-danger-block-title:  oklch(48% 0.22 27);
 
-  .fa-sun  { display: none; }
-  .fa-moon { padding-left: 10px; padding-top: 12px; display: block; }
+  .toggle-dark-label  { display: inline; }
+  .toggle-light-label { display: none; }
 
   .repo-img-light { display: block; }
   .repo-img-dark  { display: none; }
@@ -67,8 +67,8 @@ html[data-theme="dark"] {
   --global-danger-block-text:   oklch(82% 0.10 20);
   --global-danger-block-title:  oklch(68% 0.20 20);
 
-  .fa-sun  { padding-left: 10px; padding-top: 12px; display: block; }
-  .fa-moon { display: none; }
+  .toggle-dark-label  { display: none; }
+  .toggle-light-label { display: inline; }
 
   .repo-img-light { display: none; }
   .repo-img-dark  { display: block; }

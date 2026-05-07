@@ -11,8 +11,7 @@ profile:
   align: right
   image: profile-crop.gif
   image_circular: true # crops the image to make it circular
-  more_info: <a href="mailto:duykha.dinh@ubc.ca">duykha.dinh@ubc.ca</a>
-  location: "Department of Computer Science, UBC\nOffice X469 (4th Floor), 2366 Main Mall\nVancouver, BC Canada V6T 1Z4"
+  location: "Department of Computer Science, UBC, Office X469 (4th Floor)<br>2366 Main Mall, Vancouver, BC Canada V6T 1Z4"
 
 news: true # includes a list of news items
 latest_posts: false # includes a list of the newest posts

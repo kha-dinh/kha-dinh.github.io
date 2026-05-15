@@ -443,3 +443,376 @@ nav[data-toggle="toc"] {
     display: none;
   }
 }
+
+// Deadlines page
+
+.deadlines-page {
+
+  .deadlines-disclaimer {
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .deadlines-filter-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 2rem;
+  }
+
+  // Filter bar — matches pub-filter-bar .filter-btn pattern
+  .deadlines-filter-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+
+    .deadlines-filter-label {
+    }
+
+  }
+
+  .deadlines-filter-label {
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    min-width: 32px;
+  }
+
+  .deadlines-filter {
+    appearance: none;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    background: none;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0;
+    padding: 3px 10px;
+    cursor: pointer;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color 120ms, border-color 180ms;
+    }
+
+    &:hover {
+      color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+    }
+
+    &.active {
+      color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--global-theme-color);
+      outline-offset: 2px;
+      color: var(--global-theme-color);
+    }
+  }
+
+  // Timeline — full-bleed breakout from .container
+  .deadlines-timeline-wrap {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--global-divider-color);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .deadlines-timeline {
+    min-height: 60px;
+    cursor: crosshair;
+    user-select: none;
+
+  }
+
+  .timeline-brush-rect {
+    fill: oklch(46% 0.27 264 / 0.12);
+    stroke: oklch(46% 0.27 264);
+    stroke-width: 1;
+    stroke-dasharray: 3 2;
+  }
+  html[data-theme="dark"] .timeline-brush-rect {
+    fill: oklch(61% 0.22 264 / 0.15);
+    stroke: oklch(61% 0.22 264);
+  }
+
+  .timeline-zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.5rem;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    color: var(--global-text-color-light);
+
+    button {
+      background: none;
+      border: 1px solid var(--global-divider-color);
+      color: var(--global-text-color);
+      padding: 2px 8px;
+      font: inherit;
+      cursor: pointer;
+      border-radius: 2px;
+
+      &:hover {
+        border-color: var(--global-theme-color);
+        color: var(--global-theme-color);
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+        &:hover { border-color: var(--global-divider-color); color: var(--global-text-color); }
+      }
+    }
+  }
+
+  .timeline-tooltip {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 120ms;
+    white-space: nowrap;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color);
+    background: var(--global-bg-color);
+    border: 1px solid var(--global-divider-color);
+    padding: 6px 10px;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  // Legend
+  .deadlines-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--global-text-color-light);
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+
+      &.passed {
+        background: var(--global-text-color-light);
+        opacity: 0.5;
+      }
+
+      &.upcoming {
+        background: var(--global-theme-color);
+      }
+
+      &.ongoing {
+        background: var(--global-theme-color);
+        opacity: 0.5;
+      }
+    }
+  }
+
+  // Section headings — matches section stamp pattern
+  .deadlines-section-heading {
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.8125rem;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    border-bottom: 1px solid var(--global-divider-color);
+    padding-bottom: 6px;
+    margin: 2rem 0 0;
+  }
+
+  // Conference entries
+  .deadline-entry {
+    padding: 12px 0;
+    border-top: 1px solid var(--global-divider-color);
+
+    &.all-passed {
+      opacity: 0.65;
+    }
+  }
+
+  .deadline-header {
+    margin-bottom: 0.5rem;
+  }
+
+  .deadline-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    h3 {
+      margin: 0;
+      font-family: "Recursive", system-ui, sans-serif;
+      font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+
+      a {
+        color: var(--global-text-color);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--global-theme-color);
+        }
+      }
+    }
+  }
+
+  .deadline-tags {
+    display: flex;
+    gap: 6px;
+  }
+
+  .deadline-tag {
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 1px 7px;
+    border-radius: 0;
+    color: var(--global-text-color-light);
+    background: var(--global-bg-surface-color);
+  }
+
+  .deadline-meta {
+    margin: 0.2rem 0 0;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--global-text-color-light);
+  }
+
+  // Deadline date row — all deadlines in a single horizontal line
+  .deadline-dates {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .deadline-date {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+
+    &.passed {
+      opacity: 0.5;
+
+      .all-passed & {
+        opacity: 1;
+      }
+    }
+
+    &.upcoming .deadline-value {
+      color: var(--global-theme-color);
+    }
+  }
+
+  .deadline-label {
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+  }
+
+  .deadline-value {
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color);
+    font-variant-numeric: tabular-nums;
+    min-width: 120px;
+  }
+
+  .deadline-progress-wrap {
+    margin-top: 6px;
+  }
+
+  .deadline-progress {
+    display: flex;
+    height: 3px;
+    background: transparent;
+    border-radius: 1.5px;
+  }
+
+  .deadline-progress-gray {
+    height: 100%;
+    background: var(--global-divider-color);
+  }
+
+  .deadline-progress-fill {
+    height: 100%;
+    background: var(--global-theme-color);
+    opacity: 0.6;
+  }
+
+  .deadline-countdown {
+    color: var(--global-theme-color);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .deadline-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Recursive", system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.625rem;
+    letter-spacing: 0.03em;
+    color: var(--global-text-color-light);
+    margin-top: 2px;
+  }
+}

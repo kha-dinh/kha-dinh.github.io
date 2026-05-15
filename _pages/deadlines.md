@@ -216,6 +216,8 @@ nav_order: 3
     filtered.forEach(function(c) {
       c.deadlines.forEach(function(d) { allDates.push(parseDate(d.date)); });
     });
+    // when focused on a single conf, include today so the "today" marker always shows
+    if (focusedConfId) allDates.push(new Date());
     var minDate = new Date(Math.min.apply(null, allDates));
     var maxDate = new Date(Math.max.apply(null, allDates));
     var pad = (maxDate - minDate) * 0.04;

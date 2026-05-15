@@ -690,18 +690,24 @@ nav[data-toggle="toc"] {
     cursor: pointer;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: background-color 120ms;
+      transition: background-color 120ms, opacity 180ms;
     }
 
     &.all-passed {
       opacity: 0.65;
     }
 
-    &.selected {
-      background: color-mix(in oklch, var(--global-theme-color) 6%, var(--global-bg-color));
 
-      .deadline-title-row h3 a {
+    &.selected {
+      background: color-mix(in oklch, var(--global-theme-color) 12%, var(--global-bg-color));
+      box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--global-theme-color) 40%, transparent);
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .deadline-title-row h3 {
         color: var(--global-theme-color);
+        font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+        font-weight: 400;
       }
     }
   }
@@ -724,13 +730,28 @@ nav[data-toggle="toc"] {
       font-size: 0.9375rem;
       line-height: 1.4;
       letter-spacing: 0.01em;
+      color: var(--global-text-color);
 
-      a {
-        color: var(--global-text-color);
+      &.deadline-title-toggle {
+        cursor: pointer;
+        &:hover {
+          color: var(--global-theme-color);
+        }
+      }
+
+      .deadline-conf-link {
+        font-size: 0.75rem;
+        color: var(--global-text-color-light);
         text-decoration: none;
+        margin-left: 0.35em;
+        opacity: 0.6;
+        transition: opacity 120ms, color 120ms;
+        vertical-align: super;
+        line-height: 0;
 
         &:hover {
           color: var(--global-theme-color);
+          opacity: 1;
         }
       }
     }

@@ -62,6 +62,8 @@ nav_order: 3
 </div>
 <div class="timeline-zoom-controls" id="timeline-zoom-controls">
   <button id="tl-zoom-reset" disabled>reset zoom</button>
+  <button id="tl-select-clear" disabled>clear selection</button>
+  <button id="tl-show-others" disabled>show others</button>
   <span id="tl-zoom-hint">drag to select range</span>
 </div>
 
@@ -161,6 +163,7 @@ nav_order: 3
 
   // --- Focus state ---
   var selectedConfIds = [];
+  var showOthers = true;
   var countdownEls = [];
 
   function isZoomed() {
@@ -169,8 +172,15 @@ nav_order: 3
 
   function updateZoomControls() {
     var btn = document.getElementById('tl-zoom-reset');
+    var clearBtn = document.getElementById('tl-select-clear');
+    var othersBtn = document.getElementById('tl-show-others');
     var hint = document.getElementById('tl-zoom-hint');
     if (btn) btn.disabled = !isZoomed();
+    if (clearBtn) clearBtn.disabled = selectedConfIds.length === 0;
+    if (othersBtn) {
+      othersBtn.disabled = selectedConfIds.length === 0;
+      othersBtn.textContent = showOthers ? 'hide others' : 'show others';
+    }
     if (hint) {
       if (selectedConfIds.length > 0) {
         var names = selectedConfIds.map(function(id) {
@@ -195,14 +205,34 @@ nav_order: 3
 
   document.getElementById('tl-zoom-reset').addEventListener('click', resetZoom);
 
+  document.getElementById('tl-select-clear').addEventListener('click', function() {
+    selectedConfIds = [];
+    showOthers = true;
+    writeFiltersToURL();
+    buildList();
+    buildTimeline();
+  });
+
+  document.getElementById('tl-show-others').addEventListener('click', function() {
+    showOthers = !showOthers;
+    buildTimeline();
+    updateZoomControls();
+  });
+
   function buildTimeline() {
     var container = document.getElementById('deadlines-timeline');
     if (!container) return;
 
-    var filtered = filterConfs();
+    var hasSelection = selectedConfIds.length > 0;
+    var filtered = (hasSelection && !showOthers)
+      ? CONFS.filter(function(c) { return selectedConfIds.indexOf(c.id) !== -1; })
+      : filterConfs();
 
-    // upcoming conferences first, then passed
+    // selected first, then upcoming, then passed
     filtered.sort(function(a, b) {
+      var aSel = hasSelection && selectedConfIds.indexOf(a.id) !== -1 ? 0 : 1;
+      var bSel = hasSelection && selectedConfIds.indexOf(b.id) !== -1 ? 0 : 1;
+      if (aSel !== bSel) return aSel - bSel;
       var aUp = a.deadlines.some(function(d) { return !d.passed; }) ? 0 : 1;
       var bUp = b.deadlines.some(function(d) { return !d.passed; }) ? 0 : 1;
       if (aUp !== bUp) return aUp - bUp;
@@ -337,6 +367,11 @@ nav_order: 3
     filtered.forEach(function(conf, i) {
       var y = TOP_PAD + i * LANE_H + LANE_H / 2;
       var allPassed = conf.deadlines.every(function(d) { return d.passed; });
+      var isSelected = selectedConfIds.indexOf(conf.id) !== -1;
+      var isOtherFocused = hasSelection && !isSelected;
+      var laneOpacity = isOtherFocused ? '0.25' : '1';
+
+      svg += '<g opacity="' + laneOpacity + '">';
 
       // connecting line
       if (conf.deadlines.length > 1) {
@@ -364,6 +399,8 @@ nav_order: 3
         svg += '<circle cx="' + cx + '" cy="' + y + '" r="8" fill="transparent" class="tl-dot" data-tip="' + tooltip.replace(/"/g, '&quot;') + '" style="cursor:default" />';
         svg += '<circle cx="' + cx + '" cy="' + y + '" r="' + r + '" fill="' + dotColor + '" pointer-events="none" />';
       });
+
+      svg += '</g>';
     });
     svg += '</g>';
 
@@ -378,7 +415,7 @@ nav_order: 3
       var labelColor = isSelected ? accentColor : (isOtherFocused ? passedDot : (allPassed ? passedDot : textColor));
       var labelOpacity = isOtherFocused ? '0.35' : '1';
       var labelSize = LEFT_PAD < 100 ? 10 : 11;
-      var fontWeight = isSelected ? 'bold' : 'normal';
+      var fontWeight = isSelected ? '500' : 'normal';
       svg += '<text x="' + (LEFT_PAD - 6) + '" y="' + (y + 3) + '" font-size="' + labelSize + '" font-weight="' + fontWeight + '" letter-spacing="0.02em" fill="' + labelColor + '" opacity="' + labelOpacity + '" text-anchor="end" pointer-events="none">' + labelName + '</text>';
       // transparent hit rect for conf info tooltip + focus click
       var tipParts = ['<strong>' + esc(conf.name) + '</strong>'];
@@ -541,7 +578,7 @@ nav_order: 3
     var html = '<div class="deadline-entry' + (hasUpcoming ? ' has-upcoming' : ' all-passed') + (isEntrySelected ? ' selected' : '') + '" data-conf-id="' + esc(conf.id) + '">';
     html += '<div class="deadline-header">';
     html += '<div class="deadline-title-row">';
-    html += '<h3><a href="' + esc(conf.link) + '">' + esc(conf.name) + '</a></h3>';
+    html += '<h3 class="deadline-title-toggle">' + esc(conf.name) + '<a href="' + esc(conf.link) + '" class="deadline-conf-link" title="Conference website" target="_blank" rel="noopener">&#8599;</a></h3>';
     html += '<div class="deadline-tags">';
     html += '<span class="deadline-tag area">' + esc(conf.area) + '</span>';
     html += '<span class="deadline-tag tier">' + esc(conf.tier) + '</span>';
@@ -674,21 +711,29 @@ nav_order: 3
       }
     });
 
+    // when selection active: sort selected to top within each section
+    var hasSelection = selectedConfIds.length > 0;
+    function sortSelected(arr) {
+      if (!hasSelection) return arr;
+      var sel = arr.filter(function(c) { return selectedConfIds.indexOf(c.id) !== -1; });
+      var rest = arr.filter(function(c) { return selectedConfIds.indexOf(c.id) === -1; });
+      return sel.concat(rest);
+    }
+
     var html = '';
     if (upcoming.length > 0) {
       html += '<h2 class="deadlines-section-heading">upcoming</h2>';
-      upcoming.forEach(function(conf) { html += renderEntry(conf); });
+      sortSelected(upcoming).forEach(function(conf) { html += renderEntry(conf); });
     }
     if (ongoing.length > 0) {
       html += '<h2 class="deadlines-section-heading ongoing">ongoing</h2>';
-      ongoing.forEach(function(conf) { html += renderEntry(conf); });
+      sortSelected(ongoing).forEach(function(conf) { html += renderEntry(conf); });
     }
     if (passed.length > 0) {
       html += '<h2 class="deadlines-section-heading passed">passed</h2>';
-      passed.forEach(function(conf) { html += renderEntry(conf); });
+      sortSelected(passed).forEach(function(conf) { html += renderEntry(conf); });
     }
     container.innerHTML = html;
-    countdownEls = Array.prototype.slice.call(document.querySelectorAll('.deadline-countdown'));
     container.querySelectorAll('.deadline-entry').forEach(function(entry) {
       entry.addEventListener('click', function(e) {
         if (e.target.closest('a')) return;

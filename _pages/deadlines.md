@@ -9,6 +9,7 @@ nav_order: 3
 <div class="deadlines-page">
 
 <p class="deadlines-disclaimer">Deadlines are scraped automatically via <a href="https://github.com/kha-dinh/deadline-crawler">deadline-crawler</a> and may be inaccurate. Always verify against the official CFP. Last crawled: {{ site.data.deadlines.generated_at | date: "%Y-%m-%d %H:%M UTC" }}.</p>
+<p class="deadlines-disclaimer">CORE rankings are my personal assessment and are totally not accurate. Verify at <a href="https://www.core.edu.au/conference-portal">core.edu.au</a>.</p>
 
 {% assign confs = site.data.deadlines.conferences %}
 
@@ -17,7 +18,7 @@ nav_order: 3
 {% assign tiers = "" %}
 {% for conf in confs %}
   {% for tag in conf.tags %}
-    {% if tag contains "TIER" %}
+    {% if tag == "A" or tag == "A*" or tag == "B" or tag == "C" %}
       {% assign tiers = tiers | append: tag | append: "," %}
     {% else %}
       {% assign areas = areas | append: tag | append: "," %}
@@ -37,12 +38,13 @@ nav_order: 3
       {% endif %}
     {% endfor %}
   </div>
-  <div class="deadlines-filter-bar" role="toolbar" aria-label="Filter by tier">
-    <span class="deadlines-filter-label">tier</span>
+  <div class="deadlines-filter-bar" role="toolbar" aria-label="Filter by CORE Ranking">
+    <span class="deadlines-filter-label">CORE Ranking</span>
     <button class="deadlines-filter active" data-group="tier" data-tag="all">All</button>
-    {% for tag in tiers %}
-      {% if tag != "" %}
-      <button class="deadlines-filter" data-group="tier" data-tag="{{ tag }}">{{ tag }}</button>
+    {% assign tier_order = "A*,A,B,C" | split: "," %}
+    {% for t in tier_order %}
+      {% if tiers contains t %}
+      <button class="deadlines-filter" data-group="tier" data-tag="{{ t }}">{{ t }}</button>
       {% endif %}
     {% endfor %}
   </div>
@@ -156,6 +158,9 @@ nav_order: 3
   var fullStart = null; // computed from data, cached
   var fullEnd = null;
 
+  // --- Focus state ---
+  var focusedConfId = null;
+
   function isZoomed() {
     return zoomStart !== null && zoomEnd !== null;
   }
@@ -164,9 +169,16 @@ nav_order: 3
     var btn = document.getElementById('tl-zoom-reset');
     var hint = document.getElementById('tl-zoom-hint');
     if (btn) btn.disabled = !isZoomed();
-    if (hint) hint.textContent = isZoomed()
-      ? 'drag to select · dblclick to reset'
-      : 'drag to select range';
+    if (hint) {
+      if (focusedConfId) {
+        var fc = CONFS.filter(function(c) { return c.id === focusedConfId; })[0];
+        hint.textContent = 'focused: ' + (fc ? fc.name : focusedConfId) + ' · click label again to clear';
+      } else if (isZoomed()) {
+        hint.textContent = 'drag to select · dblclick to reset';
+      } else {
+        hint.textContent = 'drag to select range · click label to focus';
+      }
+    }
   }
 
   function resetZoom() {
@@ -215,10 +227,10 @@ nav_order: 3
     var LANE_H = 24;
     var TOP_PAD = 70;
     var BOT_PAD = 6;
-    var LEFT_PAD = 130;
+    var containerW = container.clientWidth || 700;
+    var LEFT_PAD = containerW < 420 ? 72 : 130;
     var RIGHT_PAD = 16;
     var svgH = TOP_PAD + filtered.length * LANE_H + BOT_PAD;
-    var containerW = container.clientWidth || 700;
     var chartW = containerW - LEFT_PAD - RIGHT_PAD;
 
     // store layout for interaction handlers
@@ -349,9 +361,26 @@ nav_order: 3
     filtered.forEach(function(conf, i) {
       var y = TOP_PAD + i * LANE_H + LANE_H / 2;
       var allPassed = conf.deadlines.every(function(d) { return d.passed; });
-      var labelName = conf.name.length > 18 ? conf.name.substring(0, 17) + '\u2026' : conf.name;
-      var labelColor = allPassed ? passedDot : textColor;
-      svg += '<text x="' + (LEFT_PAD - 8) + '" y="' + (y + 3) + '" font-size="10" letter-spacing="0.02em" fill="' + labelColor + '" text-anchor="end">' + labelName + '</text>';
+      var isFocused = focusedConfId === conf.id;
+      var isOtherFocused = focusedConfId && !isFocused;
+      var maxLabelLen = LEFT_PAD < 100 ? 9 : 18;
+      var labelName = conf.name.length > maxLabelLen ? conf.name.substring(0, maxLabelLen - 1) + '\u2026' : conf.name;
+      var labelColor = isFocused ? accentColor : (isOtherFocused ? passedDot : (allPassed ? passedDot : textColor));
+      var labelOpacity = isOtherFocused ? '0.35' : '1';
+      var labelSize = LEFT_PAD < 100 ? 9 : 10;
+      var fontWeight = isFocused ? 'bold' : 'normal';
+      svg += '<text x="' + (LEFT_PAD - 6) + '" y="' + (y + 3) + '" font-size="' + labelSize + '" font-weight="' + fontWeight + '" letter-spacing="0.02em" fill="' + labelColor + '" opacity="' + labelOpacity + '" text-anchor="end" pointer-events="none">' + labelName + '</text>';
+      // transparent hit rect for conf info tooltip + focus click
+      var tipParts = ['<strong>' + esc(conf.name) + '</strong>'];
+      if (!focusedConfId) tipParts.push('<em>click to focus</em>');
+      else if (isFocused) tipParts.push('<em>click to clear focus</em>');
+      if (conf.description) tipParts.push(esc(conf.description));
+      var locDate = [conf.place, conf.date].filter(Boolean).map(esc).join(' \u00b7 ');
+      if (locDate) tipParts.push(locDate);
+      var tags = [conf.area, conf.tier].filter(Boolean).map(esc).join(' \u00b7 ');
+      if (tags) tipParts.push('<em>' + tags + '</em>');
+      var tipHtml = tipParts.join('<br>');
+      svg += '<rect x="0" y="' + (TOP_PAD + i * LANE_H) + '" width="' + (LEFT_PAD - 4) + '" height="' + LANE_H + '" fill="transparent" pointer-events="all" class="tl-conf-label" style="cursor:pointer" data-conf-id="' + conf.id.replace(/"/g, '&quot;') + '" data-tip-html="' + tipHtml.replace(/"/g, '&quot;') + '" />';
     });
 
     // no overlay rect — events bound to container so tooltips still work
@@ -366,18 +395,28 @@ nav_order: 3
   function bindTooltips() {
     var tip = document.getElementById('timeline-tooltip');
     if (!tip) return;
+    var tipHideTimer = null;
 
-    document.querySelectorAll('[data-tip]').forEach(function(el) {
-      el.addEventListener('mouseenter', function() {
-        tip.textContent = el.getAttribute('data-tip');
-        var rect = el.getBoundingClientRect();
-        tip.style.left = (rect.left + rect.width / 2) + 'px';
-        tip.style.top = (rect.top - 32) + 'px';
-        tip.style.transform = 'translateX(-50%)';
+    document.querySelectorAll('[data-tip], [data-tip-html]').forEach(function(el) {
+      el.addEventListener('mouseenter', function(e) {
+        clearTimeout(tipHideTimer);
+        var html = el.getAttribute('data-tip-html');
+        if (html) {
+          tip.innerHTML = html;
+          tip.style.left = (e.clientX + 14) + 'px';
+          tip.style.top = (e.clientY - 8) + 'px';
+          tip.style.transform = 'none';
+        } else {
+          tip.textContent = el.getAttribute('data-tip');
+          var rect = el.getBoundingClientRect();
+          tip.style.left = (rect.left + rect.width / 2) + 'px';
+          tip.style.top = (rect.top - 32) + 'px';
+          tip.style.transform = 'translateX(-50%)';
+        }
         tip.classList.add('visible');
       });
       el.addEventListener('mouseleave', function() {
-        tip.classList.remove('visible');
+        tipHideTimer = setTimeout(function() { tip.classList.remove('visible'); }, 1000);
       });
     });
   }
@@ -442,6 +481,20 @@ nav_order: 3
     svgEl.addEventListener('dblclick', function() {
       if (isZoomed()) resetZoom();
     });
+
+    // conf label click → focus/unfocus
+    svgEl.querySelectorAll('.tl-conf-label').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var tip = document.getElementById('timeline-tooltip');
+        if (tip) tip.classList.remove('visible');
+        var id = el.getAttribute('data-conf-id');
+        focusedConfId = (focusedConfId === id) ? null : id;
+        buildList();
+        buildTimeline();
+        writeFiltersToURL();
+      });
+    });
   }
 
   function esc(s) {
@@ -461,8 +514,8 @@ nav_order: 3
     html += '<span class="deadline-tag tier">' + esc(conf.tier) + '</span>';
     html += '</div></div>';
     var meta = esc(conf.description);
-    if (conf.place) meta += ' \u00b7 ' + esc(conf.place);
-    if (conf.date) meta += ' \u00b7 ' + esc(conf.date);
+    var venue = [conf.place, conf.date].filter(Boolean).map(esc).join(', ');
+    if (venue) meta += ' \u00b7 ' + venue;
     var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'local';
     meta += ' \u00b7 times in ' + esc(tz);
     html += '<p class="deadline-meta">' + meta + '</p>';
@@ -549,6 +602,9 @@ nav_order: 3
   }
 
   function filterConfs() {
+    if (focusedConfId) {
+      return CONFS.filter(function(c) { return c.id === focusedConfId; });
+    }
     var f = getActiveFilters();
     var statuses = [];
     document.querySelectorAll('.deadlines-filter.active[data-group="status"]').forEach(function(b) {
@@ -604,6 +660,59 @@ nav_order: 3
     container.innerHTML = html;
   }
 
+  function readFiltersFromURL() {
+    var params = new URLSearchParams(window.location.search);
+    ['area', 'tier'].forEach(function(group) {
+      var val = params.get(group);
+      if (!val) return;
+      var allBtn = document.querySelector('.deadlines-filter[data-group="' + group + '"][data-tag="all"]');
+      var tagBtns = document.querySelectorAll('.deadlines-filter[data-group="' + group + '"]:not([data-tag="all"])');
+      if (val === 'all') {
+        if (allBtn) allBtn.classList.add('active');
+        tagBtns.forEach(function(b) { b.classList.remove('active'); });
+      } else {
+        var vals = val.split(',');
+        if (allBtn) allBtn.classList.remove('active');
+        tagBtns.forEach(function(b) {
+          b.classList.toggle('active', vals.indexOf(b.getAttribute('data-tag')) !== -1);
+        });
+      }
+    });
+    var statusVal = params.get('status');
+    if (statusVal) {
+      var statusVals = statusVal.split(',');
+      document.querySelectorAll('.deadlines-filter[data-group="status"]').forEach(function(b) {
+        b.classList.toggle('active', statusVals.indexOf(b.getAttribute('data-tag')) !== -1);
+      });
+    }
+    var focusVal = params.get('focus');
+    if (focusVal) focusedConfId = focusVal;
+  }
+
+  function writeFiltersToURL() {
+    var params = new URLSearchParams();
+    ['area', 'tier'].forEach(function(group) {
+      var allBtn = document.querySelector('.deadlines-filter[data-group="' + group + '"][data-tag="all"]');
+      if (allBtn && allBtn.classList.contains('active')) return; // default — omit
+      var active = [];
+      document.querySelectorAll('.deadlines-filter.active[data-group="' + group + '"]:not([data-tag="all"])').forEach(function(b) {
+        active.push(b.getAttribute('data-tag'));
+      });
+      if (active.length) params.set(group, active.join(','));
+    });
+    var activeStatuses = [];
+    document.querySelectorAll('.deadlines-filter.active[data-group="status"]').forEach(function(b) {
+      activeStatuses.push(b.getAttribute('data-tag'));
+    });
+    var defaultStatuses = ['upcoming', 'ongoing'];
+    var isDefault = activeStatuses.length === defaultStatuses.length &&
+      defaultStatuses.every(function(s) { return activeStatuses.indexOf(s) !== -1; });
+    if (!isDefault) params.set('status', activeStatuses.join(','));
+    if (focusedConfId) params.set('focus', focusedConfId);
+    var qs = params.toString();
+    history.replaceState(null, '', qs ? '?' + qs : window.location.pathname);
+  }
+
   document.querySelectorAll('.deadlines-filter').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var group = btn.getAttribute('data-group');
@@ -627,9 +736,11 @@ nav_order: 3
       }
       buildList();
       buildTimeline();
+      writeFiltersToURL();
     });
   });
 
+  readFiltersFromURL();
   buildList();
   buildTimeline();
 

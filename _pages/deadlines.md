@@ -397,8 +397,10 @@ nav_order: 3
             tooltip += ' \u2014 ' + hoursLeft + 'h left';
           }
         }
+        svg += '<g class="tl-dot-group">';
         svg += '<circle cx="' + cx + '" cy="' + y + '" r="8" fill="transparent" class="tl-dot" data-tip="' + tooltip.replace(/"/g, '&quot;') + '" style="cursor:default" />';
-        svg += '<circle cx="' + cx + '" cy="' + y + '" r="' + r + '" fill="' + dotColor + '" pointer-events="none" />';
+        svg += '<circle cx="' + cx + '" cy="' + y + '" r="' + r + '" fill="' + dotColor + '" class="tl-dot-vis" pointer-events="none" />';
+        svg += '</g>';
       });
 
       svg += '</g>';
@@ -444,49 +446,173 @@ nav_order: 3
     var tip = document.getElementById('timeline-tooltip');
     if (!tip) return;
     var tipHideTimer = null;
+    var pinnedItems = []; // { el, tipEl, fixedTop, scrollY }
+
+    function getConnectorSvg() {
+      var svg = document.getElementById('tl-connectors');
+      if (!svg) {
+        svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.id = 'tl-connectors';
+        var page = document.querySelector('.deadlines-page') || document.body;
+        page.appendChild(svg);
+      }
+      return svg;
+    }
+
+    function updateLine(item) {
+      if (!item.lineEl) return;
+      var nodeRect = item.el.getBoundingClientRect();
+      var tipRect = item.tipEl.getBoundingClientRect();
+      var nx = nodeRect.left + nodeRect.width / 2;
+      var ny = nodeRect.top + nodeRect.height / 2;
+      var tx = tipRect.left + tipRect.width / 2;
+      var ty = tipRect.bottom;
+      item.lineEl.setAttribute('x1', nx);
+      item.lineEl.setAttribute('y1', ny);
+      item.lineEl.setAttribute('x2', tx);
+      item.lineEl.setAttribute('y2', ty);
+    }
+
+    function onScrollPins() {
+      pinnedItems.forEach(function(item) {
+        item.tipEl.style.top = (item.fixedTop - (window.scrollY - item.scrollY)) + 'px';
+        updateLine(item);
+      });
+    }
+
+    function isPinned(el) {
+      return pinnedItems.some(function(p) { return p.el === el; });
+    }
+
+    function unpinItem(el) {
+      var idx = -1;
+      for (var i = 0; i < pinnedItems.length; i++) {
+        if (pinnedItems[i].el === el) { idx = i; break; }
+      }
+      if (idx === -1) return;
+      var item = pinnedItems.splice(idx, 1)[0];
+      item.tipEl.remove();
+      if (item.lineEl) item.lineEl.remove();
+      var svg = document.getElementById('tl-connectors');
+      if (svg && svg.childElementCount === 0) svg.remove();
+      var visDot = el.nextElementSibling;
+      if (visDot && visDot.classList.contains('tl-dot-vis')) {
+        visDot.classList.remove('tl-dot-pinned', 'tl-dot-hovered');
+      }
+      if (pinnedItems.length === 0) window.removeEventListener('scroll', onScrollPins);
+    }
+
+    function unpinAll() {
+      pinnedItems.slice().forEach(function(item) { unpinItem(item.el); });
+    }
+
+    function pinEl(el) {
+      var tipEl = document.createElement('div');
+      tipEl.className = 'timeline-tooltip visible pinned';
+      var html = el.getAttribute('data-tip-html');
+      if (html) tipEl.innerHTML = html;
+      else tipEl.textContent = el.getAttribute('data-tip') || '';
+      var page = document.querySelector('.deadlines-page') || document.body;
+      page.appendChild(tipEl);
+      var rect = el.getBoundingClientRect();
+      tipEl.style.top = '-9999px';
+      var tipH = tipEl.offsetHeight;
+      var ANGLE_RAD = 75 * Math.PI / 180; // CCW from positive x-axis; 90°=up, 100°=up-left
+      var LINE_LEN = 60; // px from node center to tooltip bottom-center
+      var nodeCx = rect.left + rect.width / 2;
+      var nodeCy = rect.top + rect.height / 2;
+      var horizOffset = LINE_LEN * Math.cos(ANGLE_RAD);
+      var vertOffset  = LINE_LEN * Math.sin(ANGLE_RAD); // positive = upward in screen
+      tipEl.style.left = (nodeCx + horizOffset) + 'px';
+      tipEl.style.transform = 'translateX(-50%)';
+      var fixedTop = nodeCy - vertOffset - tipH;
+      tipEl.style.top = fixedTop + 'px';
+      // Shift up to avoid overlapping existing pinned tooltips
+      var GAP = 6;
+      var maxPasses = pinnedItems.length + 1;
+      for (var pass = 0; pass < maxPasses; pass++) {
+        var newR = tipEl.getBoundingClientRect();
+        var shifted = false;
+        for (var pi = 0; pi < pinnedItems.length; pi++) {
+          var otherR = pinnedItems[pi].tipEl.getBoundingClientRect();
+          var overlapV = newR.bottom > otherR.top && newR.top < otherR.bottom;
+          var overlapH = newR.right > otherR.left + 4 && newR.left < otherR.right - 4;
+          if (overlapV && overlapH) {
+            fixedTop -= (newR.bottom - otherR.top + GAP);
+            tipEl.style.top = fixedTop + 'px';
+            shifted = true;
+            break;
+          }
+        }
+        if (!shifted) break;
+      }
+      tipEl.addEventListener('click', function(e) { e.stopPropagation(); unpinItem(el); });
+      // Connector line
+      var lineEl = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      lineEl.setAttribute('stroke-width', '1.5');
+      lineEl.setAttribute('stroke-dasharray', '5,3');
+      lineEl.setAttribute('opacity', '0.75');
+      lineEl.classList.add('tl-connector');
+      getConnectorSvg().appendChild(lineEl);
+      var item = { el: el, tipEl: tipEl, lineEl: lineEl, fixedTop: fixedTop, scrollY: window.scrollY };
+      if (pinnedItems.length === 0) window.addEventListener('scroll', onScrollPins, { passive: true });
+      pinnedItems.push(item);
+      updateLine(item);
+      var visDot = el.nextElementSibling;
+      if (visDot && visDot.classList.contains('tl-dot-vis')) visDot.classList.add('tl-dot-pinned');
+    }
+
+    function showTip(el, e) {
+      clearTimeout(tipHideTimer);
+      var html = el.getAttribute('data-tip-html');
+      if (html) {
+        tip.innerHTML = html;
+        tip.style.left = (e.clientX + 14) + 'px';
+        tip.style.top = (e.clientY - 8) + 'px';
+        tip.style.transform = 'none';
+        tip.classList.add('visible');
+      } else {
+        tip.textContent = el.getAttribute('data-tip');
+        var rect = el.getBoundingClientRect();
+        tip.style.left = (rect.left + rect.width / 2) + 'px';
+        tip.style.transform = 'translateX(-50%)';
+        tip.style.top = '-9999px';
+        tip.classList.add('visible');
+        tip.style.top = (rect.top - tip.offsetHeight - 8) + 'px';
+      }
+    }
 
     document.querySelectorAll('[data-tip], [data-tip-html]').forEach(function(el) {
       el.addEventListener('mouseenter', function(e) {
-        clearTimeout(tipHideTimer);
-        var html = el.getAttribute('data-tip-html');
-        if (html) {
-          tip.innerHTML = html;
-          tip.style.left = (e.clientX + 14) + 'px';
-          tip.style.top = (e.clientY - 8) + 'px';
-          tip.style.transform = 'none';
-        } else {
-          tip.textContent = el.getAttribute('data-tip');
-          var rect = el.getBoundingClientRect();
-          tip.style.left = (rect.left + rect.width / 2) + 'px';
-          tip.style.top = (rect.top - 32) + 'px';
-          tip.style.transform = 'translateX(-50%)';
-        }
-        tip.classList.add('visible');
+        if (isPinned(el)) return;
+        showTip(el, e);
+        var visDot = el.nextElementSibling;
+        if (visDot && visDot.classList.contains('tl-dot-vis')) visDot.classList.add('tl-dot-hovered');
       });
       el.addEventListener('mouseleave', function() {
+        if (isPinned(el)) return;
         tipHideTimer = setTimeout(function() { tip.classList.remove('visible'); }, 1000);
+        var visDot = el.nextElementSibling;
+        if (visDot && visDot.classList.contains('tl-dot-vis')) visDot.classList.remove('tl-dot-hovered');
+      });
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (isPinned(el)) { unpinItem(el); return; }
+        tip.classList.remove('visible');
+        pinEl(el);
       });
       el.addEventListener('focus', function(e) {
+        if (isPinned(el)) return;
         clearTimeout(tipHideTimer);
-        var html = el.getAttribute('data-tip-html');
-        if (html) {
-          tip.innerHTML = html;
-          tip.style.left = (e.clientX + 14) + 'px';
-          tip.style.top = (e.clientY - 8) + 'px';
-          tip.style.transform = 'none';
-        } else {
-          tip.textContent = el.getAttribute('data-tip');
-          var rect = el.getBoundingClientRect();
-          tip.style.left = (rect.left + rect.width / 2) + 'px';
-          tip.style.top = (rect.top - 32) + 'px';
-          tip.style.transform = 'translateX(-50%)';
-        }
-        tip.classList.add('visible');
+        showTip(el, e);
       });
       el.addEventListener('blur', function() {
+        if (isPinned(el)) return;
         tipHideTimer = setTimeout(function() { tip.classList.remove('visible'); }, 200);
       });
     });
+
+    document.addEventListener('click', function() { unpinAll(); });
   }
 
   // --- Interaction: brush select, shift+drag pan, dblclick reset ---

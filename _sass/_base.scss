@@ -629,6 +629,45 @@ nav[data-toggle="toc"] {
     }
   }
 
+  .tl-dot-vis {
+    transition: r 100ms ease, stroke-width 100ms ease;
+    stroke: none;
+    stroke-width: 0;
+  }
+
+  .tl-dot-hovered {
+    r: 6px;
+    stroke: var(--global-theme-color);
+    stroke-width: 1.5px;
+    stroke-opacity: 0.5;
+  }
+
+  .tl-dot-pinned {
+    r: 6px;
+    stroke: var(--global-theme-color);
+    stroke-width: 2px;
+    stroke-opacity: 1;
+  }
+
+  .timeline-tooltip.pinned {
+    border-color: var(--global-theme-color);
+  }
+
+  #tl-connectors {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    overflow: visible;
+  }
+
+  .tl-connector {
+    stroke: var(--global-theme-color);
+  }
+
   // Legend
   .deadlines-legend {
     display: flex;

@@ -9,7 +9,6 @@ nav_order: 3
 <div class="deadlines-page">
 
 <p class="deadlines-disclaimer">Deadlines are scraped automatically via <a href="https://github.com/kha-dinh/deadline-crawler">deadline-crawler</a> and may be inaccurate. Always verify against the official CFP. Last crawled: {{ site.data.deadlines.generated_at | date: "%Y-%m-%d %H:%M UTC" }}.</p>
-<p class="deadlines-disclaimer">CORE rankings from <a href="https://portal.core.edu.au/conf-ranks">ICORE2026</a>.</p>
 
 {% assign confs = site.data.deadlines.conferences %}
 
@@ -39,7 +38,7 @@ nav_order: 3
     {% endfor %}
   </div>
   <div class="deadlines-filter-bar" role="toolbar" aria-label="Filter by CORE Ranking">
-    <span class="deadlines-filter-label">CORE Ranking</span>
+    <span class="deadlines-filter-label">CORE RANKING<br>(<a href="https://portal.core.edu.au/conf-ranks" target="_blank" rel="noopener">ICORE2026</a>)</span>
     <button class="deadlines-filter active" aria-pressed="true" data-group="tier" data-tag="all">All</button>
     {% assign tier_order = "A*,A,B,C" | split: "," %}
     {% for t in tier_order %}

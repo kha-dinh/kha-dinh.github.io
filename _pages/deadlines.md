@@ -734,6 +734,23 @@ nav_order: 3
       sortSelected(passed).forEach(function(conf) { html += renderEntry(conf); });
     }
     container.innerHTML = html;
+    // when hiding others: hide unselected entries and empty section headings
+    if (hasSelection && !showOthers) {
+      container.querySelectorAll('.deadline-entry').forEach(function(entry) {
+        if (selectedConfIds.indexOf(entry.getAttribute('data-conf-id')) === -1) {
+          entry.style.display = 'none';
+        }
+      });
+      container.querySelectorAll('.deadlines-section-heading').forEach(function(heading) {
+        var sib = heading.nextElementSibling;
+        var hasVisible = false;
+        while (sib && !sib.classList.contains('deadlines-section-heading')) {
+          if (sib.style.display !== 'none') { hasVisible = true; break; }
+          sib = sib.nextElementSibling;
+        }
+        if (!hasVisible) heading.style.display = 'none';
+      });
+    }
     container.querySelectorAll('.deadline-entry').forEach(function(entry) {
       entry.addEventListener('click', function(e) {
         if (e.target.closest('a')) return;

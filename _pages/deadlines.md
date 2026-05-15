@@ -160,7 +160,7 @@ nav_order: 3
   var fullEnd = null;
 
   // --- Focus state ---
-  var focusedConfId = null;
+  var selectedConfIds = [];
   var countdownEls = [];
 
   function isZoomed() {
@@ -172,13 +172,16 @@ nav_order: 3
     var hint = document.getElementById('tl-zoom-hint');
     if (btn) btn.disabled = !isZoomed();
     if (hint) {
-      if (focusedConfId) {
-        var fc = CONFS.filter(function(c) { return c.id === focusedConfId; })[0];
-        hint.textContent = 'focused: ' + (fc ? fc.name : focusedConfId) + ' · click label again to clear';
+      if (selectedConfIds.length > 0) {
+        var names = selectedConfIds.map(function(id) {
+          var fc = CONFS.filter(function(c) { return c.id === id; })[0];
+          return fc ? fc.name : id;
+        }).join(', ');
+        hint.textContent = selectedConfIds.length + ' selected: ' + names + ' \u00b7 click to deselect';
       } else if (isZoomed()) {
         hint.textContent = 'drag to select · dblclick to reset';
       } else {
-        hint.textContent = 'drag to select range · click label to focus';
+        hint.textContent = 'drag to select range · click label to select';
       }
     }
   }
@@ -368,19 +371,19 @@ nav_order: 3
     filtered.forEach(function(conf, i) {
       var y = TOP_PAD + i * LANE_H + LANE_H / 2;
       var allPassed = conf.deadlines.every(function(d) { return d.passed; });
-      var isFocused = focusedConfId === conf.id;
-      var isOtherFocused = focusedConfId && !isFocused;
+      var isSelected = selectedConfIds.indexOf(conf.id) !== -1;
+      var isOtherFocused = selectedConfIds.length > 0 && !isSelected;
       var maxLabelLen = LEFT_PAD < 100 ? 9 : 18;
       var labelName = conf.name.length > maxLabelLen ? conf.name.substring(0, maxLabelLen - 1) + '\u2026' : conf.name;
-      var labelColor = isFocused ? accentColor : (isOtherFocused ? passedDot : (allPassed ? passedDot : textColor));
+      var labelColor = isSelected ? accentColor : (isOtherFocused ? passedDot : (allPassed ? passedDot : textColor));
       var labelOpacity = isOtherFocused ? '0.35' : '1';
       var labelSize = LEFT_PAD < 100 ? 10 : 11;
-      var fontWeight = isFocused ? 'bold' : 'normal';
+      var fontWeight = isSelected ? 'bold' : 'normal';
       svg += '<text x="' + (LEFT_PAD - 6) + '" y="' + (y + 3) + '" font-size="' + labelSize + '" font-weight="' + fontWeight + '" letter-spacing="0.02em" fill="' + labelColor + '" opacity="' + labelOpacity + '" text-anchor="end" pointer-events="none">' + labelName + '</text>';
       // transparent hit rect for conf info tooltip + focus click
       var tipParts = ['<strong>' + esc(conf.name) + '</strong>'];
-      if (!focusedConfId) tipParts.push('<em>click to focus</em>');
-      else if (isFocused) tipParts.push('<em>click to clear focus</em>');
+      if (!isSelected) tipParts.push('<em>click to select</em>');
+      else tipParts.push('<em>click to deselect</em>');
       if (conf.description) tipParts.push(esc(conf.description));
       var locDate = [conf.place, conf.date].filter(Boolean).map(esc).join(' \u00b7 ');
       if (locDate) tipParts.push(locDate);
@@ -516,7 +519,9 @@ nav_order: 3
         var tip = document.getElementById('timeline-tooltip');
         if (tip) tip.classList.remove('visible');
         var id = el.getAttribute('data-conf-id');
-        focusedConfId = (focusedConfId === id) ? null : id;
+        var _idx = selectedConfIds.indexOf(id);
+        if (_idx === -1) selectedConfIds.push(id);
+        else selectedConfIds.splice(_idx, 1);
         buildList();
         buildTimeline();
         writeFiltersToURL();
@@ -532,7 +537,8 @@ nav_order: 3
 
   function renderEntry(conf) {
     var hasUpcoming = conf.deadlines.some(function(d) { return !d.passed; });
-    var html = '<div class="deadline-entry' + (hasUpcoming ? ' has-upcoming' : ' all-passed') + '">';
+    var isEntrySelected = selectedConfIds.indexOf(conf.id) !== -1;
+    var html = '<div class="deadline-entry' + (hasUpcoming ? ' has-upcoming' : ' all-passed') + (isEntrySelected ? ' selected' : '') + '" data-conf-id="' + esc(conf.id) + '">';
     html += '<div class="deadline-header">';
     html += '<div class="deadline-title-row">';
     html += '<h3><a href="' + esc(conf.link) + '">' + esc(conf.name) + '</a></h3>';
@@ -629,8 +635,8 @@ nav_order: 3
   }
 
   function filterConfs() {
-    if (focusedConfId) {
-      return CONFS.filter(function(c) { return c.id === focusedConfId; });
+    if (selectedConfIds.length > 0) {
+      return CONFS.filter(function(c) { return selectedConfIds.indexOf(c.id) !== -1; });
     }
     var f = getActiveFilters();
     var statuses = [];
@@ -686,6 +692,18 @@ nav_order: 3
     }
     container.innerHTML = html;
     countdownEls = Array.prototype.slice.call(document.querySelectorAll('.deadline-countdown'));
+    container.querySelectorAll('.deadline-entry').forEach(function(entry) {
+      entry.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return;
+        var id = entry.getAttribute('data-conf-id');
+        var _i = selectedConfIds.indexOf(id);
+        if (_i === -1) selectedConfIds.push(id);
+        else selectedConfIds.splice(_i, 1);
+        buildList();
+        buildTimeline();
+        writeFiltersToURL();
+      });
+    });
   }
 
   function readFiltersFromURL() {
@@ -714,7 +732,7 @@ nav_order: 3
       });
     }
     var focusVal = params.get('focus');
-    if (focusVal) focusedConfId = focusVal;
+    if (focusVal) selectedConfIds = focusVal.split(',').filter(Boolean);
     // sync aria-pressed for all filter buttons
     document.querySelectorAll('.deadlines-filter').forEach(function(b) {
       b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false');
@@ -740,7 +758,7 @@ nav_order: 3
     var isDefault = activeStatuses.length === defaultStatuses.length &&
       defaultStatuses.every(function(s) { return activeStatuses.indexOf(s) !== -1; });
     if (!isDefault) params.set('status', activeStatuses.join(','));
-    if (focusedConfId) params.set('focus', focusedConfId);
+    if (selectedConfIds.length > 0) params.set('focus', selectedConfIds.join(','));
     var qs = params.toString();
     history.replaceState(null, '', qs ? '?' + qs : window.location.pathname);
   }

@@ -43,10 +43,10 @@
 
   .navbar-brand {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+    font-variation-settings: "MONO" 0.75, "CASL" 0, "slnt" 0;
     font-weight: 300;
     font-size: 0.8125rem;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     color: var(--global-text-color);
     &:hover {
       color: var(--global-text-color);
@@ -55,12 +55,12 @@
 
   .navbar-nav .nav-item .nav-link {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+    font-variation-settings: "MONO" 0.75, "CASL" 0, "slnt" 0;
     font-weight: 300;
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 0.8125rem;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.06em;
     text-transform: lowercase;
     color: var(--global-text-color-light);
 

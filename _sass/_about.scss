@@ -250,7 +250,7 @@
   .about-bio {
     font-size: 1rem;
     line-height: 1.75;
-    // max-width: 62ch;
+    max-width: 62ch;
 
     p + p {
       margin-top: 1em;
@@ -294,12 +294,11 @@
       "CASL" 0,
       "slnt" 0;
     font-weight: 300;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.01em;
     line-height: 1.65;
     color: var(--global-text-color-light);
-    text-align: justify;
-    text-align-last: right;
+    text-align: right;
   }
 }
 

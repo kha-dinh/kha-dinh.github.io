@@ -50,6 +50,7 @@ nav_order: 3
   </div>
   <div class="deadlines-filter-bar" role="toolbar" aria-label="Filter by status">
     <span class="deadlines-filter-label">status</span>
+    <button class="deadlines-filter" aria-pressed="false" data-group="status" data-tag="all">All</button>
     <button class="deadlines-filter active" aria-pressed="true" data-group="status" data-tag="upcoming">upcoming</button>
     <button class="deadlines-filter active" aria-pressed="true" data-group="status" data-tag="ongoing">ongoing</button>
     <button class="deadlines-filter" aria-pressed="false" data-group="status" data-tag="passed">passed</button>
@@ -69,7 +70,6 @@ nav_order: 3
 
 <div class="deadlines-legend">
   <span class="legend-item"><span class="status-dot upcoming"></span> upcoming</span>
-  <span class="legend-item"><span class="status-dot ongoing"></span> ongoing</span>
   <span class="legend-item"><span class="status-dot passed"></span> passed</span>
 </div>
 
@@ -677,7 +677,8 @@ nav_order: 3
     var f = getActiveFilters();
     var statuses = [];
     document.querySelectorAll('.deadlines-filter.active[data-group="status"]').forEach(function(b) {
-      statuses.push(b.getAttribute('data-tag'));
+      var t = b.getAttribute('data-tag');
+      if (t !== 'all') statuses.push(t);
     });
     return CONFS.filter(function(c) {
       var matchArea = f.areas.length === 0 || c.tags.some(function(t) { return f.areas.indexOf(t) !== -1; });

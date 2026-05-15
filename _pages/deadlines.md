@@ -596,6 +596,7 @@ nav_order: 3
         if (visDot && visDot.classList.contains('tl-dot-vis')) visDot.classList.remove('tl-dot-hovered');
       });
       el.addEventListener('click', function(e) {
+        if (el.classList.contains('tl-conf-label')) return;
         e.stopPropagation();
         if (isPinned(el)) { unpinItem(el); return; }
         tip.classList.remove('visible');

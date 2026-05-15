@@ -15,7 +15,9 @@
       "Bash(grep -r \"al-folio\\\\|glossary\" /Users/khadd/Projects/kha-dinh.github.io --include=*.html --include=*.md --include=*.yml)",
       "Bash(find /Users/khadd/Projects/kha-dinh.github.io -type f -name *.bib -o -name *publication* -o -name *bib.html)",
       "Bash(git commit:*)",
-      "Bash(find /Users/khadd/Projects/kha-dinh.github.io/_includes /Users/khadd/Projects/kha-dinh.github.io/_layouts -name footer* -o -name header*)"
+      "Bash(find /Users/khadd/Projects/kha-dinh.github.io/_includes /Users/khadd/Projects/kha-dinh.github.io/_layouts -name footer* -o -name header*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ]
   }
 }

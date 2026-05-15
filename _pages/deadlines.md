@@ -215,6 +215,7 @@ nav_order: 3
 
   document.getElementById('tl-show-others').addEventListener('click', function() {
     showOthers = !showOthers;
+    buildList();
     buildTimeline();
     updateZoomControls();
   });

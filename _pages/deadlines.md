@@ -232,11 +232,11 @@ nav_order: 3
     var rangeMs = rangeEnd - rangeStart;
 
     var LANE_H = 24;
-    var TOP_PAD = 70;
+    var TOP_PAD = 96; // must fit rotated tick labels: label_width/√2 + font_size/√2 + 6 ≤ TOP_PAD
     var BOT_PAD = 6;
     var containerW = container.clientWidth || 700;
     var LEFT_PAD = containerW < 420 ? 72 : 130;
-    var RIGHT_PAD = 72; // room for rotated TODAY label (~14 chars × 10px × cos45°)
+    var RIGHT_PAD = 16;
     var svgH = TOP_PAD + filtered.length * LANE_H + BOT_PAD;
     var chartW = containerW - LEFT_PAD - RIGHT_PAD;
 

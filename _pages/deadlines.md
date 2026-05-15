@@ -236,7 +236,7 @@ nav_order: 3
     var BOT_PAD = 6;
     var containerW = container.clientWidth || 700;
     var LEFT_PAD = containerW < 420 ? 72 : 130;
-    var RIGHT_PAD = 16;
+    var RIGHT_PAD = 72; // room for rotated TODAY label (~14 chars × 10px × cos45°)
     var svgH = TOP_PAD + filtered.length * LANE_H + BOT_PAD;
     var chartW = containerW - LEFT_PAD - RIGHT_PAD;
 
@@ -326,7 +326,7 @@ nav_order: 3
     if (todayX > -Infinity) {
       svg += '<line x1="' + todayX + '" y1="' + TOP_PAD + '" x2="' + todayX + '" y2="' + (svgH - BOT_PAD) + '" stroke="' + accentColor + '" stroke-width="1.5" stroke-dasharray="3,3" />';
       var todayStr = 'TODAY (' + now.toLocaleString('en', { month: 'short' }).toUpperCase() + ' ' + now.getDate() + ')';
-      svg += '<text x="' + todayX + '" y="' + (TOP_PAD - 6) + '" font-size="10" letter-spacing="0.04em" text-anchor="end" fill="' + accentColor + '" transform="rotate(-45 ' + todayX + ' ' + (TOP_PAD - 6) + ')">' + todayStr + '</text>';
+      svg += '<text x="' + todayX + '" y="' + (TOP_PAD - 6) + '" font-size="10" letter-spacing="0.04em" fill="' + accentColor + '" transform="rotate(-45 ' + todayX + ' ' + (TOP_PAD - 6) + ')">' + todayStr + '</text>';
     }
 
     // lanes (clipped to chart area)

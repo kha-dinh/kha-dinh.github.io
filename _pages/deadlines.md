@@ -635,9 +635,6 @@ nav_order: 3
   }
 
   function filterConfs() {
-    if (selectedConfIds.length > 0) {
-      return CONFS.filter(function(c) { return selectedConfIds.indexOf(c.id) !== -1; });
-    }
     var f = getActiveFilters();
     var statuses = [];
     document.querySelectorAll('.deadlines-filter.active[data-group="status"]').forEach(function(b) {

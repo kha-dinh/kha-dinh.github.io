@@ -31,28 +31,28 @@ nav_order: 3
 <div class="deadlines-filter-groups">
   <div class="deadlines-filter-bar" role="toolbar" aria-label="Filter by area">
     <span class="deadlines-filter-label">area</span>
-    <button class="deadlines-filter active" data-group="area" data-tag="all">All</button>
+    <button class="deadlines-filter active" aria-pressed="true" data-group="area" data-tag="all">All</button>
     {% for tag in areas %}
       {% if tag != "" %}
-      <button class="deadlines-filter" data-group="area" data-tag="{{ tag }}">{{ tag }}</button>
+      <button class="deadlines-filter" aria-pressed="false" data-group="area" data-tag="{{ tag }}">{{ tag }}</button>
       {% endif %}
     {% endfor %}
   </div>
   <div class="deadlines-filter-bar" role="toolbar" aria-label="Filter by CORE Ranking">
     <span class="deadlines-filter-label">CORE Ranking</span>
-    <button class="deadlines-filter active" data-group="tier" data-tag="all">All</button>
+    <button class="deadlines-filter active" aria-pressed="true" data-group="tier" data-tag="all">All</button>
     {% assign tier_order = "A*,A,B,C" | split: "," %}
     {% for t in tier_order %}
       {% if tiers contains t %}
-      <button class="deadlines-filter" data-group="tier" data-tag="{{ t }}">{{ t }}</button>
+      <button class="deadlines-filter" aria-pressed="false" data-group="tier" data-tag="{{ t }}">{{ t }}</button>
       {% endif %}
     {% endfor %}
   </div>
   <div class="deadlines-filter-bar" role="toolbar" aria-label="Filter by status">
     <span class="deadlines-filter-label">status</span>
-    <button class="deadlines-filter active" data-group="status" data-tag="upcoming">upcoming</button>
-    <button class="deadlines-filter active" data-group="status" data-tag="ongoing">ongoing</button>
-    <button class="deadlines-filter" data-group="status" data-tag="passed">passed</button>
+    <button class="deadlines-filter active" aria-pressed="true" data-group="status" data-tag="upcoming">upcoming</button>
+    <button class="deadlines-filter active" aria-pressed="true" data-group="status" data-tag="ongoing">ongoing</button>
+    <button class="deadlines-filter" aria-pressed="false" data-group="status" data-tag="passed">passed</button>
   </div>
 </div>
 
@@ -67,6 +67,7 @@ nav_order: 3
 
 <div class="deadlines-legend">
   <span class="legend-item"><span class="status-dot upcoming"></span> upcoming</span>
+  <span class="legend-item"><span class="status-dot ongoing"></span> ongoing</span>
   <span class="legend-item"><span class="status-dot passed"></span> passed</span>
 </div>
 
@@ -160,6 +161,7 @@ nav_order: 3
 
   // --- Focus state ---
   var focusedConfId = null;
+  var countdownEls = [];
 
   function isZoomed() {
     return zoomStart !== null && zoomEnd !== null;
@@ -256,7 +258,7 @@ nav_order: 3
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="' + svgH + '"'
       + ' viewBox="0 0 ' + containerW + ' ' + svgH + '"'
       + ' style="font-family:' + FONT + ';overflow:visible;"'
-      + ' role="img" aria-label="Conference deadline timeline">';
+      + ' aria-hidden="true">';
 
     // clip rect for chart area (hides dots/lines outside zoom range)
     svg += '<defs><clipPath id="tl-clip"><rect x="' + LEFT_PAD + '" y="0" width="' + chartW + '" height="' + svgH + '" /></clipPath></defs>';
@@ -418,6 +420,26 @@ nav_order: 3
       el.addEventListener('mouseleave', function() {
         tipHideTimer = setTimeout(function() { tip.classList.remove('visible'); }, 1000);
       });
+      el.addEventListener('focus', function(e) {
+        clearTimeout(tipHideTimer);
+        var html = el.getAttribute('data-tip-html');
+        if (html) {
+          tip.innerHTML = html;
+          tip.style.left = (e.clientX + 14) + 'px';
+          tip.style.top = (e.clientY - 8) + 'px';
+          tip.style.transform = 'none';
+        } else {
+          tip.textContent = el.getAttribute('data-tip');
+          var rect = el.getBoundingClientRect();
+          tip.style.left = (rect.left + rect.width / 2) + 'px';
+          tip.style.top = (rect.top - 32) + 'px';
+          tip.style.transform = 'translateX(-50%)';
+        }
+        tip.classList.add('visible');
+      });
+      el.addEventListener('blur', function() {
+        tipHideTimer = setTimeout(function() { tip.classList.remove('visible'); }, 200);
+      });
     });
   }
 
@@ -567,7 +589,7 @@ nav_order: 3
           tip = Math.ceil(h / 24) + 'd left';
         }
       }
-      html += '<div class="deadline-date ' + cls + '" data-tip="' + esc(tip) + '">';
+      html += '<div class="deadline-date ' + cls + '" data-tip="' + esc(tip) + '" tabindex="0">';
       html += '<span class="deadline-label">' + esc(d.label.replace(/_/g, ' ')) + '</span>';
       html += '<span class="deadline-value">' + esc(toLocalStr(d.date)) + '</span>';
       html += '</div>';
@@ -658,6 +680,7 @@ nav_order: 3
       passed.forEach(function(conf) { html += renderEntry(conf); });
     }
     container.innerHTML = html;
+    countdownEls = Array.prototype.slice.call(document.querySelectorAll('.deadline-countdown'));
   }
 
   function readFiltersFromURL() {
@@ -687,6 +710,10 @@ nav_order: 3
     }
     var focusVal = params.get('focus');
     if (focusVal) focusedConfId = focusVal;
+    // sync aria-pressed for all filter buttons
+    document.querySelectorAll('.deadlines-filter').forEach(function(b) {
+      b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false');
+    });
   }
 
   function writeFiltersToURL() {
@@ -734,6 +761,10 @@ nav_order: 3
         var anyActive = Array.prototype.some.call(tagBtns, function(b) { return b.classList.contains('active'); });
         if (!anyActive) allBtn.classList.add('active');
       }
+      // sync aria-pressed
+      document.querySelectorAll('.deadlines-filter[data-group="' + group + '"]').forEach(function(b) {
+        b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false');
+      });
       buildList();
       buildTimeline();
       writeFiltersToURL();
@@ -758,7 +789,7 @@ nav_order: 3
   // live countdown ticker — update every second
   setInterval(function() {
     var now = Date.now();
-    document.querySelectorAll('.deadline-countdown').forEach(function(el) {
+    countdownEls.forEach(function(el) {
       var target = parseInt(el.getAttribute('data-target'), 10);
       var label = el.getAttribute('data-label');
       var diff = target - now;

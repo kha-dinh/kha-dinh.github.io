@@ -215,6 +215,7 @@ nav_order: 3
 
   document.getElementById('tl-show-others').addEventListener('click', function() {
     showOthers = !showOthers;
+    writeFiltersToURL();
     buildList();
     buildTimeline();
     updateZoomControls();
@@ -793,6 +794,7 @@ nav_order: 3
     }
     var focusVal = params.get('focus');
     if (focusVal) selectedConfIds = focusVal.split(',').filter(Boolean);
+    if (params.get('others') === 'hide') showOthers = false;
     // sync aria-pressed for all filter buttons
     document.querySelectorAll('.deadlines-filter').forEach(function(b) {
       b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false');
@@ -819,6 +821,7 @@ nav_order: 3
       defaultStatuses.every(function(s) { return activeStatuses.indexOf(s) !== -1; });
     if (!isDefault) params.set('status', activeStatuses.join(','));
     if (selectedConfIds.length > 0) params.set('focus', selectedConfIds.join(','));
+    if (selectedConfIds.length > 0 && !showOthers) params.set('others', 'hide');
     var qs = params.toString();
     history.replaceState(null, '', qs ? '?' + qs : window.location.pathname);
   }

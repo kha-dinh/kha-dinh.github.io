@@ -9,7 +9,7 @@ nav_order: 3
 <div class="deadlines-page">
 
 <p class="deadlines-disclaimer">Deadlines are scraped automatically via <a href="https://github.com/kha-dinh/deadline-crawler">deadline-crawler</a> and may be inaccurate. Always verify against the official CFP. Last crawled: {{ site.data.deadlines.generated_at | date: "%Y-%m-%d %H:%M UTC" }}.</p>
-<p class="deadlines-disclaimer">CORE rankings are my personal assessment and are totally not accurate. Verify at <a href="https://www.core.edu.au/conference-portal">core.edu.au</a>.</p>
+<p class="deadlines-disclaimer">CORE rankings from <a href="https://portal.core.edu.au/conf-ranks">ICORE2026</a>.</p>
 
 {% assign confs = site.data.deadlines.conferences %}
 
@@ -64,7 +64,7 @@ nav_order: 3
 <div class="timeline-zoom-controls" id="timeline-zoom-controls">
   <button id="tl-zoom-reset" disabled>reset zoom</button>
   <button id="tl-select-clear" disabled>clear selection</button>
-  <button id="tl-show-others" disabled>show others</button>
+  <button id="tl-show-others" disabled>show unselected</button>
   <span id="tl-zoom-hint">drag to select range</span>
 </div>
 
@@ -179,7 +179,7 @@ nav_order: 3
     if (clearBtn) clearBtn.disabled = selectedConfIds.length === 0;
     if (othersBtn) {
       othersBtn.disabled = selectedConfIds.length === 0;
-      othersBtn.textContent = showOthers ? 'hide others' : 'show others';
+      othersBtn.textContent = showOthers ? 'hide unselected' : 'show unselected';
     }
     if (hint) {
       if (selectedConfIds.length > 0) {
@@ -417,8 +417,8 @@ nav_order: 3
       var labelColor = isSelected ? accentColor : (isOtherFocused ? passedDot : (allPassed ? passedDot : textColor));
       var labelOpacity = isOtherFocused ? '0.35' : '1';
       var labelSize = LEFT_PAD < 100 ? 10 : 11;
-      var fontWeight = isSelected ? '500' : 'normal';
-      svg += '<text x="' + (LEFT_PAD - 6) + '" y="' + (y + 3) + '" font-size="' + labelSize + '" font-weight="' + fontWeight + '" letter-spacing="0.02em" fill="' + labelColor + '" opacity="' + labelOpacity + '" text-anchor="end" pointer-events="none">' + labelName + '</text>';
+      var fontWeight = isSelected ? '400' : '300';
+      svg += '<text x="' + (LEFT_PAD - 6) + '" y="' + (y + 3) + '" font-size="' + labelSize + '" font-weight="' + fontWeight + '" letter-spacing="0.02em" fill="' + labelColor + '" opacity="' + labelOpacity + '" text-anchor="end" pointer-events="none" style="font-variation-settings:\'MONO\' 1,\'CASL\' 0">' + labelName + '</text>';
       // transparent hit rect for conf info tooltip + focus click
       var tipParts = ['<strong>' + esc(conf.name) + '</strong>'];
       if (!isSelected) tipParts.push('<em>click to select</em>');

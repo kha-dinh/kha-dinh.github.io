@@ -696,7 +696,6 @@ nav[data-toggle="toc"] {
 
 
     &.selected {
-      background: color-mix(in oklch, var(--global-theme-color) 12%, var(--global-bg-color));
       box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--global-theme-color) 40%, transparent);
       padding-left: 10px;
       padding-right: 10px;

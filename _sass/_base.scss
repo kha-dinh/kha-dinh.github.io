@@ -563,9 +563,9 @@ nav[data-toggle="toc"] {
     margin-top: 0.4rem;
     margin-bottom: 0.5rem;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
     font-size: 0.7rem;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
     color: var(--global-text-color-light);
 
     button {
@@ -836,10 +836,15 @@ nav[data-toggle="toc"] {
     font-family: "Recursive", system-ui, sans-serif;
     font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
     font-weight: 300;
-    font-size: 0.625rem;
+    font-size: 0.6875rem;
     letter-spacing: 0.03em;
     color: var(--global-text-color-light);
-    margin-top: 2px;
+    margin-top: 3px;
+  }
+
+  // SVG timeline text — force MONO=1 (structural metadata register)
+  .deadlines-timeline text {
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
   }
 
   // Mobile adjustments

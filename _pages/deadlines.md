@@ -282,7 +282,7 @@ nav_order: 3
       if (x < LEFT_PAD || x > LEFT_PAD + chartW) return;
       svg += '<line x1="' + x + '" y1="' + TOP_PAD + '" x2="' + x + '" y2="' + (svgH - BOT_PAD) + '" stroke="' + gridColor + '" stroke-width="1" />';
       if (label && Math.abs(x - todayX) > 20) {
-        svg += '<text x="' + x + '" y="' + (TOP_PAD - 6) + '" font-size="9" letter-spacing="0.04em" fill="' + textLight + '" transform="rotate(-45 ' + x + ' ' + (TOP_PAD - 6) + ')">' + label + '</text>';
+        svg += '<text x="' + x + '" y="' + (TOP_PAD - 6) + '" font-size="10" letter-spacing="0.04em" fill="' + textLight + '" transform="rotate(-45 ' + x + ' ' + (TOP_PAD - 6) + ')">' + label + '</text>';
       }
     }
 
@@ -326,7 +326,7 @@ nav_order: 3
     if (todayX > -Infinity) {
       svg += '<line x1="' + todayX + '" y1="' + TOP_PAD + '" x2="' + todayX + '" y2="' + (svgH - BOT_PAD) + '" stroke="' + accentColor + '" stroke-width="1.5" stroke-dasharray="3,3" />';
       var todayStr = 'TODAY (' + now.toLocaleString('en', { month: 'short' }).toUpperCase() + ' ' + now.getDate() + ')';
-      svg += '<text x="' + todayX + '" y="' + (TOP_PAD - 6) + '" font-size="9" letter-spacing="0.04em" fill="' + accentColor + '" transform="rotate(-45 ' + todayX + ' ' + (TOP_PAD - 6) + ')">' + todayStr + '</text>';
+      svg += '<text x="' + todayX + '" y="' + (TOP_PAD - 6) + '" font-size="10" letter-spacing="0.04em" fill="' + accentColor + '" transform="rotate(-45 ' + todayX + ' ' + (TOP_PAD - 6) + ')">' + todayStr + '</text>';
     }
 
     // lanes (clipped to chart area)
@@ -374,7 +374,7 @@ nav_order: 3
       var labelName = conf.name.length > maxLabelLen ? conf.name.substring(0, maxLabelLen - 1) + '\u2026' : conf.name;
       var labelColor = isFocused ? accentColor : (isOtherFocused ? passedDot : (allPassed ? passedDot : textColor));
       var labelOpacity = isOtherFocused ? '0.35' : '1';
-      var labelSize = LEFT_PAD < 100 ? 9 : 10;
+      var labelSize = LEFT_PAD < 100 ? 10 : 11;
       var fontWeight = isFocused ? 'bold' : 'normal';
       svg += '<text x="' + (LEFT_PAD - 6) + '" y="' + (y + 3) + '" font-size="' + labelSize + '" font-weight="' + fontWeight + '" letter-spacing="0.02em" fill="' + labelColor + '" opacity="' + labelOpacity + '" text-anchor="end" pointer-events="none">' + labelName + '</text>';
       // transparent hit rect for conf info tooltip + focus click

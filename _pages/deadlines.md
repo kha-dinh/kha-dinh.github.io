@@ -93,7 +93,7 @@ nav_order: 3
       tags: {{ conf.tags | jsonify }},
       deadlines: [
         {% for d in conf.deadlines %}
-        { label: {{ d.label | jsonify }}, date: {{ d.date | jsonify }}, passed: {{ d.passed }} }{% unless forloop.last %},{% endunless %}
+        { label: {{ d.label | jsonify }}, date: {{ d.date | jsonify }}, passed: {{ d.passed | default: false }} }{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
     }{% unless forloop.last %},{% endunless %}
@@ -143,6 +143,16 @@ nav_order: 3
   function parseDate(s) {
     return new Date(s.replace(' ', 'T') + ':00-12:00');
   }
+
+  // Compute passed from date if not set by crawler
+  (function() {
+    var now = new Date();
+    CONFS.forEach(function(c) {
+      c.deadlines.forEach(function(d) {
+        d.passed = parseDate(d.date) < now;
+      });
+    });
+  })();
 
   function toLocalStr(s) {
     var d = parseDate(s);
@@ -301,6 +311,11 @@ nav_order: 3
 
     // clip rect for chart area (hides dots/lines outside zoom range)
     svg += '<defs><clipPath id="tl-clip"><rect x="' + LEFT_PAD + '" y="0" width="' + chartW + '" height="' + svgH + '" /></clipPath></defs>';
+
+    // row hover highlights — rendered first so grid/dots draw on top
+    filtered.forEach(function(conf, i) {
+      svg += '<rect class="tl-row-highlight" data-conf-id="' + conf.id.replace(/"/g, '&quot;') + '" x="0" y="' + (TOP_PAD + i * LANE_H) + '" width="' + containerW + '" height="' + LANE_H + '" fill="transparent" pointer-events="none" />';
+    });
 
     // today x position
     var now = new Date();
@@ -567,10 +582,12 @@ nav_order: 3
       var html = el.getAttribute('data-tip-html');
       if (html) {
         tip.innerHTML = html;
-        tip.style.left = (e.clientX + 14) + 'px';
-        tip.style.top = (e.clientY - 8) + 'px';
-        tip.style.transform = 'none';
+        var elRect = el.getBoundingClientRect();
+        tip.style.left = (elRect.left + elRect.width / 2) + 'px';
+        tip.style.transform = 'translateX(-50%)';
+        tip.style.top = '-9999px';
         tip.classList.add('visible');
+        tip.style.top = (elRect.top - tip.offsetHeight - 8) + 'px';
       } else {
         tip.textContent = el.getAttribute('data-tip');
         var rect = el.getBoundingClientRect();
@@ -676,6 +693,16 @@ nav_order: 3
 
     svgEl.addEventListener('dblclick', function() {
       if (isZoomed()) resetZoom();
+    });
+
+    // conf label hover → highlight row
+    var _isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var _rowHoverColor = _isDark ? 'oklch(22% 0.002 264)' : 'oklch(96% 0.003 264)';
+    svgEl.querySelectorAll('.tl-conf-label').forEach(function(el) {
+      var id = el.getAttribute('data-conf-id');
+      var row = svgEl.querySelector('.tl-row-highlight[data-conf-id="' + id + '"]');
+      el.addEventListener('mouseenter', function() { if (row) row.setAttribute('fill', _rowHoverColor); });
+      el.addEventListener('mouseleave', function() { if (row) row.setAttribute('fill', 'transparent'); });
     });
 
     // conf label click → focus/unfocus
@@ -895,10 +922,13 @@ nav_order: 3
     });
   }
 
+  var DEFAULTS = { area: 'SEC,SYS', tier: 'A*', status: 'upcoming' };
+
   function readFiltersFromURL() {
     var params = new URLSearchParams(window.location.search);
+    var noParams = params.toString() === '';
     ['area', 'tier'].forEach(function(group) {
-      var val = params.get(group);
+      var val = params.get(group) || (noParams ? DEFAULTS[group] : null);
       if (!val) return;
       var allBtn = document.querySelector('.deadlines-filter[data-group="' + group + '"][data-tag="all"]');
       var tagBtns = document.querySelectorAll('.deadlines-filter[data-group="' + group + '"]:not([data-tag="all"])');
@@ -913,7 +943,7 @@ nav_order: 3
         });
       }
     });
-    var statusVal = params.get('status');
+    var statusVal = params.get('status') || (noParams ? DEFAULTS.status : null);
     if (statusVal) {
       var statusVals = statusVal.split(',');
       document.querySelectorAll('.deadlines-filter[data-group="status"]').forEach(function(b) {

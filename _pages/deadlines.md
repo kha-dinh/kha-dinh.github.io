@@ -12,17 +12,16 @@ nav_order: 3
 
 {% assign confs = site.data.deadlines.conferences %}
 
-<!-- collect unique tags by category -->
+<!-- collect unique areas and tiers -->
 {% assign areas = "" %}
 {% assign tiers = "" %}
 {% for conf in confs %}
-  {% for tag in conf.tags %}
-    {% if tag == "A" or tag == "A*" or tag == "B" or tag == "C" %}
-      {% assign tiers = tiers | append: tag | append: "," %}
-    {% else %}
-      {% assign areas = areas | append: tag | append: "," %}
-    {% endif %}
-  {% endfor %}
+  {% if conf.area %}
+    {% assign areas = areas | append: conf.area | append: "," %}
+  {% endif %}
+  {% if conf.tier %}
+    {% assign tiers = tiers | append: conf.tier | append: "," %}
+  {% endif %}
 {% endfor %}
 {% assign areas = areas | split: "," | uniq | sort %}
 {% assign tiers = tiers | split: "," | uniq | sort %}
@@ -90,7 +89,6 @@ nav_order: 3
       place: {{ conf.place | jsonify }},
       date: {{ conf.date | jsonify }},
       timezone: {{ conf.timezone | jsonify }},
-      tags: {{ conf.tags | jsonify }},
       deadlines: [
         {% for d in conf.deadlines %}
         { label: {{ d.label | jsonify }}, date: {{ d.date | jsonify }}, passed: {{ d.passed | default: false }} }{% unless forloop.last %},{% endunless %}
@@ -835,8 +833,8 @@ nav_order: 3
       if (t !== 'all') statuses.push(t);
     });
     return CONFS.filter(function(c) {
-      var matchArea = f.areas.length === 0 || c.tags.some(function(t) { return f.areas.indexOf(t) !== -1; });
-      var matchTier = f.tiers.length === 0 || c.tags.some(function(t) { return f.tiers.indexOf(t) !== -1; });
+      var matchArea = f.areas.length === 0 || f.areas.indexOf(c.area) !== -1;
+      var matchTier = f.tiers.length === 0 || f.tiers.indexOf(c.tier) !== -1;
       var matchStatus = statuses.length === 0 || statuses.indexOf(getConfStatus(c)) !== -1;
       return matchArea && matchTier && matchStatus;
     });

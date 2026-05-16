@@ -597,6 +597,7 @@ nav_order: 3
       });
       el.addEventListener('click', function(e) {
         if (el.classList.contains('tl-conf-label')) return;
+        if (el.classList.contains('deadline-date')) return;
         e.stopPropagation();
         if (isPinned(el)) { unpinItem(el); return; }
         tip.classList.remove('visible');

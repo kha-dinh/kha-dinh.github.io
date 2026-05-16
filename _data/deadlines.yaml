@@ -1,35 +1,5 @@
-generated_at: '2026-05-15T22:12:48.366647+00:00'
+generated_at: '2026-05-16T00:44:30.516749+00:00'
 conferences:
-- id: asiacrypt-2026
-  name: Asiacrypt 2026
-  year: 2026
-  description: Annual International Conference on the Theory and Application of Cryptology
-    and Information Security
-  link: https://asiacrypt.iacr.org/2026/
-  area: CRYPTO
-  tier: A
-  place: ''
-  date: ''
-  timezone: AoE
-  deadlines:
-  - label: submission
-    date: 2026-05-21 23:59
-    passed: false
-  - label: early_reject
-    date: 2026-07-17 23:59
-    passed: false
-  - label: rebuttal_end
-    date: 2026-07-22 23:59
-    passed: false
-  - label: notification
-    date: 2026-08-14 23:59
-    passed: false
-  - label: camera_ready
-    date: 2026-09-14 23:59
-    passed: false
-  tags:
-  - CRYPTO
-  - A
 - id: crypto-2026
   name: Crypto 2026
   year: 2026
@@ -82,6 +52,36 @@ conferences:
   tags:
   - CRYPTO
   - B
+- id: asiacrypt-2026
+  name: Asiacrypt 2026
+  year: 2026
+  description: Annual International Conference on the Theory and Application of Cryptology
+    and Information Security
+  link: https://asiacrypt.iacr.org/2026/
+  area: CRYPTO
+  tier: A
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-05-21 23:59
+    passed: false
+  - label: early_reject
+    date: 2026-07-17 23:59
+    passed: false
+  - label: rebuttal_end
+    date: 2026-07-22 23:59
+    passed: false
+  - label: notification
+    date: 2026-08-14 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-09-14 23:59
+    passed: false
+  tags:
+  - CRYPTO
+  - A
 - id: eurocrypt-2026
   name: Eurocrypt 2026
   year: 2026
@@ -109,36 +109,29 @@ conferences:
   tags:
   - CRYPTO
   - A*
-- id: pkc-2026
-  name: PKC 2026
-  year: 2026
-  description: IACR International Conference on Practice and Theory in Public-Key
-    Cryptography
-  link: https://pkc.iacr.org/2026/
+- id: ches-2027
+  name: CHES 2027
+  year: 2027
+  description: Workshop on Cryptographic Hardware and Embedded Systems
+  link: https://ches.iacr.org/2027/
   area: CRYPTO
-  tier: B
-  place: ''
-  date: ''
+  tier: A
+  place: The Americas
+  date: Fall 2027
   timezone: AoE
   deadlines:
   - label: submission
-    date: 2025-10-24 23:59
-    passed: true
-  - label: early_reject
-    date: 2025-12-16 23:59
-    passed: true
-  - label: rebuttal_end
-    date: 2025-12-23 23:59
-    passed: true
+    date: 2026-07-15 23:59
+    passed: false
   - label: notification
-    date: 2026-02-13 23:59
-    passed: true
+    date: 2026-09-15 23:59
+    passed: false
   - label: camera_ready
-    date: 2026-03-06 23:59
-    passed: true
+    date: 2026-10-14 23:59
+    passed: false
   tags:
   - CRYPTO
-  - B
+  - A
 - id: pkc-2027
   name: PKC 2027
   year: 2027
@@ -147,8 +140,8 @@ conferences:
   link: https://pkc.iacr.org/2027/
   area: CRYPTO
   tier: B
-  place: ''
-  date: ''
+  place: Taipei, Taiwan
+  date: March 1-4, 2027
   timezone: AoE
   deadlines:
   - label: submission
@@ -176,8 +169,8 @@ conferences:
   link: https://ches.iacr.org/2026/
   area: CRYPTO
   tier: A
-  place: ''
-  date: ''
+  place: Antalya, Türkiye
+  date: October 11-15, 2026
   timezone: AoE
   deadlines:
   - label: submission
@@ -192,6 +185,36 @@ conferences:
   tags:
   - CRYPTO
   - A
+- id: pkc-2026
+  name: PKC 2026
+  year: 2026
+  description: IACR International Conference on Practice and Theory in Public-Key
+    Cryptography
+  link: https://pkc.iacr.org/2026/
+  area: CRYPTO
+  tier: B
+  place: West Palm Beach, USA
+  date: May 25-28, 2026
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2025-10-24 23:59
+    passed: true
+  - label: early_reject
+    date: 2025-12-16 23:59
+    passed: true
+  - label: rebuttal_end
+    date: 2025-12-23 23:59
+    passed: true
+  - label: notification
+    date: 2026-02-13 23:59
+    passed: true
+  - label: camera_ready
+    date: 2026-03-06 23:59
+    passed: true
+  tags:
+  - CRYPTO
+  - B
 - id: usenix-security-2027-cycle-1
   name: USENIX Security 2027 (Cycle 1)
   year: 2027
@@ -232,177 +255,62 @@ conferences:
   tags:
   - SEC
   - A*
-- id: usenix-security-2026-cycle-1
-  name: USENIX Security 2026 (Cycle 1)
-  year: 2026
-  description: USENIX Security Symposium
-  link: https://www.usenix.org/conference/usenixsecurity26/call-for-papers
+- id: ieee-s-p-2027-cycle-1
+  name: IEEE S&P 2027 (Cycle 1)
+  year: 2027
+  description: IEEE Symposium on Security and Privacy
+  link: https://sp2027.ieee-security.org/cfpapers.html
   area: SEC
   tier: A*
-  place: Baltimore, MD, USA
-  date: August 12–14, 2026
+  place: ''
+  date: "TBA \n               AT THE\n              TBA,\n              MONTREAL,\
+    \ CANADA"
   timezone: AoE
   deadlines:
   - label: abstract
-    date: 2025-08-19 23:59
-    passed: true
-  - label: submission
-    date: 2025-08-26 23:59
-    passed: true
-  - label: early_reject
-    date: 2025-10-07 23:59
-    passed: true
-  - label: rebuttal_start
-    date: 2025-11-06 23:59
-    passed: true
-  - label: rebuttal_end
-    date: 2025-11-13 23:59
-    passed: true
-  - label: notification
-    date: 2025-12-04 23:59
-    passed: true
-  - label: shepherd
-    date: 2025-12-18 23:59
-    passed: true
-  - label: camera_ready
-    date: 2026-01-15 23:59
-    passed: true
-  tags:
-  - SEC
-  - A*
-- id: usenix-security-2026-cycle-2
-  name: USENIX Security 2026 (Cycle 2)
-  year: 2026
-  description: USENIX Security Symposium
-  link: https://www.usenix.org/conference/usenixsecurity26/call-for-papers
-  area: SEC
-  tier: A*
-  place: Baltimore, MD, USA
-  date: August 12–14, 2026
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2026-01-29 23:59
-    passed: true
-  - label: submission
-    date: 2026-02-05 23:59
-    passed: true
-  - label: early_reject
-    date: 2026-03-17 23:59
-    passed: true
-  - label: rebuttal_start
-    date: 2026-04-16 23:59
-    passed: true
-  - label: rebuttal_end
-    date: 2026-04-23 23:59
-    passed: true
-  - label: notification
-    date: 2026-05-14 23:59
-    passed: true
-  - label: shepherd
-    date: 2026-05-28 23:59
+    date: 2026-06-04 23:59
     passed: false
-  - label: camera_ready
+  - label: submission
     date: 2026-06-11 23:59
     passed: false
+  - label: early_reject
+    date: 2026-07-27 23:59
+    passed: false
+  - label: notification
+    date: 2026-09-11 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-10-16 23:59
+    passed: false
   tags:
   - SEC
   - A*
-- id: ches-2027
-  name: CHES 2027
+- id: ieee-s-p-2027-cycle-2
+  name: IEEE S&P 2027 (Cycle 2)
   year: 2027
-  description: Workshop on Cryptographic Hardware and Embedded Systems
-  link: https://ches.iacr.org/2027/
-  area: CRYPTO
-  tier: A
+  description: IEEE Symposium on Security and Privacy
+  link: https://sp2027.ieee-security.org/cfpapers.html
+  area: SEC
+  tier: A*
   place: ''
-  date: ''
-  timezone: AoE
-  deadlines:
-  - label: submission
-    date: 2026-07-15 23:59
-    passed: false
-  - label: notification
-    date: 2026-09-15 23:59
-    passed: false
-  - label: camera_ready
-    date: 2026-10-14 23:59
-    passed: false
-  tags:
-  - CRYPTO
-  - A
-- id: acm-ccs-2026-cycle-a
-  name: ACM CCS 2026 (Cycle A)
-  year: 2026
-  description: ACM Conference on Computer and Communications Security
-  link: https://www.sigsac.org/ccs/CCS2026/call-for/call-for-papers.html
-  area: SEC
-  tier: A*
-  place: The Hague, The Netherlands.
-  date: November 15-19, 2026
+  date: "TBA \n               AT THE\n              TBA,\n              MONTREAL,\
+    \ CANADA"
   timezone: AoE
   deadlines:
   - label: abstract
-    date: 2026-01-07 23:59
-    passed: true
+    date: 2026-11-10 23:59
+    passed: false
   - label: submission
-    date: 2026-01-14 23:59
-    passed: true
+    date: 2026-11-17 23:59
+    passed: false
   - label: early_reject
-    date: 2026-02-20 23:59
-    passed: true
-  - label: rebuttal_start
-    date: 2026-03-17 23:59
-    passed: true
-  - label: rebuttal_end
-    date: 2026-03-20 23:59
-    passed: true
-  - label: notification
-    date: 2026-04-09 23:59
-    passed: true
-  - label: shepherd
-    date: 2026-06-05 23:59
-    passed: false
-  - label: camera_ready
-    date: 2026-08-21 23:59
-    passed: false
-  tags:
-  - SEC
-  - A*
-- id: acm-ccs-2026-cycle-b
-  name: ACM CCS 2026 (Cycle B)
-  year: 2026
-  description: ACM Conference on Computer and Communications Security
-  link: https://www.sigsac.org/ccs/CCS2026/call-for/call-for-papers.html
-  area: SEC
-  tier: A*
-  place: The Hague, The Netherlands.
-  date: November 15-19, 2026
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2026-04-22 23:59
-    passed: true
-  - label: submission
-    date: 2026-04-29 23:59
-    passed: true
-  - label: early_reject
-    date: 2026-06-03 23:59
-    passed: false
-  - label: rebuttal_start
-    date: 2026-06-29 23:59
-    passed: false
-  - label: rebuttal_end
-    date: 2026-07-01 23:59
+    date: 2027-01-18 23:59
     passed: false
   - label: notification
-    date: 2026-07-17 23:59
-    passed: false
-  - label: shepherd
-    date: 2026-09-06 23:59
+    date: 2027-03-05 23:59
     passed: false
   - label: camera_ready
-    date: 2026-09-17 23:59
+    date: 2027-04-08 23:59
     passed: false
   tags:
   - SEC
@@ -479,85 +387,78 @@ conferences:
   tags:
   - SEC
   - A*
-- id: raid-2026
-  name: RAID 2026
+- id: acm-ccs-2026-cycle-a
+  name: ACM CCS 2026 (Cycle A)
   year: 2026
-  description: International Symposium on Research in Attacks, Intrusions and Defenses
-  link: https://raid2026.org/call.html
-  area: SEC
-  tier: A
-  place: ''
-  date: Oct 11–14, 2026 · Lancaster, UK
-  timezone: AoE
-  deadlines:
-  - label: submission
-    date: 2026-04-16 23:59
-    passed: true
-  - label: notification
-    date: 2026-07-10 23:59
-    passed: false
-  - label: camera_ready
-    date: 2026-08-13 23:59
-    passed: false
-  tags:
-  - SEC
-  - A
-- id: ieee-s-p-2027-cycle-1
-  name: IEEE S&P 2027 (Cycle 1)
-  year: 2027
-  description: IEEE Symposium on Security and Privacy
-  link: https://sp2027.ieee-security.org/cfpapers.html
+  description: ACM Conference on Computer and Communications Security
+  link: https://www.sigsac.org/ccs/CCS2026/call-for/call-for-papers.html
   area: SEC
   tier: A*
-  place: ''
-  date: "TBA \n               AT THE\n              TBA,\n              MONTREAL,\
-    \ CANADA"
+  place: The Hague, The Netherlands.
+  date: November 15-19, 2026
   timezone: AoE
   deadlines:
   - label: abstract
-    date: 2026-06-04 23:59
-    passed: false
+    date: 2026-01-07 23:59
+    passed: true
   - label: submission
-    date: 2026-06-11 23:59
-    passed: false
+    date: 2026-01-14 23:59
+    passed: true
   - label: early_reject
-    date: 2026-07-27 23:59
-    passed: false
+    date: 2026-02-20 23:59
+    passed: true
+  - label: rebuttal_start
+    date: 2026-03-17 23:59
+    passed: true
+  - label: rebuttal_end
+    date: 2026-03-20 23:59
+    passed: true
   - label: notification
-    date: 2026-09-11 23:59
+    date: 2026-04-09 23:59
+    passed: true
+  - label: shepherd
+    date: 2026-06-05 23:59
     passed: false
   - label: camera_ready
-    date: 2026-10-16 23:59
+    date: 2026-08-21 23:59
     passed: false
   tags:
   - SEC
   - A*
-- id: ieee-s-p-2027-cycle-2
-  name: IEEE S&P 2027 (Cycle 2)
-  year: 2027
-  description: IEEE Symposium on Security and Privacy
-  link: https://sp2027.ieee-security.org/cfpapers.html
+- id: acm-ccs-2026-cycle-b
+  name: ACM CCS 2026 (Cycle B)
+  year: 2026
+  description: ACM Conference on Computer and Communications Security
+  link: https://www.sigsac.org/ccs/CCS2026/call-for/call-for-papers.html
   area: SEC
   tier: A*
-  place: ''
-  date: "TBA \n               AT THE\n              TBA,\n              MONTREAL,\
-    \ CANADA"
+  place: The Hague, The Netherlands.
+  date: November 15-19, 2026
   timezone: AoE
   deadlines:
   - label: abstract
-    date: 2026-11-10 23:59
-    passed: false
+    date: 2026-04-22 23:59
+    passed: true
   - label: submission
-    date: 2026-11-17 23:59
-    passed: false
+    date: 2026-04-29 23:59
+    passed: true
   - label: early_reject
-    date: 2027-01-18 23:59
+    date: 2026-06-03 23:59
+    passed: false
+  - label: rebuttal_start
+    date: 2026-06-29 23:59
+    passed: false
+  - label: rebuttal_end
+    date: 2026-07-01 23:59
     passed: false
   - label: notification
-    date: 2027-03-05 23:59
+    date: 2026-07-17 23:59
+    passed: false
+  - label: shepherd
+    date: 2026-09-06 23:59
     passed: false
   - label: camera_ready
-    date: 2027-04-08 23:59
+    date: 2026-09-17 23:59
     passed: false
   tags:
   - SEC
@@ -594,6 +495,29 @@ conferences:
   tags:
   - SEC
   - A
+- id: raid-2026
+  name: RAID 2026
+  year: 2026
+  description: International Symposium on Research in Attacks, Intrusions and Defenses
+  link: https://raid2026.org/call.html
+  area: SEC
+  tier: A
+  place: ''
+  date: Oct 11–14, 2026 · Lancaster, UK
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-04-16 23:59
+    passed: true
+  - label: notification
+    date: 2026-07-10 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-08-13 23:59
+    passed: false
+  tags:
+  - SEC
+  - A
 - id: ieee-euros-p-2026
   name: IEEE EuroS&P 2026
   year: 2026
@@ -620,6 +544,66 @@ conferences:
   tags:
   - SEC
   - A
+- id: ndss-2027-summer
+  name: NDSS 2027 (Summer)
+  year: 2027
+  description: ISOC Network and Distributed System Security Symposium
+  link: https://www.ndss-symposium.org/ndss2027/submissions/call-for-papers/
+  area: SEC
+  tier: A*
+  place: ''
+  date: The Network and Distributed System Security (NDSS) Symposium 2027 will take
+    place from 22 to 26 March 2027, in Seoul, Republic of Korea.
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-05-06 23:59
+    passed: true
+  - label: early_reject
+    date: 2026-06-12 23:59
+    passed: false
+  - label: notification
+    date: 2026-07-22 23:59
+    passed: false
+  - label: shepherd
+    date: 2026-08-19 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-09-30 23:59
+    passed: false
+  tags:
+  - SEC
+  - A*
+- id: ndss-2027-fall
+  name: NDSS 2027 (Fall)
+  year: 2027
+  description: ISOC Network and Distributed System Security Symposium
+  link: https://www.ndss-symposium.org/ndss2027/submissions/call-for-papers/
+  area: SEC
+  tier: A*
+  place: ''
+  date: The Network and Distributed System Security (NDSS) Symposium 2027 will take
+    place from 22 to 26 March 2027, in Seoul, Republic of Korea.
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-08-19 23:59
+    passed: false
+  - label: early_reject
+    date: 2026-09-25 23:59
+    passed: false
+  - label: notification
+    date: 2026-11-04 23:59
+    passed: false
+  - label: shepherd
+    date: 2026-12-02 23:59
+    passed: false
+  - label: camera_ready
+    date: 2027-01-06 23:59
+    passed: false
+  tags:
+  - SEC
+  - A*
 - id: ndss-2026-summer
   name: NDSS 2026 (Summer)
   year: 2026
@@ -1026,8 +1010,8 @@ conferences:
   link: https://2026.eurosys.org/cfp.html
   area: SYS
   tier: A
-  place: ''
-  date: ''
+  place: Edinburgh
+  date: April 27th—30th, 2026
   timezone: AoE
   deadlines:
   - label: abstract
@@ -1058,8 +1042,8 @@ conferences:
   link: https://2026.eurosys.org/cfp.html
   area: SYS
   tier: A
-  place: ''
-  date: ''
+  place: Edinburgh
+  date: April 27th—30th, 2026
   timezone: AoE
   deadlines:
   - label: abstract
@@ -1090,8 +1074,8 @@ conferences:
   link: https://2027.eurosys.org/cfp.html
   area: SYS
   tier: A
-  place: ''
-  date: ''
+  place: Rabat, Morocco
+  date: April 19—23, 2027
   timezone: AoE
   deadlines:
   - label: abstract
@@ -1122,8 +1106,8 @@ conferences:
   link: https://2027.eurosys.org/cfp.html
   area: SYS
   tier: A
-  place: ''
-  date: ''
+  place: Rabat, Morocco
+  date: April 19—23, 2027
   timezone: AoE
   deadlines:
   - label: abstract
@@ -1324,6 +1308,108 @@ conferences:
   tags:
   - SEC
   - A
+- id: osdi-2026
+  name: OSDI 2026
+  year: 2026
+  description: USENIX Symposium on Operating Systems Design and Implementation
+  link: https://www.usenix.org/conference/osdi26/call-for-papers
+  area: SYS
+  tier: A*
+  place: Seattle, WA, USA
+  date: July 13–15, 2026
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-12-04 17:59
+    passed: true
+  - label: submission
+    date: 2025-12-11 17:59
+    passed: true
+  - label: notification
+    date: 2026-03-26 23:59
+    passed: true
+  - label: camera_ready
+    date: 2026-06-09 23:59
+    passed: false
+  tags:
+  - SYS
+  - A*
+- id: usenix-security-2026-cycle-1
+  name: USENIX Security 2026 (Cycle 1)
+  year: 2026
+  description: USENIX Security Symposium
+  link: https://www.usenix.org/conference/usenixsecurity26/call-for-papers
+  area: SEC
+  tier: A*
+  place: Baltimore, MD, USA
+  date: August 12–14, 2026
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-08-19 23:59
+    passed: true
+  - label: submission
+    date: 2025-08-26 23:59
+    passed: true
+  - label: early_reject
+    date: 2025-10-07 23:59
+    passed: true
+  - label: rebuttal_start
+    date: 2025-11-06 23:59
+    passed: true
+  - label: rebuttal_end
+    date: 2025-11-13 23:59
+    passed: true
+  - label: notification
+    date: 2025-12-04 23:59
+    passed: true
+  - label: shepherd
+    date: 2025-12-18 23:59
+    passed: true
+  - label: camera_ready
+    date: 2026-01-15 23:59
+    passed: true
+  tags:
+  - SEC
+  - A*
+- id: usenix-security-2026-cycle-2
+  name: USENIX Security 2026 (Cycle 2)
+  year: 2026
+  description: USENIX Security Symposium
+  link: https://www.usenix.org/conference/usenixsecurity26/call-for-papers
+  area: SEC
+  tier: A*
+  place: Baltimore, MD, USA
+  date: August 12–14, 2026
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-01-29 23:59
+    passed: true
+  - label: submission
+    date: 2026-02-05 23:59
+    passed: true
+  - label: early_reject
+    date: 2026-03-17 23:59
+    passed: true
+  - label: rebuttal_start
+    date: 2026-04-16 23:59
+    passed: true
+  - label: rebuttal_end
+    date: 2026-04-23 23:59
+    passed: true
+  - label: notification
+    date: 2026-05-14 23:59
+    passed: true
+  - label: shepherd
+    date: 2026-05-28 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-06-11 23:59
+    passed: false
+  tags:
+  - SEC
+  - A*
 - id: sigcomm-2026
   name: SIGCOMM 2026
   year: 2026
@@ -1358,6 +1444,58 @@ conferences:
     passed: false
   - label: camera_ready
     date: 2026-07-03 23:59
+    passed: false
+  tags:
+  - SYS
+  - A*
+- id: nsdi-2027-spring
+  name: NSDI 2027 (Spring)
+  year: 2027
+  description: USENIX Symposium on Networked Systems Design and Implementation
+  link: https://www.usenix.org/conference/nsdi27/call-for-papers
+  area: SYS
+  tier: A*
+  place: Providence, RI, USA
+  date: May 11–13, 2027
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-04-16 23:59
+    passed: true
+  - label: submission
+    date: 2026-04-23 23:59
+    passed: true
+  - label: notification
+    date: 2026-07-23 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-10-20 23:59
+    passed: false
+  tags:
+  - SYS
+  - A*
+- id: nsdi-2027-fall
+  name: NSDI 2027 (Fall)
+  year: 2027
+  description: USENIX Symposium on Networked Systems Design and Implementation
+  link: https://www.usenix.org/conference/nsdi27/call-for-papers
+  area: SYS
+  tier: A*
+  place: Providence, RI, USA
+  date: May 11–13, 2027
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-09-10 23:59
+    passed: false
+  - label: submission
+    date: 2026-09-17 23:59
+    passed: false
+  - label: notification
+    date: 2026-12-08 23:59
+    passed: false
+  - label: camera_ready
+    date: 2027-03-04 23:59
     passed: false
   tags:
   - SYS
@@ -1420,84 +1558,6 @@ conferences:
   tags:
   - SYS
   - A
-- id: osdi-2026
-  name: OSDI 2026
-  year: 2026
-  description: USENIX Symposium on Operating Systems Design and Implementation
-  link: https://www.usenix.org/conference/osdi26/call-for-papers
-  area: SYS
-  tier: A*
-  place: Seattle, WA, USA
-  date: July 13–15, 2026
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2025-12-04 17:59
-    passed: true
-  - label: submission
-    date: 2025-12-11 17:59
-    passed: true
-  - label: notification
-    date: 2026-03-26 23:59
-    passed: true
-  - label: camera_ready
-    date: 2026-06-09 23:59
-    passed: false
-  tags:
-  - SYS
-  - A*
-- id: nsdi-2027-spring
-  name: NSDI 2027 (Spring)
-  year: 2027
-  description: USENIX Symposium on Networked Systems Design and Implementation
-  link: https://www.usenix.org/conference/nsdi27/call-for-papers
-  area: SYS
-  tier: A*
-  place: Providence, RI, USA
-  date: May 11–13, 2027
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2026-04-16 23:59
-    passed: true
-  - label: submission
-    date: 2026-04-23 23:59
-    passed: true
-  - label: notification
-    date: 2026-07-23 23:59
-    passed: false
-  - label: camera_ready
-    date: 2026-10-20 23:59
-    passed: false
-  tags:
-  - SYS
-  - A*
-- id: nsdi-2027-fall
-  name: NSDI 2027 (Fall)
-  year: 2027
-  description: USENIX Symposium on Networked Systems Design and Implementation
-  link: https://www.usenix.org/conference/nsdi27/call-for-papers
-  area: SYS
-  tier: A*
-  place: Providence, RI, USA
-  date: May 11–13, 2027
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2026-09-10 23:59
-    passed: false
-  - label: submission
-    date: 2026-09-17 23:59
-    passed: false
-  - label: notification
-    date: 2026-12-08 23:59
-    passed: false
-  - label: camera_ready
-    date: 2027-03-04 23:59
-    passed: false
-  tags:
-  - SYS
-  - A*
 - id: nsdi-2026-spring
   name: NSDI 2026 (Spring)
   year: 2026
@@ -1666,6 +1726,27 @@ conferences:
   tags:
   - SYS
   - A
+- id: fse-2027
+  name: FSE 2027
+  year: 2027
+  description: ACM Joint European Software Engineering Conference and Symposium on
+    the Foundations of Software Engineering
+  link: https://conf.researchr.org/dates/fse-2027
+  area: SE
+  tier: A*
+  place: Shenzhen, China
+  date: Mon 12 - Fri 16 July 2027
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-10-02 23:59
+    passed: false
+  - label: notification
+    date: 2027-01-22 23:59
+    passed: false
+  tags:
+  - SE
+  - A*
 - id: icse-2027
   name: ICSE 2027
   year: 2027
@@ -1695,23 +1776,28 @@ conferences:
   tags:
   - SE
   - A*
-- id: fse-2027
-  name: FSE 2027
-  year: 2027
-  description: ACM Joint European Software Engineering Conference and Symposium on
-    the Foundations of Software Engineering
-  link: https://conf.researchr.org/dates/fse-2027
+- id: ase-2026
+  name: ASE 2026
+  year: 2026
+  description: International Conference on Automated Software Engineering
+  link: https://conf.researchr.org/dates/ase-2026
   area: SE
   tier: A*
-  place: Shenzhen, China
-  date: Mon 12 - Fri 16 July 2027
+  place: Munich, Germany
+  date: Mon 12 - Fri 16 October 2026
   timezone: AoE
   deadlines:
   - label: submission
-    date: 2026-10-02 23:59
+    date: 2026-03-26 23:59
+    passed: true
+  - label: early_reject
+    date: 2026-05-25 23:59
     passed: false
   - label: notification
-    date: 2027-01-22 23:59
+    date: 2026-06-18 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-08-03 23:59
     passed: false
   tags:
   - SE
@@ -1743,6 +1829,30 @@ conferences:
   tags:
   - SE
   - A*
+- id: icst-2026
+  name: ICST 2026
+  year: 2026
+  description: IEEE International Conference on Software Testing, Verification and
+    Validation
+  link: https://conf.researchr.org/dates/icst-2026
+  area: SE
+  tier: A
+  place: Daejeon, South Korea
+  date: Mon 18 - Fri 22 May 2026
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-02-20 23:59
+    passed: true
+  - label: notification
+    date: 2026-03-15 23:59
+    passed: true
+  - label: camera_ready
+    date: 2026-04-03 23:59
+    passed: true
+  tags:
+  - SE
+  - A
 - id: icse-2026-cycle-1
   name: ICSE 2026 (Cycle 1)
   year: 2026
@@ -1801,32 +1911,29 @@ conferences:
   tags:
   - SE
   - A*
-- id: ase-2026
-  name: ASE 2026
+- id: icsme-2026
+  name: ICSME 2026
   year: 2026
-  description: International Conference on Automated Software Engineering
-  link: https://conf.researchr.org/dates/ase-2026
+  description: IEEE International Conference on Software Maintenance and Evolution
+  link: https://conf.researchr.org/dates/icsme-2026
   area: SE
-  tier: A*
-  place: Munich, Germany
-  date: Mon 12 - Fri 16 October 2026
+  tier: A
+  place: Benevento, Italy
+  date: Mon 14 - Fri 18 September 2026
   timezone: AoE
   deadlines:
-  - label: submission
-    date: 2026-03-26 23:59
+  - label: abstract
+    date: 2026-02-27 23:59
     passed: true
-  - label: early_reject
-    date: 2026-05-25 23:59
-    passed: false
+  - label: submission
+    date: 2026-03-06 23:59
+    passed: true
   - label: notification
-    date: 2026-06-18 23:59
-    passed: false
-  - label: camera_ready
-    date: 2026-08-03 23:59
-    passed: false
+    date: 2026-05-03 23:59
+    passed: true
   tags:
   - SE
-  - A*
+  - A
 - id: saner-2026
   name: SANER 2026
   year: 2026
@@ -1853,26 +1960,52 @@ conferences:
   tags:
   - SE
   - A
-- id: icsme-2026
-  name: ICSME 2026
+- id: issta-2026
+  name: ISSTA 2026
   year: 2026
-  description: IEEE International Conference on Software Maintenance and Evolution
-  link: https://conf.researchr.org/dates/icsme-2026
+  description: International Symposium on Software Testing and Analysis
+  link: https://conf.researchr.org/dates/issta-2026
   area: SE
   tier: A
-  place: Benevento, Italy
-  date: Mon 14 - Fri 18 September 2026
+  place: Oakland, California, United States
+  date: Sat 3 - Fri 9 October 2026
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-01-29 23:59
+    passed: true
+  - label: notification
+    date: 2026-04-16 23:59
+    passed: true
+  - label: camera_ready
+    date: 2026-07-23 23:59
+    passed: false
+  tags:
+  - SE
+  - A
+- id: saner-2027
+  name: SANER 2027
+  year: 2027
+  description: IEEE International Conference on Software Analysis, Evolution and Reengineering
+  link: https://conf.researchr.org/track/saner-2027/saner-2027-papers
+  area: SE
+  tier: A
+  place: Richmond, Virginia, United States
+  date: Tue 9 - Fri 12 March 2027
   timezone: AoE
   deadlines:
   - label: abstract
-    date: 2026-02-27 23:59
-    passed: true
+    date: 2026-09-21 23:59
+    passed: false
   - label: submission
-    date: 2026-03-06 23:59
-    passed: true
+    date: 2026-09-25 23:59
+    passed: false
   - label: notification
-    date: 2026-05-03 23:59
-    passed: true
+    date: 2026-12-01 23:59
+    passed: false
+  - label: camera_ready
+    date: 2027-01-08 23:59
+    passed: false
   tags:
   - SE
   - A
@@ -1899,53 +2032,6 @@ conferences:
   - label: camera_ready
     date: 2026-01-26 23:59
     passed: true
-  tags:
-  - SE
-  - A
-- id: icst-2026
-  name: ICST 2026
-  year: 2026
-  description: IEEE International Conference on Software Testing, Verification and
-    Validation
-  link: https://conf.researchr.org/dates/icst-2026
-  area: SE
-  tier: A
-  place: Daejeon, South Korea
-  date: Mon 18 - Fri 22 May 2026
-  timezone: AoE
-  deadlines:
-  - label: submission
-    date: 2026-02-20 23:59
-    passed: true
-  - label: notification
-    date: 2026-03-15 23:59
-    passed: true
-  - label: camera_ready
-    date: 2026-04-03 23:59
-    passed: true
-  tags:
-  - SE
-  - A
-- id: issta-2026
-  name: ISSTA 2026
-  year: 2026
-  description: International Symposium on Software Testing and Analysis
-  link: https://conf.researchr.org/dates/issta-2026
-  area: SE
-  tier: A
-  place: Oakland, California, United States
-  date: Sat 3 - Fri 9 October 2026
-  timezone: AoE
-  deadlines:
-  - label: submission
-    date: 2026-01-29 23:59
-    passed: true
-  - label: notification
-    date: 2026-04-16 23:59
-    passed: true
-  - label: camera_ready
-    date: 2026-07-23 23:59
-    passed: false
   tags:
   - SE
   - A
@@ -1995,32 +2081,6 @@ conferences:
   tags:
   - SE
   - C
-- id: popl-2027
-  name: POPL 2027
-  year: 2027
-  description: ACM SIGPLAN Symposium on Principles of Programming Languages
-  link: https://conf.researchr.org/dates/popl-2027
-  area: PL
-  tier: A*
-  place: Mexico City, Mexico
-  date: Sun 10 - Sat 16 January 2027
-  timezone: AoE
-  deadlines:
-  - label: submission
-    date: 2026-07-09 23:59
-    passed: false
-  - label: notification
-    date: 2026-10-05 23:59
-    passed: false
-  - label: shepherd
-    date: 2026-10-26 23:59
-    passed: false
-  - label: camera_ready
-    date: 2026-11-20 23:59
-    passed: false
-  tags:
-  - PL
-  - A*
 - id: pldi-2026
   name: PLDI 2026
   year: 2026
@@ -2073,6 +2133,84 @@ conferences:
   tags:
   - PL
   - A*
+- id: popl-2027
+  name: POPL 2027
+  year: 2027
+  description: ACM SIGPLAN Symposium on Principles of Programming Languages
+  link: https://conf.researchr.org/dates/popl-2027
+  area: PL
+  tier: A*
+  place: Mexico City, Mexico
+  date: Sun 10 - Sat 16 January 2027
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-07-09 23:59
+    passed: false
+  - label: notification
+    date: 2026-10-05 23:59
+    passed: false
+  - label: shepherd
+    date: 2026-10-26 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-11-20 23:59
+    passed: false
+  tags:
+  - PL
+  - A*
+- id: isca-2026
+  name: ISCA 2026
+  year: 2026
+  description: International Symposium on Computer Architecture
+  link: https://iscaconf.org/isca2026/submit/callforpapers.php
+  area: HW
+  tier: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-11-10 23:59
+    passed: true
+  - label: submission
+    date: 2025-11-17 23:59
+    passed: true
+  - label: rebuttal_start
+    date: 2026-02-16 23:59
+    passed: true
+  - label: rebuttal_end
+    date: 2026-03-06 23:59
+    passed: true
+  - label: notification
+    date: 2026-03-27 23:59
+    passed: true
+  tags:
+  - HW
+  - A*
+- id: icfp-2026
+  name: ICFP 2026
+  year: 2026
+  description: ACM SIGPLAN International Conference on Functional Programming
+  link: https://conf.researchr.org/dates/icfp-2026
+  area: PL
+  tier: A
+  place: United States
+  date: Mon 24 - Sat 29 August 2026
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-02-19 23:59
+    passed: true
+  - label: notification
+    date: 2026-05-14 23:59
+    passed: true
+  - label: camera_ready
+    date: 2026-07-01 23:59
+    passed: false
+  tags:
+  - PL
+  - A
 - id: oopsla-2026-round-1
   name: OOPSLA 2026 (Round 1)
   year: 2026
@@ -2121,29 +2259,6 @@ conferences:
   tags:
   - PL
   - A
-- id: icfp-2026
-  name: ICFP 2026
-  year: 2026
-  description: ACM SIGPLAN International Conference on Functional Programming
-  link: https://conf.researchr.org/dates/icfp-2026
-  area: PL
-  tier: A
-  place: United States
-  date: Mon 24 - Sat 29 August 2026
-  timezone: AoE
-  deadlines:
-  - label: submission
-    date: 2026-02-19 23:59
-    passed: true
-  - label: notification
-    date: 2026-05-14 23:59
-    passed: true
-  - label: camera_ready
-    date: 2026-07-01 23:59
-    passed: false
-  tags:
-  - PL
-  - A
 - id: micro-2026
   name: MICRO 2026
   year: 2026
@@ -2173,35 +2288,6 @@ conferences:
   - label: camera_ready
     date: 2026-09-11 23:59
     passed: false
-  tags:
-  - HW
-  - A*
-- id: isca-2026
-  name: ISCA 2026
-  year: 2026
-  description: International Symposium on Computer Architecture
-  link: https://iscaconf.org/isca2026/submit/callforpapers.php
-  area: HW
-  tier: A*
-  place: ''
-  date: ''
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2025-11-10 23:59
-    passed: true
-  - label: submission
-    date: 2025-11-17 23:59
-    passed: true
-  - label: rebuttal_start
-    date: 2026-02-16 23:59
-    passed: true
-  - label: rebuttal_end
-    date: 2026-03-06 23:59
-    passed: true
-  - label: notification
-    date: 2026-03-27 23:59
-    passed: true
   tags:
   - HW
   - A*
@@ -2245,6 +2331,72 @@ conferences:
   tags:
   - PL
   - A
+- id: neurips-2026
+  name: NeurIPS 2026
+  year: 2026
+  description: Conference on Neural Information Processing Systems
+  link: https://neurips.cc/Conferences/2026/CallForPapers
+  area: ML
+  tier: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-05-04 23:59
+    passed: true
+  - label: submission
+    date: 2026-05-06 23:59
+    passed: true
+  - label: notification
+    date: 2026-09-24 23:59
+    passed: false
+  tags:
+  - ML
+  - A*
+- id: iclr-2026
+  name: ICLR 2026
+  year: 2026
+  description: International Conference on Learning Representations
+  link: https://iclr.cc/Conferences/2026/CallForPapers
+  area: ML
+  tier: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-09-19 23:59
+    passed: true
+  - label: submission
+    date: 2025-09-24 23:59
+    passed: true
+  - label: notification
+    date: 2026-01-25 23:59
+    passed: true
+  tags:
+  - ML
+  - A*
+- id: icml-2026
+  name: ICML 2026
+  year: 2026
+  description: International Conference on Machine Learning
+  link: https://icml.cc/Conferences/2026/CallForPapers
+  area: ML
+  tier: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-01-23 23:59
+    passed: true
+  - label: submission
+    date: 2026-01-28 23:59
+    passed: true
+  tags:
+  - ML
+  - A*
 - id: dac-2026
   name: DAC 2026
   year: 2026
@@ -2270,6 +2422,93 @@ conferences:
     passed: true
   tags:
   - HW
+  - A*
+- id: cvpr-2026
+  name: CVPR 2026
+  year: 2026
+  description: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+  link: https://cvpr.thecvf.com/Conferences/2026/CallForPapers
+  area: ML
+  tier: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-11-07 23:59
+    passed: true
+  - label: submission
+    date: 2025-11-13 23:59
+    passed: true
+  - label: rebuttal_start
+    date: 2026-01-22 23:59
+    passed: true
+  - label: rebuttal_end
+    date: 2026-01-29 23:59
+    passed: true
+  - label: notification
+    date: 2026-02-20 23:59
+    passed: true
+  tags:
+  - ML
+  - A*
+- id: aaai-2026
+  name: AAAI 2026
+  year: 2026
+  description: AAAI Conference on Artificial Intelligence
+  link: https://aaai.org/conference/aaai/aaai-26/
+  area: ML
+  tier: A*
+  place: ''
+  date: January 20–January 27, 2026 | Singapore
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-07-25 23:59
+    passed: true
+  - label: submission
+    date: 2025-08-01 23:59
+    passed: true
+  - label: early_reject
+    date: 2025-09-15 23:59
+    passed: true
+  - label: notification
+    date: 2025-11-08 23:59
+    passed: true
+  - label: camera_ready
+    date: 2025-11-16 23:59
+    passed: true
+  tags:
+  - ML
+  - A*
+- id: aaai-2027
+  name: AAAI 2027
+  year: 2027
+  description: AAAI Conference on Artificial Intelligence
+  link: https://aaai.org/conference/aaai/aaai-27/
+  area: ML
+  tier: A*
+  place: ''
+  date: February 16–February 23, 2027 | Montréal, Canada
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-07-21 23:59
+    passed: false
+  - label: submission
+    date: 2026-07-28 23:59
+    passed: false
+  - label: early_reject
+    date: 2026-09-24 23:59
+    passed: false
+  - label: notification
+    date: 2026-11-30 23:59
+    passed: false
+  - label: camera_ready
+    date: 2026-12-14 23:59
+    passed: false
+  tags:
+  - ML
   - A*
 - id: hpca-2026
   name: HPCA 2026
@@ -2302,4 +2541,33 @@ conferences:
     passed: true
   tags:
   - HW
+  - A*
+- id: ijcai-2026
+  name: IJCAI 2026
+  year: 2026
+  description: International Joint Conference on Artificial Intelligence
+  link: https://2026.ijcai.org/ijcai-ecai-2026-call-for-papers-main-track/
+  area: ML
+  tier: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-01-12 23:59
+    passed: true
+  - label: submission
+    date: 2026-01-19 23:59
+    passed: true
+  - label: early_reject
+    date: 2026-01-26 23:59
+    passed: true
+  - label: rebuttal_start
+    date: 2026-03-04 23:59
+    passed: true
+  - label: notification
+    date: 2026-04-29 23:59
+    passed: true
+  tags:
+  - ML
   - A*

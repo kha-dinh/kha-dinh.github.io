@@ -8,7 +8,7 @@ nav_order: 3
 
 <div class="deadlines-page">
 
-<p class="deadlines-disclaimer">Deadlines are scraped automatically via <a href="https://github.com/kha-dinh/deadline-crawler">deadline-crawler</a> and may be inaccurate. Always verify against the official CFP. Last crawled: {{ site.data.deadlines.generated_at | date: "%Y-%m-%d %H:%M UTC" }}.</p>
+<p class="deadlines-disclaimer">Deadlines are scraped automatically via <a href="https://github.com/kha-dinh/deadline-crawler">deadline-crawler</a> and may be inaccurate. Always verify against the official CFP. Last crawled: {{ site.data.deadlines.generated_at | date: "%Y-%m-%d %H:%M UTC" }}. <a href="{{ '/assets/data/deadlines.yaml' | relative_url }}">raw data (YAML)</a></p>
 
 {% assign confs = site.data.deadlines.conferences %}
 

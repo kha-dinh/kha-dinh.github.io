@@ -43,7 +43,10 @@
 
   .navbar-brand {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 0.75, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 0.75,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.8125rem;
     letter-spacing: 0.02em;
@@ -55,7 +58,10 @@
 
   .navbar-nav .nav-item .nav-link {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 0.75, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 0.75,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -106,7 +112,11 @@
     background-color: var(--global-text-color);
     border-radius: 1px;
     margin-bottom: 4px;
-    transition: transform 200ms ease-out, opacity 200ms ease-out;
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform 200ms ease-out,
+        opacity 200ms ease-out;
+    }
   }
 
   .top-bar {
@@ -150,15 +160,29 @@
   background: none;
   color: var(--global-text-color-light);
   font-family: "Recursive", monospace;
-  font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+  font-variation-settings:
+    "MONO" 1,
+    "CASL" 0,
+    "slnt" 0;
   font-weight: 300;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   cursor: pointer;
-  transition: color 120ms, border-color 120ms;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      color 120ms,
+      border-color 120ms;
+  }
 
   &:hover {
     color: var(--global-theme-color);
     border-color: var(--global-theme-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 2px;
+    color: var(--global-theme-color);
   }
 }

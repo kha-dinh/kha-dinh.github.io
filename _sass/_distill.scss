@@ -35,7 +35,10 @@ d-article {
     display: inline;
   }
   blockquote {
-    border-left: 2px solid var(--global-theme-color) !important;
+    border: 1px solid color-mix(in oklch, var(--global-theme-color) 20%, var(--global-bg-color));
+    background: color-mix(in oklch, var(--global-theme-color) 5%, var(--global-bg-color));
+    border-left-width: 1px;
+    padding: 1em 1.25em;
   }
 
   // Style taken from code blocks
@@ -45,7 +48,7 @@ d-article {
     margin-top: 0;
     padding: 8px 12px;
     position: relative;
-    border-radius: 6px;
+    border-radius: 0;
     display: block;
     margin-bottom: 20px;
     grid-column: text;
@@ -94,7 +97,7 @@ d-article {
         display: block;
         outline: none;
         margin-bottom: 0.8em;
-        color: rgba(0, 0, 0, 0.8);
+        color: var(--global-text-color);
         font-weight: bold;
       }
       ul {

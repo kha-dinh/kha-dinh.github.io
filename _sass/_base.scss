@@ -44,7 +44,10 @@
     a {
       i::before {
         color: var(--global-text-color);
-        transition: color 200ms ease-out;
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: color 200ms ease-out;
+        }
       }
 
       &:hover {
@@ -70,8 +73,7 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: oklch(5% 0.004 264 / 0.8);
 }
 
 .wechat-modal > img {
@@ -126,7 +128,10 @@ footer.sticky-bottom {
   .footer-identity,
   .footer-year {
     font-family: "Recursive", monospace;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.6875rem;
     letter-spacing: 0.06em;
@@ -150,8 +155,13 @@ footer.sticky-bottom {
   }
 
   @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
   }
 
   a {
@@ -411,7 +421,7 @@ nav[data-toggle="toc"] {
 
     &:hover {
       color: var(--global-hover-color);
-      border-left-color: var(--global-hover-color);
+      border-left: none;
     }
   }
 
@@ -447,7 +457,6 @@ nav[data-toggle="toc"] {
 // Deadlines page
 
 .deadlines-page {
-
   // Deadline page paragraphs are Recursive mono metadata, not prose — override global justify
   p {
     text-align: left;
@@ -455,7 +464,10 @@ nav[data-toggle="toc"] {
 
   .deadlines-disclaimer {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.75rem;
     letter-spacing: 0.02em;
@@ -480,7 +492,10 @@ nav[data-toggle="toc"] {
 
   .deadlines-filter-label {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.6875rem;
     letter-spacing: 0.06em;
@@ -492,7 +507,10 @@ nav[data-toggle="toc"] {
   .deadlines-filter {
     appearance: none;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.75rem;
     letter-spacing: 0.06em;
@@ -508,7 +526,9 @@ nav[data-toggle="toc"] {
     cursor: pointer;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: color 120ms, border-color 180ms;
+      transition:
+        color 120ms,
+        border-color 180ms;
     }
 
     &:hover {
@@ -542,7 +562,6 @@ nav[data-toggle="toc"] {
     min-height: 60px;
     cursor: crosshair;
     user-select: none;
-
   }
 
   .timeline-brush-rect {
@@ -563,7 +582,10 @@ nav[data-toggle="toc"] {
     margin-top: 0.4rem;
     margin-bottom: 0.5rem;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: var(--global-text-color-light);
@@ -587,7 +609,10 @@ nav[data-toggle="toc"] {
       &:disabled {
         opacity: 0.3;
         cursor: default;
-        &:hover { border-color: var(--global-divider-color); color: var(--global-text-color); }
+        &:hover {
+          border-color: var(--global-divider-color);
+          color: var(--global-text-color);
+        }
       }
     }
   }
@@ -602,7 +627,10 @@ nav[data-toggle="toc"] {
     white-space: normal;
     line-height: 1.6;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 0.5, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 0.5,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.7rem;
     letter-spacing: 0.02em;
@@ -612,7 +640,10 @@ nav[data-toggle="toc"] {
     padding: 8px 12px;
 
     strong {
-      font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+      font-variation-settings:
+        "MONO" 1,
+        "CASL" 0,
+        "slnt" 0;
       font-weight: 300;
       letter-spacing: 0.04em;
       display: block;
@@ -630,7 +661,9 @@ nav[data-toggle="toc"] {
   }
 
   .tl-dot-vis {
-    transition: r 100ms ease, stroke-width 100ms ease;
+    transition:
+      r 100ms ease,
+      stroke-width 100ms ease;
     stroke: none;
     stroke-width: 0;
   }
@@ -674,7 +707,10 @@ nav[data-toggle="toc"] {
     gap: 1.5rem;
     margin-bottom: 1rem;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.75rem;
     letter-spacing: 0.04em;
@@ -700,18 +736,19 @@ nav[data-toggle="toc"] {
       &.upcoming {
         background: var(--global-theme-color);
       }
-
-
     }
   }
 
   // Section headings — matches section stamp pattern
   .deadlines-section-heading {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.8125rem;
-    letter-spacing: 0.20em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--global-text-color-light);
     border-bottom: 1px solid var(--global-divider-color);
@@ -726,23 +763,28 @@ nav[data-toggle="toc"] {
     cursor: pointer;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: background-color 120ms, opacity 180ms;
+      transition:
+        background-color 120ms,
+        opacity 180ms;
     }
 
     &.all-passed {
       opacity: 0.65;
     }
 
-
     &.selected {
-      box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--global-theme-color) 40%, transparent);
+      box-shadow: inset 0 0 0 1px
+        color-mix(in oklch, var(--global-theme-color) 40%, transparent);
       padding-left: 10px;
       padding-right: 10px;
 
       .deadline-title-row h3 {
         color: var(--global-theme-color);
-        font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
-        font-weight: 400;
+        font-variation-settings:
+          "MONO" 1,
+          "CASL" 0,
+          "slnt" 0;
+        font-weight: 300;
       }
     }
   }
@@ -760,7 +802,10 @@ nav[data-toggle="toc"] {
     h3 {
       margin: 0;
       font-family: "Recursive", system-ui, sans-serif;
-      font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+      font-variation-settings:
+        "MONO" 1,
+        "CASL" 0,
+        "slnt" 0;
       font-weight: 300;
       font-size: 0.9375rem;
       line-height: 1.4;
@@ -780,7 +825,9 @@ nav[data-toggle="toc"] {
         text-decoration: none;
         margin-left: 0.35em;
         opacity: 0.6;
-        transition: opacity 120ms, color 120ms;
+        transition:
+          opacity 120ms,
+          color 120ms;
         vertical-align: super;
         line-height: 0;
 
@@ -800,7 +847,10 @@ nav[data-toggle="toc"] {
   .deadline-tag {
     display: inline-block;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.7rem;
     letter-spacing: 0.05em;
@@ -813,7 +863,10 @@ nav[data-toggle="toc"] {
   .deadline-meta {
     margin: 0.2rem 0 0;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.75rem;
     letter-spacing: 0.04em;
@@ -826,7 +879,7 @@ nav[data-toggle="toc"] {
     flex-wrap: nowrap;
     gap: 0;
     overflow-x: auto;
-    margin-top: 0.5rem;
+    // margin-top: 0.5rem;
   }
 
   .deadline-date {
@@ -854,7 +907,10 @@ nav[data-toggle="toc"] {
 
   .deadline-label {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.6875rem;
     letter-spacing: 0.04em;
@@ -864,7 +920,10 @@ nav[data-toggle="toc"] {
 
   .deadline-value {
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.75rem;
     letter-spacing: 0.02em;
@@ -903,7 +962,10 @@ nav[data-toggle="toc"] {
     display: flex;
     justify-content: space-between;
     font-family: "Recursive", system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
     font-weight: 300;
     font-size: 0.6875rem;
     letter-spacing: 0.03em;
@@ -913,7 +975,10 @@ nav[data-toggle="toc"] {
 
   // SVG timeline text — force MONO=1 (structural metadata register)
   .deadlines-timeline text {
-    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-variation-settings:
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0;
   }
 
   // Mobile adjustments

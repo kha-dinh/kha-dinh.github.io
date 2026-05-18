@@ -11,11 +11,15 @@ $(document).ready(function() {
     var $entry = $(this).closest('.col-sm-10, .col-sm-9');
     $entry.find(".abstract.hidden").toggleClass('open');
     $entry.find(".bibtex.hidden.open").toggleClass('open');
+    $(this).attr('aria-expanded', $entry.find(".abstract.hidden").hasClass('open'));
+    $entry.find('a.bibtex').attr('aria-expanded', 'false');
   });
   $('a.bibtex').click(function() {
     var $entry = $(this).closest('.col-sm-10, .col-sm-9');
     $entry.find(".bibtex.hidden").toggleClass('open');
     $entry.find(".abstract.hidden.open").toggleClass('open');
+    $(this).attr('aria-expanded', $entry.find(".bibtex.hidden").hasClass('open'));
+    $entry.find('a.abstract').attr('aria-expanded', 'false');
   });
   $('a').removeClass('waves-effect waves-light');
 

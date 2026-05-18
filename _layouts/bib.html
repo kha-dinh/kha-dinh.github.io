@@ -6,14 +6,14 @@
         <div class="col {% if entry.preview %}preview{% else %}abbr{% endif %}">
         {%- if entry.preview -%}
           {% if entry.preview contains '://' -%}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
+          <img class="preview" src="{{ entry.preview }}" alt="{{ entry.title }} preview" loading="lazy">
           {%- else -%}
             {%- assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' -%}
             {% include figure.html
             path=entry_path
-            class="preview z-depth-1 rounded"
+            class="preview"
             zoomable=false
-            alt=entry.preview -%}
+            alt=entry.title -%}
           {%- endif -%}
         {%- elsif entry.abbr -%}
           <!-- {%- if site.data.venues[entry.abbr] -%} -->
@@ -106,10 +106,13 @@
               class="more-authors"
               role="button"
               tabindex="0"
+              aria-expanded="false"
               title="click to view {{more_authors_hide}}"
               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"
               onclick="
                 var element = $(this);
+                var expanded = element.attr('aria-expanded') === 'true';
+                element.attr('aria-expanded', !expanded);
                 element.attr('title', '');
                 var more_authors_text = element.text() == '{{more_authors_hide}}' ? '{{more_authors_show}}' : '{{more_authors_hide}}';
                 element.text(more_authors_text);
@@ -152,13 +155,13 @@
           {%- endif -%}
           <div class="links">
           {%- if entry.abstract %}
-            <a class="abstract btn btn-sm z-depth-0" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><span>[</span>abstract<span>]</span></a>
+            <a class="abstract btn btn-sm z-depth-0" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><span>[</span>abstract<span>]</span></a>
           {%- endif %}
           {%- if entry.arxiv %}
             <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button"><span>[</span>arXiv<span>]</span></a>
           {%- endif %}
           {%- if entry.bibtex_show %}
-            <a class="bibtex btn btn-sm z-depth-0" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><span>[</span>bib<span>]</span></a>
+            <a class="bibtex btn btn-sm z-depth-0" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><span>[</span>bib<span>]</span></a>
           {%- endif %}
           {%- if entry.html %}
             <a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button"><span>[</span>html<span>]</span></a>

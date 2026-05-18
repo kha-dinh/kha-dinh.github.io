@@ -45,6 +45,12 @@ let setTheme = (theme) => {
 
   localStorage.setItem("theme", theme);
 
+  // Update aria-pressed on theme toggle button
+  var toggleBtn = document.getElementById("light-toggle");
+  if (toggleBtn) {
+    toggleBtn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+  }
+
   // Updates the background of medium-zoom overlay.
   if (typeof medium_zoom !== "undefined") {
     medium_zoom.update({

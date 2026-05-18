@@ -36,6 +36,12 @@ layout: default
           {%- if site.linkedin_username %}
           <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer">linkedin.com</a>
           {%- endif %}
+          {%- if site.dblp_url %}
+          <a href="{{ site.dblp_url }}" target="_blank" rel="noopener noreferrer">dblp.org</a>
+          {%- endif %}
+          {%- if site.orcid_id %}
+          <a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" rel="noopener noreferrer">orcid.org</a>
+          {%- endif %}
         </div>
       </div>
       {%- endif %}

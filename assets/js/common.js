@@ -23,22 +23,10 @@ $(document).ready(function() {
   });
   $('a').removeClass('waves-effect waves-light');
 
-  // Publication topic filtering — build filter bar dynamically from rendered tags
-  (function buildFilterBar() {
+  // Publication topic filtering — attach handlers to server-rendered filter bar
+  (function initFilterBar() {
     var $bar = $('#pub-filter-bar');
-    if (!$bar.length) return;
-    var seen = {};
-    var topics = [];
-    $('.pub-topic-tag').each(function() {
-      var t = $(this).data('topic');
-      if (t && !seen[t]) { seen[t] = true; topics.push(t); }
-    });
-    if (!topics.length) { $bar.hide(); return; }
-    var html = '<button class="filter-btn active" data-filter="all">all</button>';
-    topics.forEach(function(t) {
-      html += '<button class="filter-btn" data-filter="' + t + '">' + t + '</button>';
-    });
-    $bar.html(html);
+    if (!$bar.length || !$bar.find('.filter-btn').length) return;
 
     function applyActiveFilters() {
       var active = $bar.find('.filter-btn.active:not([data-filter="all"])').map(function() {
@@ -52,13 +40,13 @@ $(document).ready(function() {
       }
     }
 
-    $bar.find('.filter-btn[data-filter="all"]').click(function() {
+    $bar.on('click', '.filter-btn[data-filter="all"]', function() {
       $bar.find('.filter-btn').removeClass('active');
       $(this).addClass('active');
       filterByTopics([]);
     });
 
-    $bar.find('.filter-btn:not([data-filter="all"])').click(function() {
+    $bar.on('click', '.filter-btn:not([data-filter="all"])', function() {
       $bar.find('.filter-btn[data-filter="all"]').removeClass('active');
       $(this).toggleClass('active');
       applyActiveFilters();

@@ -1,0 +1,10 @@
+# Publication topic tags — used to pre-render the filter bar on /publications/
+# Keep in sync with `topics` field in _bibliography/papers.bib
+- processing-in-memory
+- side channels
+- oram
+- confidential computing
+- memory safety
+- fuzzing
+- compartmentalization
+- machine learning

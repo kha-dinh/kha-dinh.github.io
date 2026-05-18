@@ -889,6 +889,7 @@ nav_order: 3
       sortSelected(passed).forEach(function(conf) { html += renderEntry(conf); });
     }
     container.innerHTML = html;
+    countdownEls = Array.prototype.slice.call(container.querySelectorAll('.deadline-countdown'));
     // when hiding others: hide unselected entries and empty section headings
     if (hasSelection && !showOthers) {
       container.querySelectorAll('.deadline-entry').forEach(function(entry) {

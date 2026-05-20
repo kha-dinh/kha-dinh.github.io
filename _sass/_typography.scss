@@ -86,11 +86,6 @@ body {
   font-weight: 300;
   font-optical-sizing: auto;
   line-height: 1.7;
-  @media (prefers-reduced-motion: no-preference) {
-    transition:
-      background-color 200ms,
-      color 200ms;
-  }
 }
 
 strong {

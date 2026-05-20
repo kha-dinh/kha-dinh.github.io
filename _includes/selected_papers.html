@@ -1,4 +1,36 @@
-<div class="publications">
+<div class="publications publications--selected">
   {% bibliography -f {{ site.scholar.bibliography }} --group_by none --query
   @*[selected=true]* %}
 </div>
+<script>
+(function() {
+  var CACHE_KEY = 'pub-num-map';
+  var CACHE_TTL = 86400000;
+  var items = document.querySelectorAll('.publications--selected ol.bibliography li');
+  if (!items.length) return;
+
+  function apply(map) {
+    items.forEach(function(li) {
+      var d = li.querySelector('div[id]');
+      if (d && map[d.id]) li.setAttribute('data-pub-num', '[' + map[d.id] + ']');
+    });
+  }
+
+  try {
+    var cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+    if (cached && Date.now() - cached.ts < CACHE_TTL) { apply(cached.map); return; }
+  } catch(e) {}
+
+  fetch('/publications/').then(function(r) { return r.text(); }).then(function(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var map = {}, idx = 0;
+    doc.querySelectorAll('ol.bibliography li').forEach(function(li) {
+      idx++;
+      var d = li.querySelector('div[id]');
+      if (d) map[d.id] = idx;
+    });
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), map: map })); } catch(e) {}
+    apply(map);
+  });
+})();
+</script>

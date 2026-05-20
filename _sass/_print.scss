@@ -1,0 +1,206 @@
+/*******************************************************************************
+ * Print stylesheet — renders as a two-column proceedings paper
+ ******************************************************************************/
+
+@media print {
+  // Reset page
+  @page {
+    size: letter;
+    margin: 0.75in;
+  }
+
+  // Hide non-content elements
+  nav,
+  footer,
+  progress,
+  .pub-filter-bar,
+  #light-toggle,
+  .toggle-container,
+  .navbar,
+  .about-photo,
+  .about-sidebar,
+  .pub-topic-tag,
+  .pub-tags-links-row,
+  .footer-cursor {
+    display: none !important;
+  }
+
+  // Reset layout
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10pt;
+    line-height: 1.3;
+    color: #000;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  main.container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  // Two-column body
+  .post article {
+    column-count: 2;
+    column-gap: 0.25in;
+    column-rule: none;
+  }
+
+  // About page header spans full width
+  .about-header {
+    column-span: all;
+    margin-bottom: 18pt;
+    text-align: center;
+
+    .about-name {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 18pt;
+      font-weight: bold;
+      letter-spacing: 0;
+    }
+
+    .name-native {
+      font-size: 11pt;
+      margin-top: 2pt;
+    }
+
+    .subtitle {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 10pt;
+      font-weight: normal;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+  }
+
+  // Section headings — bold, numbered look
+  .post article > h2 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 12pt;
+    margin-bottom: 4pt;
+    color: #000;
+    break-after: avoid;
+  }
+
+  // Body text
+  p {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10pt;
+    line-height: 1.3;
+    text-align: justify;
+    hyphens: auto;
+    margin-bottom: 6pt;
+    orphans: 3;
+    widows: 3;
+  }
+
+  // Links — just black text with no decoration
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+    border: none !important;
+  }
+
+  // Publications list
+  .publications {
+    break-inside: avoid;
+
+    h1 {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 14pt;
+      font-weight: bold;
+      text-align: center;
+      column-span: all;
+    }
+
+    h2.bibliography {
+      font-size: 11pt;
+      font-weight: bold;
+      border-top: none;
+      text-align: left;
+      color: #000;
+    }
+
+    ol.bibliography li {
+      font-size: 9pt;
+      line-height: 1.25;
+      padding: 4pt 0 4pt 24pt;
+      border-top: none;
+      break-inside: avoid;
+
+      &::before {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 9pt;
+        top: 4pt;
+      }
+
+      &:first-child {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .title {
+      font-family: "Times New Roman", Times, serif;
+      font-weight: bold;
+      font-size: 9pt;
+    }
+
+    .author {
+      font-size: 9pt;
+    }
+
+    .periodical {
+      font-family: "Times New Roman", Times, serif;
+      font-style: italic;
+      font-size: 9pt;
+    }
+
+    .links,
+    .hidden,
+    .badges {
+      display: none !important;
+    }
+  }
+
+  // Flat lists (awards, service)
+  .flat-list .flat-item {
+    font-size: 9pt;
+    line-height: 1.25;
+    padding: 2pt 0;
+    border: none;
+    break-inside: avoid;
+  }
+
+  // News list
+  .news-list .news-item {
+    font-size: 9pt;
+    line-height: 1.25;
+    padding: 2pt 0;
+    border: none;
+    break-inside: avoid;
+  }
+
+  // Prevent page breaks inside entries
+  .flat-item,
+  .news-item,
+  ol.bibliography li {
+    page-break-inside: avoid;
+  }
+}

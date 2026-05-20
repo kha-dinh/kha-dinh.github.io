@@ -4,13 +4,12 @@ title: about
 permalink: /
 <!-- subtitle: <a href='#'>Sungkyunkwan University</a>. Suwon, South Korea. -->
 subtitle: >
-  <!-- <font size="-1"><tt>duykha.dinh (at) ubc (dot) ca</tt></font><br> -->
   Postdoctoral Researcher, Systopia Lab<br>University of British Columbia, Vancouver, Canada
 name_native: Đinh Duy Kha (丁维柯)
 profile:
   align: right
   image: profile-crop.gif
-  image_circular: true # crops the image to make it circular
+  image_circular: false # rectangular photo matches retro-academic convention
   location: "Department of Computer Science, UBC, Office X469 (4th Floor)<br>2366 Main Mall, Vancouver, BC Canada V6T 1Z4"
 
 news: true # includes a list of news items

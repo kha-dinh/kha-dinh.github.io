@@ -44,10 +44,6 @@
     a {
       i::before {
         color: var(--global-text-color);
-
-        @media (prefers-reduced-motion: no-preference) {
-          transition: color 200ms ease-out;
-        }
       }
 
       &:hover {
@@ -525,11 +521,6 @@ nav[data-toggle="toc"] {
     align-items: center;
     cursor: pointer;
 
-    @media (prefers-reduced-motion: no-preference) {
-      transition:
-        color 120ms,
-        border-color 180ms;
-    }
 
     &:hover {
       color: var(--global-theme-color);
@@ -762,12 +753,6 @@ nav[data-toggle="toc"] {
     border-top: 1px solid var(--global-divider-color);
     cursor: pointer;
 
-    @media (prefers-reduced-motion: no-preference) {
-      transition:
-        background-color 120ms,
-        opacity 180ms;
-    }
-
     &.all-passed {
       opacity: 0.65;
     }
@@ -825,9 +810,6 @@ nav[data-toggle="toc"] {
         text-decoration: none;
         margin-left: 0.35em;
         opacity: 0.6;
-        transition:
-          opacity 120ms,
-          color 120ms;
         vertical-align: super;
         line-height: 0;
 

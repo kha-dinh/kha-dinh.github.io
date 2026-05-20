@@ -121,7 +121,9 @@ $(document).ready(function() {
         .then(function(html) {
           var doc = new DOMParser().parseFromString(html, 'text/html');
           var map = {};
+          var pubIndex = 0;
           doc.querySelectorAll('ol.bibliography li').forEach(function(li) {
+            pubIndex++;
             var titleEl = li.querySelector('.title');
             var periodicalEl = li.querySelector('.periodical');
             var entryDiv = li.querySelector('div[id]');
@@ -132,7 +134,7 @@ $(document).ready(function() {
             li.querySelectorAll('[data-topic]').forEach(function(tag) {
               var topic = tag.dataset.topic;
               if (!map[topic]) map[topic] = [];
-              map[topic].push({ title: title, periodical: periodical, anchor: anchor });
+              map[topic].push({ title: title, periodical: periodical, anchor: anchor, num: pubIndex });
             });
           });
           topicMap = map;
@@ -186,7 +188,8 @@ $(document).ready(function() {
         var safeTitle = $('<span>').text(p.title).html();
         var safePeriodical = $('<span>').text(p.periodical).html();
         var safeAnchor = $('<span>').text(p.anchor).html();
-        return '<a class="tag-tooltip-entry" href="' + safeAnchor + '">' + safeTitle +
+        return '<a class="tag-tooltip-entry" href="' + safeAnchor + '">' +
+               '<span class="tag-tooltip-num">[' + p.num + ']</span> ' + safeTitle +
                (p.periodical ? ' <span class="tag-tooltip-venue">· ' + safePeriodical + '</span>' : '') +
                '</a>';
       }).join('');

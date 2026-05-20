@@ -22,7 +22,6 @@
     padding: 3px 10px;
     min-height: 44px;
     cursor: pointer;
-    transition: color 120ms, border-color 180ms;
 
     &:hover {
       color: var(--global-theme-color);
@@ -77,6 +76,16 @@
     }
   }
 
+  .tag-tooltip-num {
+    font-family: "Recursive", monospace;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color-light);
+    font-variant-numeric: tabular-nums;
+  }
+
   .tag-tooltip-venue {
     color: var(--global-text-color-light);
   }
@@ -97,7 +106,6 @@
   cursor: pointer;
   text-decoration: none;
   vertical-align: middle;
-  transition: color 120ms, border-color 180ms;
 
   &:hover,
   &.active {
@@ -122,6 +130,8 @@
 .publications {
   margin-top: 0;
   margin-bottom: 96px;
+  counter-reset: pub-counter;
+
 
   h1 {
     color: var(--global-text-color);
@@ -153,9 +163,25 @@
     margin-top: 0;
 
     li {
-      padding: 8px 0;
+      counter-increment: pub-counter;
+      position: relative;
+      padding: 8px 0 8px 36px;
       margin-bottom: 0;
       border-top: 1px solid var(--global-divider-color);
+
+      &::before {
+        content: "[" counter(pub-counter) "]";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        font-family: "Recursive", monospace;
+        font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 0.02em;
+        color: var(--global-text-color-light);
+        font-variant-numeric: tabular-nums;
+      }
 
       &:first-child {
         border-top: none;
@@ -250,10 +276,6 @@
           color: var(--global-text-color);
           text-decoration: none;
 
-          @media (prefers-reduced-motion: no-preference) {
-            transition: color 120ms;
-          }
-
           &:hover {
             color: var(--global-theme-color);
             text-decoration: none;
@@ -279,7 +301,6 @@
         a {
           border-bottom: 1px solid
             color-mix(in oklch, var(--global-theme-color) 35%, transparent);
-          transition: border-color 180ms;
 
           &:hover {
             border-bottom-color: var(--global-theme-color);
@@ -380,7 +401,6 @@
         font-size: 0.8125rem;
         color: var(--global-text-color);
         letter-spacing: 0.01em;
-        transition: color 120ms;
       }
 
       .links {
@@ -398,7 +418,6 @@
           font-size: 0.8125rem;
           color: var(--global-text-color-light);
           letter-spacing: 0.04em;
-          transition: color 120ms;
           background: none;
           border: none;
           padding: 0 !important;
@@ -457,7 +476,6 @@
         padding: 1px 7px;
         border-radius: 0;
         cursor: pointer;
-        transition: color 120ms, border-color 180ms;
 
         &:hover,
         &.active {
@@ -496,4 +514,16 @@
       }
     }
   }
+}
+
+// Homepage selected papers: use JS-assigned numbers instead of CSS counter
+// Hide until JS sets data-pub-num to avoid flash of wrong CSS counter number
+.publications.publications--selected ol.bibliography li::before {
+  content: attr(data-pub-num);
+  counter-increment: none;
+  visibility: hidden;
+}
+
+.publications.publications--selected ol.bibliography li[data-pub-num]::before {
+  visibility: visible;
 }

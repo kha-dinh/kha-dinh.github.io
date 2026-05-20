@@ -92,7 +92,6 @@
     a {
       i::before {
         color: var(--global-text-color);
-        transition: color 200ms ease-out;
       }
 
       &:hover {
@@ -168,12 +167,6 @@
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   cursor: pointer;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition:
-      color 120ms,
-      border-color 120ms;
-  }
 
   &:hover {
     color: var(--global-theme-color);

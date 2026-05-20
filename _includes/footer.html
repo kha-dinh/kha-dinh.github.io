@@ -2,14 +2,14 @@
     <footer class="fixed-bottom">
       <div class="container footer-colophon">
         <span class="footer-identity"><span class="footer-prompt">❯</span> Kha Dinh Duy &middot; UBC Systopia Lab &middot; Vancouver, BC<span class="footer-cursor" aria-hidden="true"></span></span>
-        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}</span>
+        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}{% if site.last_updated %} &middot; Last updated: {{ site.time | date: '%B %d, %Y' }}{% endif %}</span>
       </div>
     </footer>
     {%- else -%}
     <footer class="sticky-bottom mt-5">
       <div class="container footer-colophon">
         <span class="footer-identity"><span class="footer-prompt">❯</span> Kha Dinh Duy &middot; UBC Systopia Lab &middot; Vancouver, BC<span class="footer-cursor" aria-hidden="true"></span></span>
-        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}</span>
+        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}{% if site.last_updated %} &middot; Last updated: {{ site.time | date: '%B %d, %Y' }}{% endif %}</span>
       </div>
     </footer>
     {%- endif %}

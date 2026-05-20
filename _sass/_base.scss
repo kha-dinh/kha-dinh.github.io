@@ -859,7 +859,7 @@ nav[data-toggle="toc"] {
   .deadline-dates {
     display: flex;
     flex-wrap: nowrap;
-    gap: 0;
+    gap: 6px;
     overflow-x: auto;
     // margin-top: 0.5rem;
   }
@@ -868,11 +868,8 @@ nav[data-toggle="toc"] {
     display: flex;
     flex-direction: column;
     white-space: nowrap;
-    padding: 4px 6px 4px 0;
-
-    &:first-child {
-      padding-left: 0;
-    }
+    padding: 4px 8px;
+    border: 1px solid var(--global-divider-color);
 
     &.passed {
       opacity: 0.5;
@@ -975,7 +972,7 @@ nav[data-toggle="toc"] {
     .deadline-dates {
       flex-direction: column;
       flex-wrap: wrap;
-      gap: 1px;
+      gap: 6px;
       overflow-x: visible;
     }
 
@@ -984,7 +981,7 @@ nav[data-toggle="toc"] {
       align-items: baseline;
       justify-content: space-between;
       gap: 8px;
-      padding: 2px 0;
+      padding: 4px 8px;
       white-space: normal;
     }
 

@@ -777,21 +777,21 @@ nav_order: 3
     html += '<div class="deadline-dates">';
     conf.deadlines.forEach(function(d) {
       var cls = d.passed ? 'passed' : 'upcoming';
-      var tip = '';
+      var tip = d.date + ' AoE';
       var dt = parseDate(d.date);
       var now = new Date();
       var diff = dt - now;
       if (d.passed) {
-        tip = 'passed';
+        tip += ' (passed)';
       } else {
         var h = Math.ceil(diff / 3600000);
         if (h <= 48) {
-          tip = h + 'h left';
+          tip += ' (' + h + 'h left)';
         } else {
-          tip = Math.ceil(h / 24) + 'd left';
+          tip += ' (' + Math.ceil(h / 24) + 'd left)';
         }
       }
-      html += '<div class="deadline-date ' + cls + '" data-tip="' + esc(tip) + '" tabindex="0">';
+      html += '<div class="deadline-date ' + cls + '" data-tip="' + esc(tip) + '" data-date="' + esc(d.date) + '" tabindex="0">';
       html += '<span class="deadline-label">' + esc(d.label.replace(/_/g, ' ')) + '</span>';
       html += '<span class="deadline-value">' + esc(toLocalStr(d.date)) + '</span>';
       html += '</div>';
@@ -890,6 +890,13 @@ nav_order: 3
     }
     container.innerHTML = html;
     countdownEls = Array.prototype.slice.call(container.querySelectorAll('.deadline-countdown'));
+
+    // highlight the next immediate deadline per entry
+    container.querySelectorAll('.deadline-entry').forEach(function(entry) {
+      var first = entry.querySelector('.deadline-date.upcoming');
+      if (first) first.classList.add('next-immediate');
+    });
+
     // when hiding others: hide unselected entries and empty section headings
     if (hasSelection && !showOthers) {
       container.querySelectorAll('.deadline-entry').forEach(function(entry) {

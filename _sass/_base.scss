@@ -880,7 +880,15 @@ nav[data-toggle="toc"] {
     }
 
     &.upcoming .deadline-value {
-      color: var(--global-theme-color);
+      color: var(--global-text-color);
+    }
+
+    &.next-immediate {
+      border-color: var(--global-theme-color);
+
+      .deadline-value {
+        color: var(--global-theme-color);
+      }
     }
   }
 

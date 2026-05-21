@@ -19,8 +19,8 @@ nav_order: 3
   {% if conf.area %}
     {% assign areas = areas | append: conf.area | append: "," %}
   {% endif %}
-  {% if conf.tier %}
-    {% assign tiers = tiers | append: conf.tier | append: "," %}
+  {% if conf.rank %}
+    {% assign tiers = tiers | append: conf.rank | append: "," %}
   {% endif %}
 {% endfor %}
 {% assign areas = areas | split: "," | uniq | sort %}
@@ -85,7 +85,7 @@ nav_order: 3
       description: {{ conf.description | jsonify }},
       link: {{ conf.link | jsonify }},
       area: {{ conf.area | jsonify }},
-      tier: {{ conf.tier | jsonify }},
+      tier: {{ conf.rank | jsonify }},
       place: {{ conf.place | jsonify }},
       date: {{ conf.date | jsonify }},
       timezone: {{ conf.timezone | jsonify }},

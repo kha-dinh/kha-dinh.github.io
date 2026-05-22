@@ -17,22 +17,16 @@
     <script data-goatcounter="https://optimized-out.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
     <script>
-    window.addEventListener('load', function() {
+    (function() {
       var el = document.querySelector('.footer-views');
       if (!el) return;
-      if (window.goatcounter && window.goatcounter.visit_count) {
-        var tmp = document.createElement('div');
-        tmp.id = 'gcvc-tmp';
-        tmp.style.display = 'none';
-        document.body.appendChild(tmp);
-        window.goatcounter.visit_count({append: '#gcvc-tmp', no_branding: true});
-        setTimeout(function() {
-          var views = tmp.querySelector('#gcvc-views');
-          el.textContent = (views ? views.textContent : '0') + ' views';
-          tmp.remove();
-        }, 2000);
-      } else {
-        el.textContent = '0 views';
-      }
-    });
+      el.textContent = '0 views';
+      var path = location.pathname;
+      fetch('https://optimized-out.goatcounter.com/counter/' + encodeURIComponent(path) + '.json')
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(data) {
+          if (data && data.count) el.textContent = data.count + ' views';
+        })
+        .catch(function() {});
+    })();
     </script>

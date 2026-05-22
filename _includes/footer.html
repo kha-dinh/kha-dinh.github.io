@@ -22,7 +22,7 @@
       if (!el) return;
       el.textContent = '0 views';
       var path = location.pathname;
-      fetch('https://optimized-out.goatcounter.com/counter/' + encodeURIComponent(path) + '.json')
+      fetch('https://optimized-out.goatcounter.com/counter/' + path + '.json')
         .then(function(r) { return r.ok ? r.json() : null; })
         .then(function(data) {
           if (data && data.count) el.textContent = data.count + ' views';

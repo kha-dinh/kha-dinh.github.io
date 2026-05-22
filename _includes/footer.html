@@ -2,14 +2,28 @@
     <footer class="fixed-bottom">
       <div class="container footer-colophon">
         <span class="footer-identity"><span class="footer-prompt">❯</span> Kha Dinh Duy &middot; UBC Systopia Lab &middot; Vancouver, BC<span class="footer-cursor" aria-hidden="true"></span></span>
-        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}{% if site.last_updated %} &middot; Last updated: {{ site.time | date: '%B %d, %Y' }}{% endif %}</span>
+        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}{% if site.last_updated %} &middot; Last updated: {{ site.time | date: '%B %d, %Y' }}{% endif %} &middot; <span class="footer-views" aria-label="Page views"></span></span>
       </div>
     </footer>
     {%- else -%}
     <footer class="sticky-bottom mt-5">
       <div class="container footer-colophon">
         <span class="footer-identity"><span class="footer-prompt">❯</span> Kha Dinh Duy &middot; UBC Systopia Lab &middot; Vancouver, BC<span class="footer-cursor" aria-hidden="true"></span></span>
-        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}{% if site.last_updated %} &middot; Last updated: {{ site.time | date: '%B %d, %Y' }}{% endif %}</span>
+        <span class="footer-year">&copy; {{ site.time | date: '%Y' }}{% if site.last_updated %} &middot; Last updated: {{ site.time | date: '%B %d, %Y' }}{% endif %} &middot; <span class="footer-views" aria-label="Page views"></span></span>
       </div>
     </footer>
     {%- endif %}
+
+    <script data-goatcounter="https://optimized-out.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+    <script>
+    window.addEventListener('load', function() {
+      var el = document.querySelector('.footer-views');
+      if (!el) return;
+      if (window.goatcounter && window.goatcounter.visit_count) {
+        window.goatcounter.visit_count({append: '.footer-views'});
+      } else {
+        el.textContent = '0';
+      }
+    });
+    </script>

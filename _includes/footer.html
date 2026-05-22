@@ -22,9 +22,10 @@
       if (!el) return;
       if (window.goatcounter && window.goatcounter.visit_count) {
         var tmp = document.createElement('div');
+        tmp.id = 'gcvc-tmp';
         tmp.style.display = 'none';
         document.body.appendChild(tmp);
-        window.goatcounter.visit_count({append: tmp, no_branding: true});
+        window.goatcounter.visit_count({append: '#gcvc-tmp', no_branding: true});
         setTimeout(function() {
           var views = tmp.querySelector('#gcvc-views');
           el.textContent = (views ? views.textContent : '0') + ' views';

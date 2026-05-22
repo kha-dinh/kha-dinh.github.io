@@ -86,6 +86,7 @@ nav_order: 3
       link: {{ conf.link | jsonify }},
       area: {{ conf.area | jsonify }},
       tier: {{ conf.rank | jsonify }},
+      hotcrp: {{ conf.url_hotcrp | default: "" | jsonify }},
       place: {{ conf.place | jsonify }},
       date: {{ conf.date | jsonify }},
       timezone: {{ conf.timezone | jsonify }},
@@ -736,7 +737,12 @@ nav_order: 3
     html += '<div class="deadline-tags">';
     html += '<span class="deadline-tag area">' + esc(conf.area) + '</span>';
     html += '<span class="deadline-tag tier">' + esc(conf.tier) + '</span>';
-    html += '</div></div>';
+    html += '</div>';
+    if (conf.hotcrp) {
+      var hotcrpDisplay = conf.hotcrp.replace(/^https?:\/\//, '').replace(/\/$/, '');
+      html += '<a href="' + esc(conf.hotcrp) + '" class="deadline-hotcrp-link" title="HotCRP submission site" target="_blank" rel="noopener">[' + esc(hotcrpDisplay) + ']</a>';
+    }
+    html += '</div>';
     var meta = esc(conf.description);
     var venue = [conf.place, conf.date].filter(Boolean).map(esc).join(', ');
     if (venue) meta += ' \u00b7 ' + venue;

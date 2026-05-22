@@ -782,7 +782,6 @@ nav[data-toggle="toc"] {
     display: flex;
     align-items: baseline;
     gap: 0.75rem;
-    flex-wrap: wrap;
 
     h3 {
       margin: 0;
@@ -818,6 +817,24 @@ nav[data-toggle="toc"] {
           opacity: 1;
         }
       }
+    }
+  }
+
+  .deadline-hotcrp-link {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-family: "Recursive", monospace;
+    font-variation-settings: "MONO" 1, "CASL" 0, "slnt" 0;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--global-theme-color);
+    text-decoration: none;
+    opacity: 0.75;
+    white-space: nowrap;
+
+    &:hover {
+      opacity: 1;
     }
   }
 

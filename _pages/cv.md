@@ -4,7 +4,7 @@ permalink: /cv/
 title: cv
 nav: false
 nav_order: 4
-cv_pdf: CV_Kha_Dinh.pdf
+cv_pdf: cv.pdf
 description: You can find my CV on the right.
 toc:
   sidebar: left

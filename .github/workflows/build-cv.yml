@@ -1,0 +1,42 @@
+name: Build CV
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "_data/cv.tex"
+      - "_bibliography/papers.bib"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-cv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: _data
+          root_file: cv.tex
+          pre_compile: "cp -f ../_bibliography/papers.bib ./papers.bib"
+
+      - name: Copy PDF to assets
+        run: cp -f _data/cv.pdf assets/pdf/CV_Kha_Dinh.pdf
+
+      - name: Commit and push PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/pdf/CV_Kha_Dinh.pdf
+          if git diff --cached --quiet; then
+            echo "No changes to CV PDF"
+          else
+            git commit -m "build: update CV PDF [skip ci]"
+            git push
+          fi

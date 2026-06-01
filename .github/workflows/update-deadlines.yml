@@ -1,0 +1,54 @@
+name: Update Deadlines
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # daily at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website repo
+        uses: actions/checkout@v4
+
+      - name: Checkout crawler repo
+        uses: actions/checkout@v4
+        with:
+          repository: kha-dinh/deadline-crawler
+          path: _crawler
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Run crawler
+        working-directory: _crawler
+        run: uv run python main.py crawl --format yaml --output deadlines.yaml
+
+      - name: Compare and update deadlines
+        run: |
+          OLD_COUNT=$(grep -c 'label:' _data/deadlines.yaml 2>/dev/null || echo 0)
+          NEW_COUNT=$(grep -c 'label:' _crawler/deadlines.yaml 2>/dev/null || echo 0)
+
+          echo "Old deadline count: $OLD_COUNT"
+          echo "New deadline count: $NEW_COUNT"
+
+          if [ "$NEW_COUNT" -gt "$OLD_COUNT" ]; then
+            cp _crawler/deadlines.yaml _data/deadlines.yaml
+            echo "UPDATED=true" >> "$GITHUB_ENV"
+          else
+            echo "New crawl has $NEW_COUNT deadlines (old: $OLD_COUNT). Skipping update."
+            echo "UPDATED=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Commit and push
+        if: env.UPDATED == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/deadlines.yaml
+          git commit -m "data: update deadlines ($NEW_COUNT deadlines, was $OLD_COUNT)"
+          git push

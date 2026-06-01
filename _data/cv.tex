@@ -45,7 +45,6 @@
 
 %to prevent spillover of tabular into next pages
 \usepackage{supertabular}
-\usepackage{tabularx}
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
 
@@ -119,7 +118,7 @@
 	Postdoctoral Researcher @ University of British Columbia, Canada \\
 	\href{https://github.com/kha-dinh}{\raisebox{-0.05\height}\faGithub\ kha-dinh} \ $|$ \
 	\href{https://linkedin.com/in/dinh-duy-kha-474b0912a/}{\raisebox{-0.05\height}\faLinkedin\ Dinh Duy Kha} \ $|$ \
-	% \href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
+	\href{https://kha-dinh.github.io}{\raisebox{-0.05\height}\faGlobe \ kha-dinh.github.io} \ $|$ \
 	\href{mailto:duykha.dinh@ubc.ca}{\raisebox{-0.05\height}\faEnvelope \ duykha.dinh@ubc.ca}
 	% \href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
 \end{tabularx}
@@ -130,7 +129,8 @@
 
 \section{Introduction}
 I am a postdoctoral researcher at the University of British Columbia with a Ph.D. from Sungkyunkwan University.
-I build practical and principled defenses at the intersection of operating systems and security: memory isolation, side-channel mitigations, confidential computing, policy compliance.
+I build practical and principled solutions at the intersection of operating systems and security.
+My current research focuses on compartmentalization, side-channel mitigations, confidential computing, and policy compliance.
 My work has been recognized with the ACM CCS Distinguished Paper Award (2023) and published at top security venues including IEEE S\&P and USENIX Security.
 
 %----------------------------------------------------------------------------------------
@@ -144,7 +144,7 @@ My work has been recognized with the ACM CCS Distinguished Paper Award (2023) an
 	\begin{minipage}[t]{\columnwidth}
 		\begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
 			\item Thesis title: \say{Retrofitting Operating System Security for Modern Hardware Protections}
-			\item Synopsis: Argues that protection established by hardware and OS security must be coherent to close protection gaps exploited by modern attackers.
+			\item Synopsis: Argues that protections established by hardware and OS must be coherent to close protection gaps exploited by modern attackers.
 			      Presents two hardware-OS coherent designs: \textsc{Capacity}~\cite{capacity}, which enforces capability-based intra-process memory isolation via ARM Pointer Authentication and Memory Tagging, and IncognitOS~\cite{incognitos}, which redesigns OS scheduling and memory management to suppress side-channel leakage in confidential VMs.
 		\end{itemize}
 	\end{minipage} } \vspace{6pt}                                                      \\
@@ -191,7 +191,7 @@ My work has been recognized with the ACM CCS Distinguished Paper Award (2023) an
 
 \textsc{LLM-assisted C to Rust translation}
 \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
-	\item Investigated real-world practice of developers for translating C into Rust from real-world repositories
+	\item Investigated developers practices for translating C into Rust from real-world repositories
 	\item Constructed LLM-assisted C-to-Rust translation pipeline based on C2Rust.
 \end{itemize}\vspace{6pt}
 

@@ -1,4 +1,4 @@
-generated_at: '2026-05-21T23:05:49.102057+00:00'
+generated_at: '2026-06-01T22:55:35.951432+00:00'
 conferences:
 - id: aaai-2026
   name: AAAI 2026
@@ -446,25 +446,6 @@ conferences:
     date: 2026-01-29 23:59
   - label: notification
     date: 2026-02-20 23:59
-- id: dac-2026
-  name: DAC 2026
-  year: 2026
-  description: Design Automation Conference
-  link: https://dac.com/2026/program/research-manuscript-submissions
-  area: HW
-  rank: A*
-  place: ''
-  date: ''
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2025-11-11 23:59
-  - label: submission
-    date: 2025-11-19 23:59
-  - label: notification
-    date: 2026-03-09 23:59
-  - label: camera_ready
-    date: 2026-04-14 23:59
 - id: dimva-2026-cycle-1
   name: DIMVA 2026 (Cycle 1)
   year: 2026
@@ -588,7 +569,7 @@ conferences:
   - label: notification
     date: 2026-08-20 23:59
   - label: camera_ready
-    date: 2026-09-20 23:59
+    date: 2026-08-30 23:59
 - id: eurocrypt-2026
   name: Eurocrypt 2026
   year: 2026
@@ -1054,6 +1035,102 @@ conferences:
     date: 2026-03-15 23:59
   - label: camera_ready
     date: 2026-04-03 23:59
+- id: ieee-s-p-2026-cycle-1
+  name: IEEE S&P 2026 (Cycle 1)
+  year: 2026
+  description: IEEE Symposium on Security and Privacy
+  link: https://sp2026.ieee-security.org/cfpapers.html
+  area: SEC
+  rank: A*
+  place: ''
+  date: "MAY 18-21, 2026 \n               AT THE\n              HILTON SAN FRANCISCO\
+    \ UNION SQUARE,\n              SAN FRANCISCO, CA"
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-05-29 23:59
+  - label: submission
+    date: 2025-06-05 23:59
+  - label: early_reject
+    date: 2025-07-21 23:59
+  - label: rebuttal_start
+    date: 2025-08-18 23:59
+  - label: rebuttal_end
+    date: 2025-08-29 23:59
+  - label: notification
+    date: 2025-09-09 23:59
+  - label: camera_ready
+    date: 2025-10-17 23:59
+- id: ieee-s-p-2026-cycle-2
+  name: IEEE S&P 2026 (Cycle 2)
+  year: 2026
+  description: IEEE Symposium on Security and Privacy
+  link: https://sp2026.ieee-security.org/cfpapers.html
+  area: SEC
+  rank: A*
+  place: ''
+  date: "MAY 18-21, 2026 \n               AT THE\n              HILTON SAN FRANCISCO\
+    \ UNION SQUARE,\n              SAN FRANCISCO, CA"
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2025-11-06 23:59
+  - label: submission
+    date: 2025-11-13 23:59
+  - label: early_reject
+    date: 2026-01-19 23:59
+  - label: rebuttal_start
+    date: 2026-02-12 23:59
+  - label: rebuttal_end
+    date: 2026-02-23 23:59
+  - label: notification
+    date: 2026-03-09 23:59
+  - label: camera_ready
+    date: 2026-04-17 23:59
+- id: ieee-s-p-2027-cycle-1
+  name: IEEE S&P 2027 (Cycle 1)
+  year: 2027
+  description: IEEE Symposium on Security and Privacy
+  link: https://sp2027.ieee-security.org/cfpapers.html
+  area: SEC
+  rank: A*
+  place: ''
+  date: "TBA \n               AT THE\n              TBA,\n              MONTREAL,\
+    \ CANADA"
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-06-04 23:59
+  - label: submission
+    date: 2026-06-11 23:59
+  - label: early_reject
+    date: 2026-07-27 23:59
+  - label: notification
+    date: 2026-09-11 23:59
+  - label: camera_ready
+    date: 2026-10-16 23:59
+- id: ieee-s-p-2027-cycle-2
+  name: IEEE S&P 2027 (Cycle 2)
+  year: 2027
+  description: IEEE Symposium on Security and Privacy
+  link: https://sp2027.ieee-security.org/cfpapers.html
+  area: SEC
+  rank: A*
+  place: ''
+  date: "TBA \n               AT THE\n              TBA,\n              MONTREAL,\
+    \ CANADA"
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-11-10 23:59
+  - label: submission
+    date: 2026-11-17 23:59
+  - label: early_reject
+    date: 2027-01-18 23:59
+  - label: notification
+    date: 2027-03-05 23:59
+  - label: camera_ready
+    date: 2027-04-08 23:59
 - id: ieee-vr-2026
   name: IEEE VR 2026
   year: 2026
@@ -1686,7 +1763,7 @@ conferences:
   timezone: AoE
   deadlines:
   - label: submission
-    date: 2026-05-29 23:59
+    date: 2026-06-05 23:59
   - label: notification
     date: 2026-07-03 23:59
 - id: podc-2026
@@ -2086,30 +2163,16 @@ conferences:
   name: SIGCOMM 2026
   year: 2026
   description: ACM SIGCOMM Conference on Data Communication
-  link: https://conferences.sigcomm.org/sigcomm/2026/cfp/
+  link: https://conferences.sigcomm.org/sigcomm/2026/non-paper/call/
   area: SYS
   rank: A*
   place: Denver, Colorado, USA
   date: August 17 - 21, 2026
   timezone: AoE
   deadlines:
-  - label: abstract
-    date: 2026-01-30 23:59
-  - label: submission
-    date: 2026-02-06 23:59
-  - label: early_reject
-    date: 2026-04-02 23:59
-  - label: rebuttal_start
-    date: 2026-04-27 23:59
-  - label: rebuttal_end
-    date: 2026-04-29 23:59
   - label: notification
-    date: 2026-05-11 23:59
-  - label: shepherd
-    date: 2026-06-19 23:59
-  - label: camera_ready
-    date: 2026-07-03 23:59
-  url_hotcrp: https://sigcomm26.hotcrp.com
+    date: 2026-05-15 23:59
+  url_hotcrp: https://non-paper-sigcomm2026.hotcrp.com
 - id: siggraph-2026
   name: SIGGRAPH 2026
   year: 2026
@@ -2201,6 +2264,60 @@ conferences:
   - label: notification
     date: 2026-03-13 23:59
   url_hotcrp: https://sigmetrics26winter.hotcrp.com
+- id: sigmetrics-2027-fall
+  name: SIGMETRICS 2027 (Fall)
+  year: 2027
+  description: ACM SIGMETRICS Conference on Measurement and Modeling of Computer Systems
+  link: https://www.sigmetrics.org/sigmetrics2027/call_for_papers.html
+  area: SYS
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-10-02 23:59
+  - label: submission
+    date: 2026-10-09 23:59
+  - label: notification
+    date: 2026-12-09 23:59
+  url_hotcrp: https://sigmetrics27fall.hotcrp.com
+- id: sigmetrics-2027-summer
+  name: SIGMETRICS 2027 (Summer)
+  year: 2027
+  description: ACM SIGMETRICS Conference on Measurement and Modeling of Computer Systems
+  link: https://www.sigmetrics.org/sigmetrics2027/call_for_papers.html
+  area: SYS
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-07-03 23:59
+  - label: submission
+    date: 2026-07-10 23:59
+  - label: notification
+    date: 2026-09-09 23:59
+  url_hotcrp: https://sigmetrics27summer.hotcrp.com
+- id: sigmetrics-2027-winter
+  name: SIGMETRICS 2027 (Winter)
+  year: 2027
+  description: ACM SIGMETRICS Conference on Measurement and Modeling of Computer Systems
+  link: https://www.sigmetrics.org/sigmetrics2027/call_for_papers.html
+  area: SYS
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2027-01-04 23:59
+  - label: submission
+    date: 2027-01-11 23:59
+  - label: notification
+    date: 2027-03-10 23:59
+  url_hotcrp: https://sigmetrics27winter.hotcrp.com
 - id: sigmod-2026-round-1
   name: SIGMOD 2026 (Round 1)
   year: 2026

@@ -1,4 +1,4 @@
-generated_at: '2026-06-01T22:55:35.951432+00:00'
+generated_at: '2026-06-22T21:10:41.725502+00:00'
 conferences:
 - id: aaai-2026
   name: AAAI 2026
@@ -269,7 +269,7 @@ conferences:
   area: SYS
   rank: A*
   place: ''
-  date: Crete, Greece – April 11-15, 2027
+  date: Heraklion, Crete, Greece   ◆   April 11-15, 2027
   timezone: AoE
   deadlines:
   - label: submission
@@ -286,7 +286,7 @@ conferences:
   area: SYS
   rank: A*
   place: ''
-  date: Crete, Greece – April 11-15, 2027
+  date: Heraklion, Crete, Greece   ◆   April 11-15, 2027
   timezone: AoE
   deadlines:
   - label: submission
@@ -336,6 +336,21 @@ conferences:
     date: 2026-04-02 23:59
   - label: notification
     date: 2026-04-17 23:59
+- id: cav-2027
+  name: CAV 2027
+  year: 2027
+  description: International Conference on Computer Aided Verification
+  link: https://conferences.i-cav.org/2027/
+  area: SEC
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-09-15 23:59
+  - label: notification
+    date: 2027-04-05 23:59
 - id: ches-2026
   name: CHES 2026
   year: 2026
@@ -570,12 +585,12 @@ conferences:
     date: 2026-08-20 23:59
   - label: camera_ready
     date: 2026-08-30 23:59
-- id: eurocrypt-2026
-  name: Eurocrypt 2026
-  year: 2026
+- id: eurocrypt-2027
+  name: Eurocrypt 2027
+  year: 2027
   description: Annual International Conference on the Theory and Applications of Cryptographic
     Techniques
-  link: https://eurocrypt.iacr.org/2026/
+  link: https://eurocrypt.iacr.org/2027/
   area: CRYPTO
   rank: A*
   place: ''
@@ -583,13 +598,15 @@ conferences:
   timezone: AoE
   deadlines:
   - label: submission
-    date: 2025-10-02 23:59
-  - label: rebuttal_start
-    date: 2025-12-08 23:59
+    date: 2026-09-17 23:59
+  - label: early_reject
+    date: 2026-11-30 23:59
   - label: rebuttal_end
-    date: 2025-12-12 23:59
+    date: 2026-12-05 23:59
   - label: notification
-    date: 2026-01-29 23:59
+    date: 2027-01-18 23:59
+  - label: camera_ready
+    date: 2027-02-08 23:59
 - id: eurosys-2026-fall
   name: EuroSys 2026 (Fall)
   year: 2026
@@ -861,7 +878,7 @@ conferences:
   link: https://conf.researchr.org/dates/icfp-2026
   area: PL
   rank: A
-  place: United States
+  place: Indianapolis, Indiana, United States
   date: Mon 24 - Sat 29 August 2026
   timezone: AoE
   deadlines:
@@ -1017,6 +1034,8 @@ conferences:
     date: 2026-03-06 23:59
   - label: notification
     date: 2026-05-03 23:59
+  - label: camera_ready
+    date: 2026-06-26 23:59
 - id: icst-2026
   name: ICST 2026
   year: 2026
@@ -1035,6 +1054,24 @@ conferences:
     date: 2026-03-15 23:59
   - label: camera_ready
     date: 2026-04-03 23:59
+- id: icst-2027
+  name: ICST 2027
+  year: 2027
+  description: IEEE International Conference on Software Testing, Verification and
+    Validation
+  link: https://conf.researchr.org/dates/icst-2027
+  area: SE
+  rank: A
+  place: San Sebastian, Spain
+  date: Mon 17 - Fri 21 May 2027
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-11-02 23:59
+  - label: notification
+    date: 2026-12-22 23:59
+  - label: camera_ready
+    date: 2027-03-07 23:59
 - id: ieee-s-p-2026-cycle-1
   name: IEEE S&P 2026 (Cycle 1)
   year: 2026
@@ -1412,7 +1449,7 @@ conferences:
   - label: rebuttal_end
     date: 2026-06-09 23:59
   - label: notification
-    date: 2026-06-22 23:59
+    date: 2026-06-29 23:59
 - id: msr-2026
   name: MSR 2026
   year: 2026
@@ -1515,11 +1552,9 @@ conferences:
   - label: submission
     date: 2026-05-06 23:59
   - label: early_reject
-    date: 2026-06-12 23:59
+    date: 2026-06-18 23:59
   - label: notification
     date: 2026-07-22 23:59
-  - label: shepherd
-    date: 2026-08-19 23:59
   - label: camera_ready
     date: 2026-09-30 23:59
   url_hotcrp: https://ndss27-summer.hotcrp.com
@@ -1671,25 +1706,6 @@ conferences:
     date: 2026-03-26 23:59
   - label: camera_ready
     date: 2026-06-09 23:59
-- id: percom-2027
-  name: PERCOM 2027
-  year: 2027
-  description: IEEE International Conference on Pervasive Computing and Communications
-  link: https://percom.org/dates/
-  area: SYS
-  rank: A*
-  place: ''
-  date: ''
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2026-09-04 23:59
-  - label: submission
-    date: 2026-09-11 23:59
-  - label: early_reject
-    date: 2026-11-20 23:59
-  - label: notification
-    date: 2026-12-18 23:59
 - id: pkc-2026
   name: PKC 2026
   year: 2026
@@ -1725,15 +1741,15 @@ conferences:
   timezone: AoE
   deadlines:
   - label: submission
-    date: 2026-08-03 23:59
+    date: 2026-08-16 23:59
   - label: early_reject
-    date: 2026-09-28 23:59
+    date: 2026-10-09 23:59
   - label: rebuttal_end
-    date: 2026-10-05 23:59
+    date: 2026-10-16 23:59
   - label: notification
-    date: 2026-11-19 23:59
+    date: 2026-11-26 23:59
   - label: camera_ready
-    date: 2026-12-10 23:59
+    date: 2026-12-17 23:59
 - id: pldi-2026
   name: PLDI 2026
   year: 2026
@@ -2268,7 +2284,7 @@ conferences:
   name: SIGMETRICS 2027 (Fall)
   year: 2027
   description: ACM SIGMETRICS Conference on Measurement and Modeling of Computer Systems
-  link: https://www.sigmetrics.org/sigmetrics2027/call_for_papers.html
+  link: https://www.sigmetrics.org/sigmetrics2027/pages/cfp.html
   area: SYS
   rank: A*
   place: ''
@@ -2286,7 +2302,7 @@ conferences:
   name: SIGMETRICS 2027 (Summer)
   year: 2027
   description: ACM SIGMETRICS Conference on Measurement and Modeling of Computer Systems
-  link: https://www.sigmetrics.org/sigmetrics2027/call_for_papers.html
+  link: https://www.sigmetrics.org/sigmetrics2027/pages/cfp.html
   area: SYS
   rank: A*
   place: ''
@@ -2304,7 +2320,7 @@ conferences:
   name: SIGMETRICS 2027 (Winter)
   year: 2027
   description: ACM SIGMETRICS Conference on Measurement and Modeling of Computer Systems
-  link: https://www.sigmetrics.org/sigmetrics2027/call_for_papers.html
+  link: https://www.sigmetrics.org/sigmetrics2027/pages/cfp.html
   area: SYS
   rank: A*
   place: ''

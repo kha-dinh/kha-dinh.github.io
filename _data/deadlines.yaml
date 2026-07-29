@@ -1,4 +1,4 @@
-generated_at: '2026-06-22T21:10:41.725502+00:00'
+generated_at: '2026-07-29T03:11:19.202136+00:00'
 conferences:
 - id: aaai-2026
   name: AAAI 2026
@@ -33,9 +33,9 @@ conferences:
   timezone: AoE
   deadlines:
   - label: abstract
-    date: 2026-07-21 23:59
+    date: 2026-07-28 23:59
   - label: submission
-    date: 2026-07-31 23:59
+    date: 2026-06-30 23:59
   - label: early_reject
     date: 2026-09-24 23:59
   - label: notification
@@ -87,7 +87,7 @@ conferences:
   - label: shepherd
     date: 2026-06-05 23:59
   - label: camera_ready
-    date: 2026-08-21 23:59
+    date: 2026-08-09 23:59
   url_hotcrp: https://ccs2026a.hotcrp.com
 - id: acm-ccs-2026-cycle-b
   name: ACM CCS 2026 (Cycle B)
@@ -113,9 +113,9 @@ conferences:
   - label: notification
     date: 2026-07-17 23:59
   - label: shepherd
-    date: 2026-09-06 23:59
+    date: 2026-09-04 23:59
   - label: camera_ready
-    date: 2026-09-17 23:59
+    date: 2026-09-13 23:59
   url_hotcrp: https://ccs2026b.hotcrp.com
 - id: acsac-2026
   name: ACSAC 2026
@@ -218,7 +218,7 @@ conferences:
   - label: early_reject
     date: 2026-07-17 23:59
   - label: rebuttal_end
-    date: 2026-07-22 23:59
+    date: 2026-07-24 23:59
   - label: notification
     date: 2026-08-14 23:59
   - label: camera_ready
@@ -375,8 +375,8 @@ conferences:
   link: https://ches.iacr.org/2027/
   area: CRYPTO
   rank: A
-  place: The Americas
-  date: Fall 2027
+  place: Cancún, Mexico
+  date: September 6–9, 2027
   timezone: AoE
   deadlines:
   - label: submission
@@ -537,7 +537,7 @@ conferences:
   - label: notification
     date: 2026-06-17 23:59
   - label: camera_ready
-    date: 2026-06-26 23:59
+    date: 2026-06-30 23:59
 - id: ecoop-2026-round-1
   name: ECOOP 2026 (Round 1)
   year: 2026
@@ -568,6 +568,36 @@ conferences:
     date: 2026-02-12 23:59
   - label: notification
     date: 2026-04-09 23:59
+- id: ecoop-2027-round-1
+  name: ECOOP 2027 (Round 1)
+  year: 2027
+  description: European Conference on Object-Oriented Programming
+  link: https://conf.researchr.org/dates/ecoop-2027
+  area: PL
+  rank: A
+  place: Turin, Italy
+  date: Mon 28 June - Fri 2 July 2027
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-11-19 23:59
+  - label: notification
+    date: 2027-01-28 23:59
+- id: ecoop-2027-round-2
+  name: ECOOP 2027 (Round 2)
+  year: 2027
+  description: European Conference on Object-Oriented Programming
+  link: https://conf.researchr.org/dates/ecoop-2027
+  area: PL
+  rank: A
+  place: Turin, Italy
+  date: Mon 28 June - Fri 2 July 2027
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2027-02-11 23:59
+  - label: notification
+    date: 2027-04-08 23:59
 - id: emnlp-2026
   name: EMNLP 2026
   year: 2026
@@ -653,6 +683,54 @@ conferences:
     date: 2025-08-22 23:59
   - label: camera_ready
     date: 2025-09-26 23:59
+- id: eurosys-2027-fall
+  name: EuroSys 2027 (Fall)
+  year: 2027
+  description: European Conference on Computer Systems
+  link: https://2027.eurosys.org/cfp.html
+  area: SYS
+  rank: A
+  place: Rabat, Morocco
+  date: April 19—23, 2027
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-09-17 23:59
+  - label: submission
+    date: 2026-09-24 23:59
+  - label: rebuttal_start
+    date: 2027-01-06 23:59
+  - label: rebuttal_end
+    date: 2027-01-08 23:59
+  - label: notification
+    date: 2027-01-29 23:59
+  - label: camera_ready
+    date: 2027-03-05 23:59
+  url_hotcrp: https://eurosys27-fall.hotcrp.com
+- id: eurosys-2027-spring
+  name: EuroSys 2027 (Spring)
+  year: 2027
+  description: European Conference on Computer Systems
+  link: https://2027.eurosys.org/cfp.html
+  area: SYS
+  rank: A
+  place: Rabat, Morocco
+  date: April 19—23, 2027
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-05-07 23:59
+  - label: submission
+    date: 2026-05-14 23:59
+  - label: rebuttal_start
+    date: 2026-07-29 23:59
+  - label: rebuttal_end
+    date: 2026-07-31 23:59
+  - label: notification
+    date: 2026-08-21 23:59
+  - label: camera_ready
+    date: 2026-09-25 23:59
+  url_hotcrp: https://eurosys27-spring.hotcrp.com
 - id: fast-2026-fall
   name: FAST 2026 (Fall)
   year: 2026
@@ -770,9 +848,11 @@ conferences:
   timezone: AoE
   deadlines:
   - label: submission
-    date: 2026-10-02 23:59
+    date: 2027-01-23 23:59
   - label: notification
-    date: 2027-01-22 23:59
+    date: 2027-03-20 23:59
+  - label: camera_ready
+    date: 2027-04-03 23:59
 - id: hpca-2026
   name: HPCA 2026
   year: 2026
@@ -797,6 +877,19 @@ conferences:
   - label: camera_ready
     date: 2025-12-04 23:59
   url_hotcrp: http://hpca2026.hotcrp.com
+- id: hri-2027
+  name: HRI 2027
+  year: 2027
+  description: ACM/IEEE International Conference on Human-Robot Interaction
+  link: https://humanrobotinteraction.org/2027/full-papers/
+  area: OTHER
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-09-11 23:59
 - id: icalp-2026
   name: ICALP 2026
   year: 2026
@@ -939,6 +1032,23 @@ conferences:
     date: 2026-01-05 23:59
   - label: camera_ready
     date: 2026-01-26 23:59
+- id: icpc-2027
+  name: ICPC 2027
+  year: 2027
+  description: IEEE International Conference on Program Comprehension
+  link: https://conf.researchr.org/dates/icpc-2027
+  area: SE
+  rank: A
+  place: Dublin, Ireland
+  date: Sun 25 - Mon 26 April 2027
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-10-29 23:59
+  - label: submission
+    date: 2026-11-05 23:59
+  - label: notification
+    date: 2027-01-14 23:59
 - id: icra-2026
   name: ICRA 2026
   year: 2026
@@ -954,6 +1064,21 @@ conferences:
     date: 2025-09-15 23:59
   - label: notification
     date: 2025-12-21 23:59
+- id: icra-2027
+  name: ICRA 2027
+  year: 2027
+  description: IEEE International Conference on Robotics and Automation
+  link: https://2027.ieee-icra.org/contribute/
+  area: OTHER
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: submission
+    date: 2026-09-15 23:59
+  - label: notification
+    date: 2027-01-31 23:59
 - id: icse-2026-cycle-1
   name: ICSE 2026 (Cycle 1)
   year: 2026
@@ -1187,6 +1312,25 @@ conferences:
     date: 2025-12-12 23:59
   - label: camera_ready
     date: 2026-01-30 23:59
+- id: ieee-vr-2027
+  name: IEEE VR 2027
+  year: 2027
+  description: IEEE Conference on Virtual Reality and 3D User Interfaces
+  link: https://ieeevr.org/2027/contribute/papers/
+  area: OTHER
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-08-24 23:59
+  - label: submission
+    date: 2026-08-31 23:59
+  - label: notification
+    date: 2026-11-30 23:59
+  - label: camera_ready
+    date: 2027-01-12 23:59
 - id: ijcai-2026
   name: IJCAI 2026
   year: 2026
@@ -1267,6 +1411,25 @@ conferences:
     date: 2025-12-08 23:59
   - label: notification
     date: 2026-05-18 23:59
+- id: infocom-2027
+  name: INFOCOM 2027
+  year: 2027
+  description: IEEE International Conference on Computer Communications
+  link: https://infocom2027.ieee-infocom.org/call-papers
+  area: SYS
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-07-24 23:59
+  - label: submission
+    date: 2026-07-31 23:59
+  - label: early_reject
+    date: 2026-10-09 23:59
+  - label: notification
+    date: 2026-12-08 23:59
 - id: isca-2026
   name: ISCA 2026
   year: 2026
@@ -1301,6 +1464,8 @@ conferences:
   deadlines:
   - label: abstract
     date: 2026-03-09 23:59
+  - label: submission
+    date: 2026-09-05 23:59
 - id: issta-2026
   name: ISSTA 2026
   year: 2026
@@ -1341,6 +1506,27 @@ conferences:
     date: 2026-05-16 23:59
   - label: camera_ready
     date: 2026-06-01 23:59
+- id: kdd-2027
+  name: KDD 2027
+  year: 2027
+  description: ACM International Conference on Knowledge Discovery and Data Mining
+  link: https://kdd2027.kdd.org/research-track-call-for-papers/
+  area: SYS
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-07-19 23:59
+  - label: submission
+    date: 2026-07-26 23:59
+  - label: rebuttal_start
+    date: 2026-09-29 23:59
+  - label: rebuttal_end
+    date: 2026-10-13 23:59
+  - label: notification
+    date: 2026-11-14 23:59
 - id: kr-2026
   name: KR 2026
   year: 2026
@@ -1450,6 +1636,29 @@ conferences:
     date: 2026-06-09 23:59
   - label: notification
     date: 2026-06-29 23:59
+- id: mobicom-2027-summer
+  name: MOBICOM 2027 (Summer)
+  year: 2027
+  description: ACM International Conference on Mobile Computing and Networking
+  link: https://www.sigmobile.org/mobicom/2027/
+  area: SYS
+  rank: A*
+  place: ''
+  date: ''
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-08-26 23:59
+  - label: submission
+    date: 2026-09-02 23:59
+  - label: early_reject
+    date: 2026-10-23 23:59
+  - label: rebuttal_start
+    date: 2026-11-03 23:59
+  - label: rebuttal_end
+    date: 2026-11-06 23:59
+  - label: notification
+    date: 2026-11-19 23:59
 - id: msr-2026
   name: MSR 2026
   year: 2026
@@ -1469,6 +1678,27 @@ conferences:
     date: 2026-01-07 23:59
   - label: camera_ready
     date: 2026-01-26 23:59
+- id: msr-2027
+  name: MSR 2027
+  year: 2027
+  description: IEEE/ACM International Conference on Mining Software Repositories
+  link: https://2027.msrconf.org/dates
+  area: SE
+  rank: A
+  place: Dublin, Ireland
+  date: Mon 26 - Tue 27 April 2027
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-10-20 23:59
+  - label: submission
+    date: 2026-10-23 23:59
+  - label: early_reject
+    date: 2026-12-03 23:59
+  - label: notification
+    date: 2027-01-08 23:59
+  - label: camera_ready
+    date: 2027-01-26 23:59
 - id: ndss-2026-fall
   name: NDSS 2026 (Fall)
   year: 2026
@@ -1554,7 +1784,9 @@ conferences:
   - label: early_reject
     date: 2026-06-18 23:59
   - label: notification
-    date: 2026-07-22 23:59
+    date: 2026-07-29 23:59
+  - label: shepherd
+    date: 2026-08-19 23:59
   - label: camera_ready
     date: 2026-09-30 23:59
   url_hotcrp: https://ndss27-summer.hotcrp.com
@@ -1706,6 +1938,25 @@ conferences:
     date: 2026-03-26 23:59
   - label: camera_ready
     date: 2026-06-09 23:59
+- id: osdi-2027
+  name: OSDI 2027
+  year: 2027
+  description: USENIX Symposium on Operating Systems Design and Implementation
+  link: https://www.usenix.org/conference/osdi27/call-for-papers
+  area: SYS
+  rank: A*
+  place: Baltimore, MD, USA
+  date: July 7–9, 2027
+  timezone: AoE
+  deadlines:
+  - label: abstract
+    date: 2026-12-01 17:59
+  - label: submission
+    date: 2026-12-08 17:59
+  - label: notification
+    date: 2027-03-16 23:59
+  - label: camera_ready
+    date: 2027-06-03 23:59
 - id: pkc-2026
   name: PKC 2026
   year: 2026
@@ -1782,6 +2033,8 @@ conferences:
     date: 2026-06-05 23:59
   - label: notification
     date: 2026-07-03 23:59
+  - label: camera_ready
+    date: 2026-08-10 23:59
 - id: podc-2026
   name: PODC 2026
   year: 2026
@@ -2547,23 +2800,6 @@ conferences:
     date: 2026-08-20 23:59
   - label: camera_ready
     date: 2026-09-15 23:59
-- id: uist-2026
-  name: UIST 2026
-  year: 2026
-  description: ACM Symposium on User Interface Software and Technology
-  link: https://uist.acm.org/2026/cfp/
-  area: OTHER
-  rank: A*
-  place: ''
-  date: ''
-  timezone: AoE
-  deadlines:
-  - label: abstract
-    date: 2026-03-24 23:59
-  - label: submission
-    date: 2026-03-31 23:59
-  - label: shepherd
-    date: 2026-06-27 23:59
 - id: usenix-security-2026-cycle-1
   name: USENIX Security 2026 (Cycle 1)
   year: 2026

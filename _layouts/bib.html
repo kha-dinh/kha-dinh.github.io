@@ -197,7 +197,7 @@
             {% if entry.slides contains '://' -%}
             <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button"><span>[</span>slides<span>]</span></a>
             {%- else -%}
-            <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button"><span>[</span>slides<span>]</span></a>
+            <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button"{% unless entry.slides contains '.pdf' %} download="{{ entry.slides }}"{% endunless %}><span>[</span>slides<span>]</span></a>
             {%- endif %}
           {%- endif %}
           {%- if entry.website %}

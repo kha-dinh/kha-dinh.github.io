@@ -23,4 +23,8 @@ nav_order: 1
 
 {% bibliography -f {{ site.scholar.bibliography }} --query @article %}
 
+<h2>thesis</h2>
+
+{% bibliography -f {{ site.scholar.bibliography }} --query @phdthesis %}
+
 </div>

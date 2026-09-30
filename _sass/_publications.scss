@@ -527,3 +527,9 @@
 .publications.publications--selected ol.bibliography li[data-pub-num]::before {
   visibility: visible;
 }
+
+// Homepage selected papers render as two lists (selected, then selected_last);
+// join them so they read as one list with a single divider
+.publications.publications--selected ol.bibliography:has(+ ol.bibliography) {
+  margin-bottom: 0;
+}

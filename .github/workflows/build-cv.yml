@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   build-cv:
@@ -31,6 +32,7 @@ jobs:
         run: cp -f _data/cv.pdf assets/pdf/cv.pdf
 
       - name: Commit and push PDF
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,4 +42,13 @@ jobs:
           else
             git commit -m "build: update CV PDF [skip ci]"
             git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # Pushes made with GITHUB_TOKEN don't trigger other workflows, so the
+      # deploy that ran on the original push missed the new PDF. Redeploy.
+      - name: Redeploy site
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref main
